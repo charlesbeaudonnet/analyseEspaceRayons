@@ -1,0 +1,253 @@
+Determining if the pthread_create exist failed with the following output:
+Change Dir: /home/21603498/Documents/Licence3/be/git/executable/CMakeFiles/CMakeTmp
+
+Run Build Command:/usr/bin/gmake "cmTryCompileExec3088913756/fast"
+/usr/bin/gmake -f CMakeFiles/cmTryCompileExec3088913756.dir/build.make CMakeFiles/cmTryCompileExec3088913756.dir/build
+gmake[1] : on entre dans le répertoire « /winhomes/21603498/Licence3/be/git/executable/CMakeFiles/CMakeTmp »
+/usr/bin/cmake -E cmake_progress_report /home/21603498/Documents/Licence3/be/git/executable/CMakeFiles/CMakeTmp/CMakeFiles 1
+Building C object CMakeFiles/cmTryCompileExec3088913756.dir/CheckSymbolExists.c.o
+/usr/lib64/ccache/cc    -o CMakeFiles/cmTryCompileExec3088913756.dir/CheckSymbolExists.c.o   -c /home/21603498/Documents/Licence3/be/git/executable/CMakeFiles/CMakeTmp/CheckSymbolExists.c
+Linking C executable cmTryCompileExec3088913756
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTryCompileExec3088913756.dir/link.txt --verbose=1
+/usr/lib64/ccache/cc         CMakeFiles/cmTryCompileExec3088913756.dir/CheckSymbolExists.c.o  -o cmTryCompileExec3088913756 -rdynamic 
+CMakeFiles/cmTryCompileExec3088913756.dir/CheckSymbolExists.c.o: dans la fonction « main »:
+CheckSymbolExists.c:(.text+0x16): référence indéfinie vers « pthread_create »
+collect2: erreur: ld a retourné 1 code d'état d'exécution
+gmake[1] : on quitte le répertoire « /winhomes/21603498/Licence3/be/git/executable/CMakeFiles/CMakeTmp »
+gmake[1]: *** [cmTryCompileExec3088913756] Erreur 1
+gmake: *** [cmTryCompileExec3088913756/fast] Erreur 2
+
+File /home/21603498/Documents/Licence3/be/git/executable/CMakeFiles/CMakeTmp/CheckSymbolExists.c:
+/* */
+#include <pthread.h>
+
+int main(int argc, char** argv)
+{
+  (void)argv;
+#ifndef pthread_create
+  return ((int*)(&pthread_create))[argc];
+#else
+  (void)argc;
+  return 0;
+#endif
+}
+
+Determining if the function pthread_create exists in the pthreads failed with the following output:
+Change Dir: /home/21603498/Documents/Licence3/be/git/executable/CMakeFiles/CMakeTmp
+
+Run Build Command:/usr/bin/gmake "cmTryCompileExec2334801095/fast"
+/usr/bin/gmake -f CMakeFiles/cmTryCompileExec2334801095.dir/build.make CMakeFiles/cmTryCompileExec2334801095.dir/build
+gmake[1] : on entre dans le répertoire « /winhomes/21603498/Licence3/be/git/executable/CMakeFiles/CMakeTmp »
+/usr/bin/cmake -E cmake_progress_report /home/21603498/Documents/Licence3/be/git/executable/CMakeFiles/CMakeTmp/CMakeFiles 1
+Building C object CMakeFiles/cmTryCompileExec2334801095.dir/CheckFunctionExists.c.o
+/usr/lib64/ccache/cc   -DCHECK_FUNCTION_EXISTS=pthread_create   -o CMakeFiles/cmTryCompileExec2334801095.dir/CheckFunctionExists.c.o   -c /usr/share/cmake/Modules/CheckFunctionExists.c
+Linking C executable cmTryCompileExec2334801095
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTryCompileExec2334801095.dir/link.txt --verbose=1
+/usr/lib64/ccache/cc     -DCHECK_FUNCTION_EXISTS=pthread_create    CMakeFiles/cmTryCompileExec2334801095.dir/CheckFunctionExists.c.o  -o cmTryCompileExec2334801095 -rdynamic -lpthreads 
+/usr/bin/ld: ne peut trouver -lpthreads
+collect2: erreur: ld a retourné 1 code d'état d'exécution
+gmake[1] : on quitte le répertoire « /winhomes/21603498/Licence3/be/git/executable/CMakeFiles/CMakeTmp »
+gmake[1]: *** [cmTryCompileExec2334801095] Erreur 1
+gmake: *** [cmTryCompileExec2334801095/fast] Erreur 2
+
+
+Determining if the include file libunwind.h exists failed with the following output:
+Change Dir: /home/21603498/Documents/Licence3/be/git/executable/CMakeFiles/CMakeTmp
+
+Run Build Command:"/usr/bin/gmake" "cmTC_507bb/fast"
+/usr/bin/gmake -f CMakeFiles/cmTC_507bb.dir/build.make CMakeFiles/cmTC_507bb.dir/build
+gmake[1] : on entre dans le répertoire « /winhomes/21603498/Licence3/be/git/executable/CMakeFiles/CMakeTmp »
+Building C object CMakeFiles/cmTC_507bb.dir/CheckIncludeFile.c.o
+/usr/lib64/ccache/cc     -o CMakeFiles/cmTC_507bb.dir/CheckIncludeFile.c.o   -c /home/21603498/Documents/Licence3/be/git/executable/CMakeFiles/CMakeTmp/CheckIncludeFile.c
+/home/21603498/Documents/Licence3/be/git/executable/CMakeFiles/CMakeTmp/CheckIncludeFile.c:1:23: fatal error: libunwind.h: No such file or directory
+compilation terminated.
+gmake[1]: *** [CMakeFiles/cmTC_507bb.dir/CheckIncludeFile.c.o] Erreur 1
+gmake[1] : on quitte le répertoire « /winhomes/21603498/Licence3/be/git/executable/CMakeFiles/CMakeTmp »
+gmake: *** [cmTC_507bb/fast] Erreur 2
+
+
+Determining size of unsigned __int16 failed with the following output:
+Change Dir: /home/21603498/Documents/Licence3/be/git/executable/CMakeFiles/CMakeTmp
+
+Run Build Command:"/usr/bin/gmake" "cmTC_4ca75/fast"
+/usr/bin/gmake -f CMakeFiles/cmTC_4ca75.dir/build.make CMakeFiles/cmTC_4ca75.dir/build
+gmake[1] : on entre dans le répertoire « /winhomes/21603498/Licence3/be/git/executable/CMakeFiles/CMakeTmp »
+Building C object CMakeFiles/cmTC_4ca75.dir/HAVE___UINT16.c.o
+/usr/lib64/ccache/cc     -o CMakeFiles/cmTC_4ca75.dir/HAVE___UINT16.c.o   -c /home/21603498/Documents/Licence3/be/git/executable/CMakeFiles/CheckTypeSize/HAVE___UINT16.c
+/home/21603498/Documents/Licence3/be/git/executable/CMakeFiles/CheckTypeSize/HAVE___UINT16.c:19:29: error: expected ')' before '__int16'
+   ('0' + ((SIZE / 10000)%10)),
+                             ^
+/home/21603498/Documents/Licence3/be/git/executable/CMakeFiles/CheckTypeSize/HAVE___UINT16.c:20:29: error: expected ')' before '__int16'
+   ('0' + ((SIZE / 1000)%10)),
+                             ^
+/home/21603498/Documents/Licence3/be/git/executable/CMakeFiles/CheckTypeSize/HAVE___UINT16.c:21:29: error: expected ')' before '__int16'
+/home/21603498/Documents/Licence3/be/git/executable/CMakeFiles/CheckTypeSize/HAVE___UINT16.c:22:29: error: expected ')' before '__int16'
+/home/21603498/Documents/Licence3/be/git/executable/CMakeFiles/CheckTypeSize/HAVE___UINT16.c:23:28: error: expected ')' before '__int16'
+gmake[1]: *** [CMakeFiles/cmTC_4ca75.dir/HAVE___UINT16.c.o] Erreur 1
+gmake[1] : on quitte le répertoire « /winhomes/21603498/Licence3/be/git/executable/CMakeFiles/CMakeTmp »
+gmake: *** [cmTC_4ca75/fast] Erreur 2
+
+/home/21603498/Documents/Licence3/be/git/executable/CMakeFiles/CheckTypeSize/HAVE___UINT16.c:
+#include <sys/types.h>
+#include <stdint.h>
+#include <stddef.h>
+
+
+#undef KEY
+#if defined(__i386)
+# define KEY '_','_','i','3','8','6'
+#elif defined(__x86_64)
+# define KEY '_','_','x','8','6','_','6','4'
+#elif defined(__ppc__)
+# define KEY '_','_','p','p','c','_','_'
+#elif defined(__ppc64__)
+# define KEY '_','_','p','p','c','6','4','_','_'
+#endif
+
+#define SIZE (sizeof(unsigned __int16))
+char info_size[] =  {'I', 'N', 'F', 'O', ':', 's','i','z','e','[',
+  ('0' + ((SIZE / 10000)%10)),
+  ('0' + ((SIZE / 1000)%10)),
+  ('0' + ((SIZE / 100)%10)),
+  ('0' + ((SIZE / 10)%10)),
+  ('0' +  (SIZE    % 10)),
+  ']',
+#ifdef KEY
+  ' ','k','e','y','[', KEY, ']',
+#endif
+  '\0'};
+
+#ifdef __CLASSIC_C__
+int main(argc, argv) int argc; char *argv[];
+#else
+int main(int argc, char *argv[])
+#endif
+{
+  int require = 0;
+  require += info_size[argc];
+  (void)argv;
+  return require;
+}
+
+
+Determining if the function dladdr exists failed with the following output:
+Change Dir: /home/21603498/Documents/Licence3/be/git/executable/CMakeFiles/CMakeTmp
+
+Run Build Command:"/usr/bin/gmake" "cmTC_fbce4/fast"
+/usr/bin/gmake -f CMakeFiles/cmTC_fbce4.dir/build.make CMakeFiles/cmTC_fbce4.dir/build
+gmake[1] : on entre dans le répertoire « /winhomes/21603498/Licence3/be/git/executable/CMakeFiles/CMakeTmp »
+Building C object CMakeFiles/cmTC_fbce4.dir/CheckFunctionExists.c.o
+/usr/lib64/ccache/cc    -DCHECK_FUNCTION_EXISTS=dladdr   -o CMakeFiles/cmTC_fbce4.dir/CheckFunctionExists.c.o   -c /home/21603498/.linuxbrew/Cellar/cmake/3.7.2/share/cmake/Modules/CheckFunctionExists.c
+Linking C executable cmTC_fbce4
+/home/21603498/.linuxbrew/Cellar/cmake/3.7.2/bin/cmake -E cmake_link_script CMakeFiles/cmTC_fbce4.dir/link.txt --verbose=1
+/usr/lib64/ccache/cc   -DCHECK_FUNCTION_EXISTS=dladdr    CMakeFiles/cmTC_fbce4.dir/CheckFunctionExists.c.o  -o cmTC_fbce4 -rdynamic 
+CMakeFiles/cmTC_fbce4.dir/CheckFunctionExists.c.o: In function `main':
+CheckFunctionExists.c:(.text+0x15): undefined reference to `dladdr'
+collect2: error: ld returned 1 exit status
+gmake[1]: *** [cmTC_fbce4] Erreur 1
+gmake[1] : on quitte le répertoire « /winhomes/21603498/Licence3/be/git/executable/CMakeFiles/CMakeTmp »
+gmake: *** [cmTC_fbce4/fast] Erreur 2
+
+
+Determining if the function get_static_proc_name exists in the unwind failed with the following output:
+Change Dir: /home/21603498/Documents/Licence3/be/git/executable/CMakeFiles/CMakeTmp
+
+Run Build Command:"/usr/bin/gmake" "cmTC_1fa8f/fast"
+/usr/bin/gmake -f CMakeFiles/cmTC_1fa8f.dir/build.make CMakeFiles/cmTC_1fa8f.dir/build
+gmake[1] : on entre dans le répertoire « /winhomes/21603498/Licence3/be/git/executable/CMakeFiles/CMakeTmp »
+Building C object CMakeFiles/cmTC_1fa8f.dir/CheckFunctionExists.c.o
+/usr/lib64/ccache/cc    -DCHECK_FUNCTION_EXISTS=get_static_proc_name   -o CMakeFiles/cmTC_1fa8f.dir/CheckFunctionExists.c.o   -c /home/21603498/.linuxbrew/Cellar/cmake/3.7.2/share/cmake/Modules/CheckFunctionExists.c
+Linking C executable cmTC_1fa8f
+/home/21603498/.linuxbrew/Cellar/cmake/3.7.2/bin/cmake -E cmake_link_script CMakeFiles/cmTC_1fa8f.dir/link.txt --verbose=1
+/usr/lib64/ccache/cc   -DCHECK_FUNCTION_EXISTS=get_static_proc_name    CMakeFiles/cmTC_1fa8f.dir/CheckFunctionExists.c.o  -o cmTC_1fa8f -rdynamic -lunwind 
+/home/21603498/.linuxbrew/bin/ld: cannot find -lunwind
+collect2: error: ld returned 1 exit status
+gmake[1]: *** [cmTC_1fa8f] Erreur 1
+gmake[1] : on quitte le répertoire « /winhomes/21603498/Licence3/be/git/executable/CMakeFiles/CMakeTmp »
+gmake: *** [cmTC_1fa8f/fast] Erreur 2
+
+
+Performing C SOURCE FILE Test HAVE_RWLOCK failed with the following output:
+Change Dir: /home/21603498/Documents/Licence3/be/git/executable/CMakeFiles/CMakeTmp
+
+Run Build Command:"/usr/bin/gmake" "cmTC_1501d/fast"
+/usr/bin/gmake -f CMakeFiles/cmTC_1501d.dir/build.make CMakeFiles/cmTC_1501d.dir/build
+gmake[1] : on entre dans le répertoire « /winhomes/21603498/Licence3/be/git/executable/CMakeFiles/CMakeTmp »
+Building C object CMakeFiles/cmTC_1501d.dir/src.c.o
+/usr/lib64/ccache/cc    -DHAVE_RWLOCK   -o CMakeFiles/cmTC_1501d.dir/src.c.o   -c /home/21603498/Documents/Licence3/be/git/executable/CMakeFiles/CMakeTmp/src.c
+Linking C executable cmTC_1501d
+/home/21603498/.linuxbrew/Cellar/cmake/3.7.2/bin/cmake -E cmake_link_script CMakeFiles/cmTC_1501d.dir/link.txt --verbose=1
+/usr/lib64/ccache/cc   -DHAVE_RWLOCK    CMakeFiles/cmTC_1501d.dir/src.c.o  -o cmTC_1501d -rdynamic 
+CMakeFiles/cmTC_1501d.dir/src.c.o: In function `main':
+src.c:(.text+0x15): undefined reference to `pthread_rwlock_init'
+src.c:(.text+0x21): undefined reference to `pthread_rwlock_rdlock'
+collect2: error: ld returned 1 exit status
+gmake[1]: *** [cmTC_1501d] Erreur 1
+gmake[1] : on quitte le répertoire « /winhomes/21603498/Licence3/be/git/executable/CMakeFiles/CMakeTmp »
+gmake: *** [cmTC_1501d/fast] Erreur 2
+
+Source file was:
+
+#define _XOPEN_SOURCE 500
+#include <pthread.h>
+int main(void)
+{
+  pthread_rwlock_t l;
+  pthread_rwlock_init(&l, NULL);
+  pthread_rwlock_rdlock(&l);
+  return 0;
+}
+
+Performing C SOURCE FILE Test HAVE___DECLSPEC failed with the following output:
+Change Dir: /home/21603498/Documents/Licence3/be/git/executable/CMakeFiles/CMakeTmp
+
+Run Build Command:"/usr/bin/gmake" "cmTC_077cf/fast"
+/usr/bin/gmake -f CMakeFiles/cmTC_077cf.dir/build.make CMakeFiles/cmTC_077cf.dir/build
+gmake[1] : on entre dans le répertoire « /winhomes/21603498/Licence3/be/git/executable/CMakeFiles/CMakeTmp »
+Building C object CMakeFiles/cmTC_077cf.dir/src.c.o
+/usr/lib64/ccache/cc    -DHAVE___DECLSPEC   -o CMakeFiles/cmTC_077cf.dir/src.c.o   -c /home/21603498/Documents/Licence3/be/git/executable/CMakeFiles/CMakeTmp/src.c
+/home/21603498/Documents/Licence3/be/git/executable/CMakeFiles/CMakeTmp/src.c:2:1: warning: return type defaults to 'int' [-Wimplicit-int]
+ __declspec(selectany) int a;
+ ^
+/home/21603498/Documents/Licence3/be/git/executable/CMakeFiles/CMakeTmp/src.c: In function '__declspec':
+/home/21603498/Documents/Licence3/be/git/executable/CMakeFiles/CMakeTmp/src.c:3:16: error: expected '=', ',', ';', 'asm' or '__attribute__' before '{' token
+ int main(void) { return 0; }
+                ^
+/home/21603498/Documents/Licence3/be/git/executable/CMakeFiles/CMakeTmp/src.c:2:1: warning: type of 'selectany' defaults to 'int' [-Wimplicit-int]
+ __declspec(selectany) int a;
+ ^
+/home/21603498/Documents/Licence3/be/git/executable/CMakeFiles/CMakeTmp/src.c:2:27: error: declaration for parameter 'a' but no such parameter
+ __declspec(selectany) int a;
+                           ^
+/home/21603498/Documents/Licence3/be/git/executable/CMakeFiles/CMakeTmp/src.c:3:16: error: expected '{' at end of input
+ int main(void) { return 0; }
+                ^
+gmake[1]: *** [CMakeFiles/cmTC_077cf.dir/src.c.o] Erreur 1
+gmake[1] : on quitte le répertoire « /winhomes/21603498/Licence3/be/git/executable/CMakeFiles/CMakeTmp »
+gmake: *** [cmTC_077cf/fast] Erreur 2
+
+Source file was:
+
+__declspec(selectany) int a;
+int main(void) { return 0; }
+
+Performing C++ SOURCE FILE Test STL_NO_NAMESPACE failed with the following output:
+Change Dir: /home/21603498/Documents/Licence3/be/git/executable/CMakeFiles/CMakeTmp
+
+Run Build Command:"/usr/bin/gmake" "cmTC_4a3b7/fast"
+/usr/bin/gmake -f CMakeFiles/cmTC_4a3b7.dir/build.make CMakeFiles/cmTC_4a3b7.dir/build
+gmake[1] : on entre dans le répertoire « /winhomes/21603498/Licence3/be/git/executable/CMakeFiles/CMakeTmp »
+Building CXX object CMakeFiles/cmTC_4a3b7.dir/src.cxx.o
+/usr/lib64/ccache/c++     -std=gnu++11 -Wno-conversion-null -DSTL_NO_NAMESPACE   -o CMakeFiles/cmTC_4a3b7.dir/src.cxx.o -c /home/21603498/Documents/Licence3/be/git/executable/CMakeFiles/CMakeTmp/src.cxx
+/home/21603498/Documents/Licence3/be/git/executable/CMakeFiles/CMakeTmp/src.cxx:3:1: error: 'vector' does not name a type
+ vector<int> t; int main() { }
+ ^
+gmake[1]: *** [CMakeFiles/cmTC_4a3b7.dir/src.cxx.o] Erreur 1
+gmake[1] : on quitte le répertoire « /winhomes/21603498/Licence3/be/git/executable/CMakeFiles/CMakeTmp »
+gmake: *** [cmTC_4a3b7/fast] Erreur 2
+
+Source file was:
+
+#include <vector>
+vector<int> t; int main() { }
+
