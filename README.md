@@ -13,3 +13,6 @@ cmake ../pbrt-v3
 
 make -j4
 
+# à faire:-
+- [ ] test
+- [ ] testt
