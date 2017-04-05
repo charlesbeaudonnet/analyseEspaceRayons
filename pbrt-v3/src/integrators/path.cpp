@@ -60,10 +60,17 @@ void PathIntegrator::Preprocess(const Scene &scene, Sampler &sampler) {
     lightDistribution =
         CreateLightSampleDistribution(lightSampleStrategy, scene);
 }
-
+//-----------
+int sum = 1;
+//-----------
 Spectrum PathIntegrator::Li(const RayDifferential &r, const Scene &scene,
                             Sampler &sampler, MemoryArena &arena,
                             int depth) const {
+	//----------
+	printf("\n --------- ray n°%d --------- : \n", sum);
+	sum++;
+    Float couleur[3];
+	//----------
     ProfilePhase p(Prof::SamplerIntegratorLi);
     Spectrum L(0.f), beta(1.f);
     RayDifferential ray(r);
@@ -79,6 +86,11 @@ Spectrum PathIntegrator::Li(const RayDifferential &r, const Scene &scene,
     Float etaScale = 1;
 
     for (bounces = 0;; ++bounces) {
+    	//--------------
+    	printf("bounce n°%d : \n", bounces + 1);
+    	printf("   orig : x: %f y: %f z: %f \n   dir : x: %f y: %f z: %f\n",
+    			ray.o[0], ray.o[1], ray.o[2], ray.d[0], ray.d[1], ray.d[2]);
+    	//--------------
         // Find next path vertex and accumulate contribution
         VLOG(2) << "Path tracer bounce " << bounces << ", current L = " << L
                 << ", beta = " << beta;
@@ -182,8 +194,16 @@ Spectrum PathIntegrator::Li(const RayDifferential &r, const Scene &scene,
             beta /= 1 - q;
             DCHECK(!std::isinf(beta.y()));
         }
+        //----------
+        L.ToRGB(couleur);
+        printf("R: %f G: %f B: %f\n\n", couleur[0], couleur[1], couleur[2]);
+        //----------
     }
     ReportValue(pathLength, bounces);
+
+    L.ToRGB(couleur);
+    printf("\nCouleur finale du rayon :\n R: %f G: %f B: %f\n", couleur[0], couleur[1], couleur[2]);
+
     return L;
 }
 
