@@ -13,6 +13,9 @@ cmake ../pbrt-v3
 
 make -j4
 
+# exemple d'execution depuis executable
+./pbrt --quick ../../../pbrt-v3-scenes/dragon/f8-4a.pbrt
+
 # à faire:-
 - [ ] test
 - [ ] testt
