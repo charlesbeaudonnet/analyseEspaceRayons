@@ -32,6 +32,9 @@
 
 
 // main/pbrt.cpp*
+#include <string>
+#include <iostream>
+#include <fstream>
 #include "pbrt.h"
 #include "api.h"
 #include "parser.h"
@@ -39,12 +42,13 @@
 #include <glog/logging.h>
 
 using namespace pbrt;
+using namespace std;
 
 static void usage(const char *msg = nullptr) {
-    if (msg)
-        fprintf(stderr, "pbrt: %s\n\n", msg);
+	if (msg)
+		fprintf(stderr, "pbrt: %s\n\n", msg);
 
-    fprintf(stderr, R"(usage: pbrt [<options>] <filename.pbrt...>
+	fprintf(stderr, R"(usage: pbrt [<options>] <filename.pbrt...>
 Rendering options:
   --help               Print this help text.
   --nthreads <num>     Use specified number of threads for rendering.
@@ -72,91 +76,120 @@ Reformatting options:
 
 // main program
 int main(int argc, char *argv[]) {
-    google::InitGoogleLogging(argv[0]);
-    FLAGS_stderrthreshold = 1; // Warning and above.
+	google::InitGoogleLogging(argv[0]);
+	FLAGS_stderrthreshold = 1; // Warning and above.
 
-    Options options;
-    std::vector<std::string> filenames;
-    // Process command-line arguments
-    for (int i = 1; i < argc; ++i) {
-        if (!strcmp(argv[i], "--nthreads") || !strcmp(argv[i], "-nthreads")) {
-            if (i + 1 == argc)
-                usage("missing value after --nthreads argument");
-            options.nThreads = atoi(argv[++i]);
-        } else if (!strncmp(argv[i], "--nthreads=", 11)) {
-            options.nThreads = atoi(&argv[i][11]);
-        } else if (!strcmp(argv[i], "--outfile") || !strcmp(argv[i], "-outfile")) {
-            if (i + 1 == argc)
-                usage("missing value after --outfile argument");
-            options.imageFile = argv[++i];
-        } else if (!strncmp(argv[i], "--outfile=", 10)) {
-            options.imageFile = &argv[i][10];
-        } else if (!strcmp(argv[i], "--logdir") || !strcmp(argv[i], "-logdir")) {
-            if (i + 1 == argc)
-                usage("missing value after --logdir argument");
-            FLAGS_log_dir = argv[++i];
-        } else if (!strncmp(argv[i], "--logdir=", 9)) {
-            FLAGS_log_dir = &argv[i][9];
-        } else if (!strcmp(argv[i], "--minloglevel") ||
-                   !strcmp(argv[i], "-minloglevel")) {
-            if (i + 1 == argc)
-                usage("missing value after --minloglevel argument");
-            FLAGS_minloglevel = atoi(argv[++i]);
-        } else if (!strncmp(argv[i], "--minloglevel=", 14)) {
-            FLAGS_minloglevel = atoi(&argv[i][14]);
-        } else if (!strcmp(argv[i], "--quick") || !strcmp(argv[i], "-quick")) {
-            options.quickRender = true;
-        } else if (!strcmp(argv[i], "--quiet") || !strcmp(argv[i], "-quiet")) {
-            options.quiet = true;
-        } else if (!strcmp(argv[i], "--cat") || !strcmp(argv[i], "-cat")) {
-            options.cat = true;
-        } else if (!strcmp(argv[i], "--toply") || !strcmp(argv[i], "-toply")) {
-            options.toPly = true;
-        } else if (!strcmp(argv[i], "--v") || !strcmp(argv[i], "-v")) {
-            if (i + 1 == argc)
-                usage("missing value after --v argument");
-            FLAGS_v = atoi(argv[++i]);
-        } else if (!strncmp(argv[i], "--v=", 4)) {
-          FLAGS_v = atoi(argv[i] + 4);
-        }
-        else if (!strcmp(argv[i], "--logtostderr")) {
-          FLAGS_logtostderr = true;
-        } else if (!strcmp(argv[i], "--help") || !strcmp(argv[i], "-help") ||
-                   !strcmp(argv[i], "-h")) {
-            usage();
-            return 0;
-        } else
-            filenames.push_back(argv[i]);
-    }
+	Options options;
+	std::vector<std::string> filenames;
+	// Process command-line arguments
+	for (int i = 1; i < argc; ++i) {
+		if (!strcmp(argv[i], "--nthreads") || !strcmp(argv[i], "-nthreads")) {
+			if (i + 1 == argc)
+				usage("missing value after --nthreads argument");
+			options.nThreads = atoi(argv[++i]);
+		} else if (!strncmp(argv[i], "--nthreads=", 11)) {
+			options.nThreads = atoi(&argv[i][11]);
+		} else if (!strcmp(argv[i], "--outfile") || !strcmp(argv[i], "-outfile")) {
+			if (i + 1 == argc)
+				usage("missing value after --outfile argument");
+			options.imageFile = argv[++i];
+		} else if (!strncmp(argv[i], "--outfile=", 10)) {
+			options.imageFile = &argv[i][10];
+		} else if (!strcmp(argv[i], "--logdir") || !strcmp(argv[i], "-logdir")) {
+			if (i + 1 == argc)
+				usage("missing value after --logdir argument");
+			FLAGS_log_dir = argv[++i];
+		} else if (!strncmp(argv[i], "--logdir=", 9)) {
+			FLAGS_log_dir = &argv[i][9];
+		} else if (!strcmp(argv[i], "--minloglevel") ||
+				!strcmp(argv[i], "-minloglevel")) {
+			if (i + 1 == argc)
+				usage("missing value after --minloglevel argument");
+			FLAGS_minloglevel = atoi(argv[++i]);
+		} else if (!strncmp(argv[i], "--minloglevel=", 14)) {
+			FLAGS_minloglevel = atoi(&argv[i][14]);
+		} else if (!strcmp(argv[i], "--quick") || !strcmp(argv[i], "-quick")) {
+			options.quickRender = true;
+		} else if (!strcmp(argv[i], "--quiet") || !strcmp(argv[i], "-quiet")) {
+			options.quiet = true;
+		} else if (!strcmp(argv[i], "--cat") || !strcmp(argv[i], "-cat")) {
+			options.cat = true;
+		} else if (!strcmp(argv[i], "--toply") || !strcmp(argv[i], "-toply")) {
+			options.toPly = true;
+		} else if (!strcmp(argv[i], "--v") || !strcmp(argv[i], "-v")) {
+			if (i + 1 == argc)
+				usage("missing value after --v argument");
+			FLAGS_v = atoi(argv[++i]);
+		} else if (!strncmp(argv[i], "--v=", 4)) {
+			FLAGS_v = atoi(argv[i] + 4);
+		}
+		else if (!strcmp(argv[i], "--logtostderr")) {
+			FLAGS_logtostderr = true;
+		} else if (!strcmp(argv[i], "--help") || !strcmp(argv[i], "-help") ||
+				!strcmp(argv[i], "-h")) {
+			usage();
+			return 0;
+		} else
+			filenames.push_back(argv[i]);
+	}
 
-    // Print welcome banner
-    if (!options.quiet && !options.cat && !options.toPly) {
-        printf("pbrt version 3 (built %s at %s) [Detected %d cores]\n",
-               __DATE__, __TIME__, NumSystemCores());
+	// Print welcome banner
+	if (!options.quiet && !options.cat && !options.toPly) {
+		printf("pbrt version 3 (built %s at %s) [Detected %d cores]\n",
+				__DATE__, __TIME__, NumSystemCores());
 #ifndef NDEBUG
-        LOG(INFO) << "Running debug build";
-        printf("*** DEBUG BUILD ***\n");
+		LOG(INFO) << "Running debug build";
+		printf("*** DEBUG BUILD ***\n");
 #endif // !NDEBUG
-        printf(
-            "Copyright (c)1998-2016 Matt Pharr, Greg Humphreys, and Wenzel "
-            "Jakob.\n");
-        printf(
-            "The source code to pbrt (but *not* the book contents) is covered "
-            "by the BSD License.\n");
-        printf("See the file LICENSE.txt for the conditions of the license.\n");
-        fflush(stdout);
-    }
-    pbrtInit(options);
-    // Process scene description
-    if (filenames.empty()) {
-        // Parse scene from standard input
-        ParseFile("-");
-    } else {
-        // Parse scene from input files
-        for (const std::string &f : filenames)
-            if (!ParseFile(f))
-                Error("Couldn't open scene file \"%s\"", f.c_str());
-    }
-    pbrtCleanup();
-    return 0;
+		printf(
+				"Copyright (c)1998-2016 Matt Pharr, Greg Humphreys, and Wenzel "
+				"Jakob.\n");
+		printf(
+				"The source code to pbrt (but *not* the book contents) is covered "
+				"by the BSD License.\n");
+		printf("See the file LICENSE.txt for the conditions of the license.\n");
+		fflush(stdout);
+	}
+	pbrtInit(options);
+	// Process scene description
+	if (filenames.empty()) {
+		// Parse scene from standard input
+		ParseFile("-");
+	} else {
+		// Parse scene from input files
+		for (const std::string &f : filenames)
+			if (!ParseFile(f))
+				Error("Couldn't open scene file \"%s\"", f.c_str());
+	}
+	pbrtCleanup();
+	std::ifstream pixelC,paths;
+	std::ofstream rayPath;
+	pixelC.open("./pixelCompute.txt");
+	if(!pixelC){
+		std::cerr << "Can't open pixelCompute.txt" << std::endl;
+	}else{
+		paths.open("./paths.txt");
+		if(!paths){
+			pixelC.close();
+			std::cerr << "Can't open paths.txt" << std::endl;
+		}else{
+			rayPath.open("./rayPath.txt");
+			if(!rayPath){
+				pixelC.close();
+				paths.close();
+				std::cerr << "Can't open rayPath.txt" << std::endl;
+			}else{
+				std::string lignePath, lignePix;
+				while(!paths.eof() && !pixelC.eof()){
+					std::getline(paths,lignePath);
+					std::getline(pixelC,lignePix);
+					rayPath << lignePix << lignePath << std::endl;
+				}
+			}
+		}
+	}
+	pixelC.close();
+	paths.close();
+	rayPath.close();
+	return 0;
 }
