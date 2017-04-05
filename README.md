@@ -17,8 +17,6 @@ make -j4
 ./pbrt --quick ../../../pbrt-v3-scenes/dragon/f8-4a.pbrt
 
 # à faire:-
-- [ ] test
-- [ ] testt
 - [ ] Bien analyser le code
 - [ ] Afficher les données stockées dans la structure des rayons
 - [ ] Faire un executable pour afficher les arbres avec OpenGL
