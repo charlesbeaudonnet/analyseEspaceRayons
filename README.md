@@ -14,5 +14,9 @@ cmake ../pbrt-v3
 make -j4
 
 # à faire:-
-- [ ] test
-- [ ] testt
+- [ ] Bien analyser le code
+- [ ] Afficher les données stockées dans la structure des rayons
+- [ ] Faire un executable pour afficher les arbres avec OpenGL
+  - [ ] Makefile
+  - [ ] Fonction de rasterization de ligne à partir de 2 points dans l'espace
+  - [ ] autres..
