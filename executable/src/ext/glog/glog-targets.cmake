@@ -47,7 +47,7 @@ add_library(glog STATIC IMPORTED)
 set_target_properties(glog PROPERTIES
   INTERFACE_COMPILE_DEFINITIONS "GOOGLE_GLOG_DLL_DECL="
   INTERFACE_COMPILE_OPTIONS "-Wno-unnamed-type-template-args"
-  INTERFACE_INCLUDE_DIRECTORIES "/home/21603498/Documents/Licence3/be/git/executable/src/ext/glog;/home/21603498/Documents/Licence3/be/git/pbrt-v3/src/ext/glog/src"
+  INTERFACE_INCLUDE_DIRECTORIES "/home/21603498/Documents/Licence3/be/git/analyseEspaceRayons/executable/src/ext/glog;/home/21603498/Documents/Licence3/be/git/analyseEspaceRayons/pbrt-v3/src/ext/glog/src"
   INTERFACE_LINK_LIBRARIES "-lpthread"
 )
 
@@ -55,7 +55,7 @@ set_target_properties(glog PROPERTIES
 set_property(TARGET glog APPEND PROPERTY IMPORTED_CONFIGURATIONS RELEASE)
 set_target_properties(glog PROPERTIES
   IMPORTED_LINK_INTERFACE_LANGUAGES_RELEASE "CXX"
-  IMPORTED_LOCATION_RELEASE "/home/21603498/Documents/Licence3/be/git/executable/src/ext/glog/libglog.a"
+  IMPORTED_LOCATION_RELEASE "/home/21603498/Documents/Licence3/be/git/analyseEspaceRayons/executable/src/ext/glog/libglog.a"
   )
 
 # This file does not depend on other imported targets which have

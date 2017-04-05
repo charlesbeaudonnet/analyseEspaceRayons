@@ -1,6 +1,6 @@
-#line 2 "/home/21603498/Documents/Licence3/be/git/executable/pbrtlex.cpp"
+#line 2 "/home/21603498/Documents/Licence3/be/git/analyseEspaceRayons/executable/pbrtlex.cpp"
 
-#line 4 "/home/21603498/Documents/Licence3/be/git/executable/pbrtlex.cpp"
+#line 4 "/home/21603498/Documents/Licence3/be/git/analyseEspaceRayons/executable/pbrtlex.cpp"
 
 #define  YY_INT_ALIGNED short int
 
@@ -675,7 +675,7 @@ int yy_flex_debug = 0;
 #define YY_MORE_ADJ 0
 #define YY_RESTORE_YY_MORE_OFFSET
 char *yytext;
-#line 1 "/home/21603498/Documents/Licence3/be/git/pbrt-v3/src/core/pbrtlex.ll"
+#line 1 "/home/21603498/Documents/Licence3/be/git/analyseEspaceRayons/pbrt-v3/src/core/pbrtlex.ll"
 /*
     pbrt source code is Copyright(c) 1998-2016
                         Matt Pharr, Greg Humphreys, and Wenzel Jakob.
@@ -707,7 +707,7 @@ char *yytext;
 
  */
 #define YY_NO_UNISTD_H 1
-#line 36 "/home/21603498/Documents/Licence3/be/git/pbrt-v3/src/core/pbrtlex.ll"
+#line 36 "/home/21603498/Documents/Licence3/be/git/analyseEspaceRayons/pbrt-v3/src/core/pbrtlex.ll"
 
 #include "pbrt.h"
 #include "api.h"
@@ -793,7 +793,7 @@ void include_pop() {
 }  // namespace pbrt
 
 
-#line 797 "/home/21603498/Documents/Licence3/be/git/executable/pbrtlex.cpp"
+#line 797 "/home/21603498/Documents/Licence3/be/git/analyseEspaceRayons/executable/pbrtlex.cpp"
 
 #define INITIAL 0
 #define STR 1
@@ -977,9 +977,9 @@ YY_DECL
 	register char *yy_cp, *yy_bp;
 	register int yy_act;
     
-#line 126 "/home/21603498/Documents/Licence3/be/git/pbrt-v3/src/core/pbrtlex.ll"
+#line 126 "/home/21603498/Documents/Licence3/be/git/analyseEspaceRayons/pbrt-v3/src/core/pbrtlex.ll"
 
-#line 983 "/home/21603498/Documents/Licence3/be/git/executable/pbrtlex.cpp"
+#line 983 "/home/21603498/Documents/Licence3/be/git/analyseEspaceRayons/executable/pbrtlex.cpp"
 
 	if ( !(yy_init) )
 		{
@@ -1064,234 +1064,234 @@ do_action:	/* This label is used only to access EOF actions. */
 
 case 1:
 YY_RULE_SETUP
-#line 127 "/home/21603498/Documents/Licence3/be/git/pbrt-v3/src/core/pbrtlex.ll"
+#line 127 "/home/21603498/Documents/Licence3/be/git/analyseEspaceRayons/pbrt-v3/src/core/pbrtlex.ll"
 { BEGIN COMMENT; if (pbrt::PbrtOptions.cat || pbrt::PbrtOptions.toPly) printf("%*s#", pbrt::catIndentCount, ""); }
 	YY_BREAK
 case 2:
 YY_RULE_SETUP
-#line 128 "/home/21603498/Documents/Licence3/be/git/pbrt-v3/src/core/pbrtlex.ll"
+#line 128 "/home/21603498/Documents/Licence3/be/git/analyseEspaceRayons/pbrt-v3/src/core/pbrtlex.ll"
 { /* eat it up */ if (pbrt::PbrtOptions.cat || pbrt::PbrtOptions.toPly) putchar(yytext[0]); }
 	YY_BREAK
 case 3:
 /* rule 3 can match eol */
 YY_RULE_SETUP
-#line 129 "/home/21603498/Documents/Licence3/be/git/pbrt-v3/src/core/pbrtlex.ll"
+#line 129 "/home/21603498/Documents/Licence3/be/git/analyseEspaceRayons/pbrt-v3/src/core/pbrtlex.ll"
 { pbrt::line_num++; if (pbrt::PbrtOptions.cat || pbrt::PbrtOptions.toPly) putchar('\n'); BEGIN INITIAL; }
 	YY_BREAK
 case 4:
 YY_RULE_SETUP
-#line 130 "/home/21603498/Documents/Licence3/be/git/pbrt-v3/src/core/pbrtlex.ll"
+#line 130 "/home/21603498/Documents/Licence3/be/git/analyseEspaceRayons/pbrt-v3/src/core/pbrtlex.ll"
 { return ACCELERATOR; }
 	YY_BREAK
 case 5:
 YY_RULE_SETUP
-#line 131 "/home/21603498/Documents/Licence3/be/git/pbrt-v3/src/core/pbrtlex.ll"
+#line 131 "/home/21603498/Documents/Licence3/be/git/analyseEspaceRayons/pbrt-v3/src/core/pbrtlex.ll"
 { return ACTIVETRANSFORM; }
 	YY_BREAK
 case 6:
 YY_RULE_SETUP
-#line 132 "/home/21603498/Documents/Licence3/be/git/pbrt-v3/src/core/pbrtlex.ll"
+#line 132 "/home/21603498/Documents/Licence3/be/git/analyseEspaceRayons/pbrt-v3/src/core/pbrtlex.ll"
 { return ALL; }
 	YY_BREAK
 case 7:
 YY_RULE_SETUP
-#line 133 "/home/21603498/Documents/Licence3/be/git/pbrt-v3/src/core/pbrtlex.ll"
+#line 133 "/home/21603498/Documents/Licence3/be/git/analyseEspaceRayons/pbrt-v3/src/core/pbrtlex.ll"
 { return AREALIGHTSOURCE; }
 	YY_BREAK
 case 8:
 YY_RULE_SETUP
-#line 134 "/home/21603498/Documents/Licence3/be/git/pbrt-v3/src/core/pbrtlex.ll"
+#line 134 "/home/21603498/Documents/Licence3/be/git/analyseEspaceRayons/pbrt-v3/src/core/pbrtlex.ll"
 { return ATTRIBUTEBEGIN; }
 	YY_BREAK
 case 9:
 YY_RULE_SETUP
-#line 135 "/home/21603498/Documents/Licence3/be/git/pbrt-v3/src/core/pbrtlex.ll"
+#line 135 "/home/21603498/Documents/Licence3/be/git/analyseEspaceRayons/pbrt-v3/src/core/pbrtlex.ll"
 { return ATTRIBUTEEND; }
 	YY_BREAK
 case 10:
 YY_RULE_SETUP
-#line 136 "/home/21603498/Documents/Licence3/be/git/pbrt-v3/src/core/pbrtlex.ll"
+#line 136 "/home/21603498/Documents/Licence3/be/git/analyseEspaceRayons/pbrt-v3/src/core/pbrtlex.ll"
 { return CAMERA; }
 	YY_BREAK
 case 11:
 YY_RULE_SETUP
-#line 137 "/home/21603498/Documents/Licence3/be/git/pbrt-v3/src/core/pbrtlex.ll"
+#line 137 "/home/21603498/Documents/Licence3/be/git/analyseEspaceRayons/pbrt-v3/src/core/pbrtlex.ll"
 { return CONCATTRANSFORM; }
 	YY_BREAK
 case 12:
 YY_RULE_SETUP
-#line 138 "/home/21603498/Documents/Licence3/be/git/pbrt-v3/src/core/pbrtlex.ll"
+#line 138 "/home/21603498/Documents/Licence3/be/git/analyseEspaceRayons/pbrt-v3/src/core/pbrtlex.ll"
 { return COORDINATESYSTEM; }
 	YY_BREAK
 case 13:
 YY_RULE_SETUP
-#line 139 "/home/21603498/Documents/Licence3/be/git/pbrt-v3/src/core/pbrtlex.ll"
+#line 139 "/home/21603498/Documents/Licence3/be/git/analyseEspaceRayons/pbrt-v3/src/core/pbrtlex.ll"
 { return COORDSYSTRANSFORM; }
 	YY_BREAK
 case 14:
 YY_RULE_SETUP
-#line 140 "/home/21603498/Documents/Licence3/be/git/pbrt-v3/src/core/pbrtlex.ll"
+#line 140 "/home/21603498/Documents/Licence3/be/git/analyseEspaceRayons/pbrt-v3/src/core/pbrtlex.ll"
 { return ENDTIME; }
 	YY_BREAK
 case 15:
 YY_RULE_SETUP
-#line 141 "/home/21603498/Documents/Licence3/be/git/pbrt-v3/src/core/pbrtlex.ll"
+#line 141 "/home/21603498/Documents/Licence3/be/git/analyseEspaceRayons/pbrt-v3/src/core/pbrtlex.ll"
 { return FILM; }
 	YY_BREAK
 case 16:
 YY_RULE_SETUP
-#line 142 "/home/21603498/Documents/Licence3/be/git/pbrt-v3/src/core/pbrtlex.ll"
+#line 142 "/home/21603498/Documents/Licence3/be/git/analyseEspaceRayons/pbrt-v3/src/core/pbrtlex.ll"
 { return IDENTITY; }
 	YY_BREAK
 case 17:
 YY_RULE_SETUP
-#line 143 "/home/21603498/Documents/Licence3/be/git/pbrt-v3/src/core/pbrtlex.ll"
+#line 143 "/home/21603498/Documents/Licence3/be/git/analyseEspaceRayons/pbrt-v3/src/core/pbrtlex.ll"
 { return INCLUDE; }
 	YY_BREAK
 case 18:
 YY_RULE_SETUP
-#line 144 "/home/21603498/Documents/Licence3/be/git/pbrt-v3/src/core/pbrtlex.ll"
+#line 144 "/home/21603498/Documents/Licence3/be/git/analyseEspaceRayons/pbrt-v3/src/core/pbrtlex.ll"
 { return LIGHTSOURCE; }
 	YY_BREAK
 case 19:
 YY_RULE_SETUP
-#line 145 "/home/21603498/Documents/Licence3/be/git/pbrt-v3/src/core/pbrtlex.ll"
+#line 145 "/home/21603498/Documents/Licence3/be/git/analyseEspaceRayons/pbrt-v3/src/core/pbrtlex.ll"
 { return LOOKAT; }
 	YY_BREAK
 case 20:
 YY_RULE_SETUP
-#line 146 "/home/21603498/Documents/Licence3/be/git/pbrt-v3/src/core/pbrtlex.ll"
+#line 146 "/home/21603498/Documents/Licence3/be/git/analyseEspaceRayons/pbrt-v3/src/core/pbrtlex.ll"
 { return MAKENAMEDMEDIUM; }
 	YY_BREAK
 case 21:
 YY_RULE_SETUP
-#line 147 "/home/21603498/Documents/Licence3/be/git/pbrt-v3/src/core/pbrtlex.ll"
+#line 147 "/home/21603498/Documents/Licence3/be/git/analyseEspaceRayons/pbrt-v3/src/core/pbrtlex.ll"
 { return MAKENAMEDMATERIAL; }
 	YY_BREAK
 case 22:
 YY_RULE_SETUP
-#line 148 "/home/21603498/Documents/Licence3/be/git/pbrt-v3/src/core/pbrtlex.ll"
+#line 148 "/home/21603498/Documents/Licence3/be/git/analyseEspaceRayons/pbrt-v3/src/core/pbrtlex.ll"
 { return MATERIAL; }
 	YY_BREAK
 case 23:
 YY_RULE_SETUP
-#line 149 "/home/21603498/Documents/Licence3/be/git/pbrt-v3/src/core/pbrtlex.ll"
+#line 149 "/home/21603498/Documents/Licence3/be/git/analyseEspaceRayons/pbrt-v3/src/core/pbrtlex.ll"
 { return MEDIUMINTERFACE; }
 	YY_BREAK
 case 24:
 YY_RULE_SETUP
-#line 150 "/home/21603498/Documents/Licence3/be/git/pbrt-v3/src/core/pbrtlex.ll"
+#line 150 "/home/21603498/Documents/Licence3/be/git/analyseEspaceRayons/pbrt-v3/src/core/pbrtlex.ll"
 { return NAMEDMATERIAL; }
 	YY_BREAK
 case 25:
 YY_RULE_SETUP
-#line 151 "/home/21603498/Documents/Licence3/be/git/pbrt-v3/src/core/pbrtlex.ll"
+#line 151 "/home/21603498/Documents/Licence3/be/git/analyseEspaceRayons/pbrt-v3/src/core/pbrtlex.ll"
 { return OBJECTBEGIN; }
 	YY_BREAK
 case 26:
 YY_RULE_SETUP
-#line 152 "/home/21603498/Documents/Licence3/be/git/pbrt-v3/src/core/pbrtlex.ll"
+#line 152 "/home/21603498/Documents/Licence3/be/git/analyseEspaceRayons/pbrt-v3/src/core/pbrtlex.ll"
 { return OBJECTEND; }
 	YY_BREAK
 case 27:
 YY_RULE_SETUP
-#line 153 "/home/21603498/Documents/Licence3/be/git/pbrt-v3/src/core/pbrtlex.ll"
+#line 153 "/home/21603498/Documents/Licence3/be/git/analyseEspaceRayons/pbrt-v3/src/core/pbrtlex.ll"
 { return OBJECTINSTANCE; }
 	YY_BREAK
 case 28:
 YY_RULE_SETUP
-#line 154 "/home/21603498/Documents/Licence3/be/git/pbrt-v3/src/core/pbrtlex.ll"
+#line 154 "/home/21603498/Documents/Licence3/be/git/analyseEspaceRayons/pbrt-v3/src/core/pbrtlex.ll"
 { return PIXELFILTER; }
 	YY_BREAK
 case 29:
 YY_RULE_SETUP
-#line 155 "/home/21603498/Documents/Licence3/be/git/pbrt-v3/src/core/pbrtlex.ll"
+#line 155 "/home/21603498/Documents/Licence3/be/git/analyseEspaceRayons/pbrt-v3/src/core/pbrtlex.ll"
 { return REVERSEORIENTATION; }
 	YY_BREAK
 case 30:
 YY_RULE_SETUP
-#line 156 "/home/21603498/Documents/Licence3/be/git/pbrt-v3/src/core/pbrtlex.ll"
+#line 156 "/home/21603498/Documents/Licence3/be/git/analyseEspaceRayons/pbrt-v3/src/core/pbrtlex.ll"
 { return ROTATE; }
 	YY_BREAK
 case 31:
 YY_RULE_SETUP
-#line 157 "/home/21603498/Documents/Licence3/be/git/pbrt-v3/src/core/pbrtlex.ll"
+#line 157 "/home/21603498/Documents/Licence3/be/git/analyseEspaceRayons/pbrt-v3/src/core/pbrtlex.ll"
 { return SAMPLER; }
 	YY_BREAK
 case 32:
 YY_RULE_SETUP
-#line 158 "/home/21603498/Documents/Licence3/be/git/pbrt-v3/src/core/pbrtlex.ll"
+#line 158 "/home/21603498/Documents/Licence3/be/git/analyseEspaceRayons/pbrt-v3/src/core/pbrtlex.ll"
 { return SCALE; }
 	YY_BREAK
 case 33:
 YY_RULE_SETUP
-#line 159 "/home/21603498/Documents/Licence3/be/git/pbrt-v3/src/core/pbrtlex.ll"
+#line 159 "/home/21603498/Documents/Licence3/be/git/analyseEspaceRayons/pbrt-v3/src/core/pbrtlex.ll"
 { return SHAPE; }
 	YY_BREAK
 case 34:
 YY_RULE_SETUP
-#line 160 "/home/21603498/Documents/Licence3/be/git/pbrt-v3/src/core/pbrtlex.ll"
+#line 160 "/home/21603498/Documents/Licence3/be/git/analyseEspaceRayons/pbrt-v3/src/core/pbrtlex.ll"
 { return STARTTIME; }
 	YY_BREAK
 case 35:
 YY_RULE_SETUP
-#line 161 "/home/21603498/Documents/Licence3/be/git/pbrt-v3/src/core/pbrtlex.ll"
+#line 161 "/home/21603498/Documents/Licence3/be/git/analyseEspaceRayons/pbrt-v3/src/core/pbrtlex.ll"
 { return INTEGRATOR; }
 	YY_BREAK
 case 36:
 YY_RULE_SETUP
-#line 162 "/home/21603498/Documents/Licence3/be/git/pbrt-v3/src/core/pbrtlex.ll"
+#line 162 "/home/21603498/Documents/Licence3/be/git/analyseEspaceRayons/pbrt-v3/src/core/pbrtlex.ll"
 { return TEXTURE; }
 	YY_BREAK
 case 37:
 YY_RULE_SETUP
-#line 163 "/home/21603498/Documents/Licence3/be/git/pbrt-v3/src/core/pbrtlex.ll"
+#line 163 "/home/21603498/Documents/Licence3/be/git/analyseEspaceRayons/pbrt-v3/src/core/pbrtlex.ll"
 { return TRANSFORMBEGIN; }
 	YY_BREAK
 case 38:
 YY_RULE_SETUP
-#line 164 "/home/21603498/Documents/Licence3/be/git/pbrt-v3/src/core/pbrtlex.ll"
+#line 164 "/home/21603498/Documents/Licence3/be/git/analyseEspaceRayons/pbrt-v3/src/core/pbrtlex.ll"
 { return TRANSFORMEND; }
 	YY_BREAK
 case 39:
 YY_RULE_SETUP
-#line 165 "/home/21603498/Documents/Licence3/be/git/pbrt-v3/src/core/pbrtlex.ll"
+#line 165 "/home/21603498/Documents/Licence3/be/git/analyseEspaceRayons/pbrt-v3/src/core/pbrtlex.ll"
 { return TRANSFORMTIMES; }
 	YY_BREAK
 case 40:
 YY_RULE_SETUP
-#line 166 "/home/21603498/Documents/Licence3/be/git/pbrt-v3/src/core/pbrtlex.ll"
+#line 166 "/home/21603498/Documents/Licence3/be/git/analyseEspaceRayons/pbrt-v3/src/core/pbrtlex.ll"
 { return TRANSFORM; }
 	YY_BREAK
 case 41:
 YY_RULE_SETUP
-#line 167 "/home/21603498/Documents/Licence3/be/git/pbrt-v3/src/core/pbrtlex.ll"
+#line 167 "/home/21603498/Documents/Licence3/be/git/analyseEspaceRayons/pbrt-v3/src/core/pbrtlex.ll"
 { return TRANSLATE; }
 	YY_BREAK
 case 42:
 YY_RULE_SETUP
-#line 168 "/home/21603498/Documents/Licence3/be/git/pbrt-v3/src/core/pbrtlex.ll"
+#line 168 "/home/21603498/Documents/Licence3/be/git/analyseEspaceRayons/pbrt-v3/src/core/pbrtlex.ll"
 { return WORLDBEGIN; }
 	YY_BREAK
 case 43:
 YY_RULE_SETUP
-#line 169 "/home/21603498/Documents/Licence3/be/git/pbrt-v3/src/core/pbrtlex.ll"
+#line 169 "/home/21603498/Documents/Licence3/be/git/analyseEspaceRayons/pbrt-v3/src/core/pbrtlex.ll"
 { return WORLDEND; }
 	YY_BREAK
 case 44:
 YY_RULE_SETUP
-#line 170 "/home/21603498/Documents/Licence3/be/git/pbrt-v3/src/core/pbrtlex.ll"
+#line 170 "/home/21603498/Documents/Licence3/be/git/analyseEspaceRayons/pbrt-v3/src/core/pbrtlex.ll"
 /* do nothing */
 	YY_BREAK
 case 45:
 /* rule 45 can match eol */
 YY_RULE_SETUP
-#line 171 "/home/21603498/Documents/Licence3/be/git/pbrt-v3/src/core/pbrtlex.ll"
+#line 171 "/home/21603498/Documents/Licence3/be/git/analyseEspaceRayons/pbrt-v3/src/core/pbrtlex.ll"
 { pbrt::line_num++; }
 	YY_BREAK
 case 46:
 YY_RULE_SETUP
-#line 172 "/home/21603498/Documents/Licence3/be/git/pbrt-v3/src/core/pbrtlex.ll"
+#line 172 "/home/21603498/Documents/Licence3/be/git/analyseEspaceRayons/pbrt-v3/src/core/pbrtlex.ll"
 {
     yylval.num = atof(yytext);
     return NUM;
@@ -1299,7 +1299,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 47:
 YY_RULE_SETUP
-#line 178 "/home/21603498/Documents/Licence3/be/git/pbrt-v3/src/core/pbrtlex.ll"
+#line 178 "/home/21603498/Documents/Licence3/be/git/analyseEspaceRayons/pbrt-v3/src/core/pbrtlex.ll"
 {
     yylval.string[0] = '\0';
     strncat(yylval.string, yytext, sizeof(yylval.string) - 1);
@@ -1308,57 +1308,57 @@ YY_RULE_SETUP
 	YY_BREAK
 case 48:
 YY_RULE_SETUP
-#line 185 "/home/21603498/Documents/Licence3/be/git/pbrt-v3/src/core/pbrtlex.ll"
+#line 185 "/home/21603498/Documents/Licence3/be/git/analyseEspaceRayons/pbrt-v3/src/core/pbrtlex.ll"
 { return LBRACK; }
 	YY_BREAK
 case 49:
 YY_RULE_SETUP
-#line 186 "/home/21603498/Documents/Licence3/be/git/pbrt-v3/src/core/pbrtlex.ll"
+#line 186 "/home/21603498/Documents/Licence3/be/git/analyseEspaceRayons/pbrt-v3/src/core/pbrtlex.ll"
 { return RBRACK; }
 	YY_BREAK
 case 50:
 YY_RULE_SETUP
-#line 187 "/home/21603498/Documents/Licence3/be/git/pbrt-v3/src/core/pbrtlex.ll"
+#line 187 "/home/21603498/Documents/Licence3/be/git/analyseEspaceRayons/pbrt-v3/src/core/pbrtlex.ll"
 { BEGIN STR; pbrt::str_pos = 0; yylval.string[0] = '\0'; }
 	YY_BREAK
 case 51:
 YY_RULE_SETUP
-#line 188 "/home/21603498/Documents/Licence3/be/git/pbrt-v3/src/core/pbrtlex.ll"
+#line 188 "/home/21603498/Documents/Licence3/be/git/analyseEspaceRayons/pbrt-v3/src/core/pbrtlex.ll"
 {pbrt::add_string_char('\n');}
 	YY_BREAK
 case 52:
 YY_RULE_SETUP
-#line 189 "/home/21603498/Documents/Licence3/be/git/pbrt-v3/src/core/pbrtlex.ll"
+#line 189 "/home/21603498/Documents/Licence3/be/git/analyseEspaceRayons/pbrt-v3/src/core/pbrtlex.ll"
 {pbrt::add_string_char('\t');}
 	YY_BREAK
 case 53:
 YY_RULE_SETUP
-#line 190 "/home/21603498/Documents/Licence3/be/git/pbrt-v3/src/core/pbrtlex.ll"
+#line 190 "/home/21603498/Documents/Licence3/be/git/analyseEspaceRayons/pbrt-v3/src/core/pbrtlex.ll"
 {pbrt::add_string_char('\r');}
 	YY_BREAK
 case 54:
 YY_RULE_SETUP
-#line 191 "/home/21603498/Documents/Licence3/be/git/pbrt-v3/src/core/pbrtlex.ll"
+#line 191 "/home/21603498/Documents/Licence3/be/git/analyseEspaceRayons/pbrt-v3/src/core/pbrtlex.ll"
 {pbrt::add_string_char('\b');}
 	YY_BREAK
 case 55:
 YY_RULE_SETUP
-#line 192 "/home/21603498/Documents/Licence3/be/git/pbrt-v3/src/core/pbrtlex.ll"
+#line 192 "/home/21603498/Documents/Licence3/be/git/analyseEspaceRayons/pbrt-v3/src/core/pbrtlex.ll"
 {pbrt::add_string_char('\f');}
 	YY_BREAK
 case 56:
 YY_RULE_SETUP
-#line 193 "/home/21603498/Documents/Licence3/be/git/pbrt-v3/src/core/pbrtlex.ll"
+#line 193 "/home/21603498/Documents/Licence3/be/git/analyseEspaceRayons/pbrt-v3/src/core/pbrtlex.ll"
 {pbrt::add_string_char('\"');}
 	YY_BREAK
 case 57:
 YY_RULE_SETUP
-#line 194 "/home/21603498/Documents/Licence3/be/git/pbrt-v3/src/core/pbrtlex.ll"
+#line 194 "/home/21603498/Documents/Licence3/be/git/analyseEspaceRayons/pbrt-v3/src/core/pbrtlex.ll"
 {pbrt::add_string_char('\\');}
 	YY_BREAK
 case 58:
 YY_RULE_SETUP
-#line 195 "/home/21603498/Documents/Licence3/be/git/pbrt-v3/src/core/pbrtlex.ll"
+#line 195 "/home/21603498/Documents/Licence3/be/git/analyseEspaceRayons/pbrt-v3/src/core/pbrtlex.ll"
 {
   int val = atoi(yytext+1);
   while (val > 256)
@@ -1369,41 +1369,41 @@ YY_RULE_SETUP
 case 59:
 /* rule 59 can match eol */
 YY_RULE_SETUP
-#line 203 "/home/21603498/Documents/Licence3/be/git/pbrt-v3/src/core/pbrtlex.ll"
+#line 203 "/home/21603498/Documents/Licence3/be/git/analyseEspaceRayons/pbrt-v3/src/core/pbrtlex.ll"
 {pbrt::line_num++;}
 	YY_BREAK
 case 60:
 YY_RULE_SETUP
-#line 204 "/home/21603498/Documents/Licence3/be/git/pbrt-v3/src/core/pbrtlex.ll"
+#line 204 "/home/21603498/Documents/Licence3/be/git/analyseEspaceRayons/pbrt-v3/src/core/pbrtlex.ll"
 { pbrt::add_string_char(yytext[1]);}
 	YY_BREAK
 case 61:
 YY_RULE_SETUP
-#line 205 "/home/21603498/Documents/Licence3/be/git/pbrt-v3/src/core/pbrtlex.ll"
+#line 205 "/home/21603498/Documents/Licence3/be/git/analyseEspaceRayons/pbrt-v3/src/core/pbrtlex.ll"
 {BEGIN INITIAL; return STRING;}
 	YY_BREAK
 case 62:
 YY_RULE_SETUP
-#line 206 "/home/21603498/Documents/Licence3/be/git/pbrt-v3/src/core/pbrtlex.ll"
+#line 206 "/home/21603498/Documents/Licence3/be/git/analyseEspaceRayons/pbrt-v3/src/core/pbrtlex.ll"
 {pbrt::add_string_char(yytext[0]);}
 	YY_BREAK
 case 63:
 /* rule 63 can match eol */
 YY_RULE_SETUP
-#line 207 "/home/21603498/Documents/Licence3/be/git/pbrt-v3/src/core/pbrtlex.ll"
+#line 207 "/home/21603498/Documents/Licence3/be/git/analyseEspaceRayons/pbrt-v3/src/core/pbrtlex.ll"
 {pbrt::Error("Unterminated string!");}
 	YY_BREAK
 case 64:
 YY_RULE_SETUP
-#line 209 "/home/21603498/Documents/Licence3/be/git/pbrt-v3/src/core/pbrtlex.ll"
+#line 209 "/home/21603498/Documents/Licence3/be/git/analyseEspaceRayons/pbrt-v3/src/core/pbrtlex.ll"
 { pbrt::Error("Illegal character: %c (0x%x)", yytext[0], int(yytext[0])); }
 	YY_BREAK
 case 65:
 YY_RULE_SETUP
-#line 210 "/home/21603498/Documents/Licence3/be/git/pbrt-v3/src/core/pbrtlex.ll"
+#line 210 "/home/21603498/Documents/Licence3/be/git/analyseEspaceRayons/pbrt-v3/src/core/pbrtlex.ll"
 ECHO;
 	YY_BREAK
-#line 1407 "/home/21603498/Documents/Licence3/be/git/executable/pbrtlex.cpp"
+#line 1407 "/home/21603498/Documents/Licence3/be/git/analyseEspaceRayons/executable/pbrtlex.cpp"
 case YY_STATE_EOF(INITIAL):
 case YY_STATE_EOF(STR):
 case YY_STATE_EOF(COMMENT):
@@ -2364,7 +2364,7 @@ void yyfree (void * ptr )
 
 #define YYTABLES_NAME "yytables"
 
-#line 210 "/home/21603498/Documents/Licence3/be/git/pbrt-v3/src/core/pbrtlex.ll"
+#line 210 "/home/21603498/Documents/Licence3/be/git/analyseEspaceRayons/pbrt-v3/src/core/pbrtlex.ll"
 
 
 int yywrap() {

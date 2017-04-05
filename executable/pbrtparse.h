@@ -30,8 +30,8 @@
    This special exception was added by the Free Software Foundation in
    version 2.2 of Bison.  */
 
-#ifndef YY_HOME_21603498_DOCUMENTS_LICENCE3_BE_GIT_EXECUTABLE_PBRTPARSE_H
-# define YY_HOME_21603498_DOCUMENTS_LICENCE3_BE_GIT_EXECUTABLE_PBRTPARSE_H
+#ifndef YY_HOME_21603498_DOCUMENTS_LICENCE3_BE_GIT_ANALYSEESPACERAYONS_EXECUTABLE_PBRTPARSE_H
+# define YY_HOME_21603498_DOCUMENTS_LICENCE3_BE_GIT_ANALYSEESPACERAYONS_EXECUTABLE_PBRTPARSE_H
 /* Enabling traces.  */
 #ifndef YYDEBUG
 # define YYDEBUG 1
@@ -100,7 +100,7 @@ extern int yydebug;
 typedef union YYSTYPE
 {
 /* Line 2049 of yacc.c  */
-#line 160 "/home/21603498/Documents/Licence3/be/git/pbrt-v3/src/core/pbrtparse.y"
+#line 160 "/home/21603498/Documents/Licence3/be/git/analyseEspaceRayons/pbrt-v3/src/core/pbrtparse.y"
 
 char string[1024];
 double num;
@@ -108,7 +108,7 @@ pbrt::ParamArray *ribarray;
 
 
 /* Line 2049 of yacc.c  */
-#line 112 "/home/21603498/Documents/Licence3/be/git/executable/pbrtparse.h"
+#line 112 "/home/21603498/Documents/Licence3/be/git/analyseEspaceRayons/executable/pbrtparse.h"
 } YYSTYPE;
 # define YYSTYPE_IS_TRIVIAL 1
 # define yystype YYSTYPE /* obsolescent; will be withdrawn */
@@ -131,4 +131,4 @@ int yyparse ();
 #endif
 #endif /* ! YYPARSE_PARAM */
 
-#endif /* !YY_HOME_21603498_DOCUMENTS_LICENCE3_BE_GIT_EXECUTABLE_PBRTPARSE_H  */
+#endif /* !YY_HOME_21603498_DOCUMENTS_LICENCE3_BE_GIT_ANALYSEESPACERAYONS_EXECUTABLE_PBRTPARSE_H  */

@@ -15,7 +15,7 @@ endmacro()
 ####################################################################################
 
 include ("${CMAKE_CURRENT_LIST_DIR}/glog-targets.cmake")
-set_and_check (glog_INCLUDE_DIR "/home/21603498/Documents/Licence3/be/git/pbrt-v3/src/ext/glog/src")
+set_and_check (glog_INCLUDE_DIR "/home/21603498/Documents/Licence3/be/git/analyseEspaceRayons/pbrt-v3/src/ext/glog/src")
 
 
 

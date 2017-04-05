@@ -1,2 +1,2 @@
-/usr/bin/ar qc libHalf.a  CMakeFiles/Half.dir/half.cpp.o
-/usr/bin/ranlib libHalf.a
+/home/21603498/.linuxbrew/bin/ar qc libHalf.a  CMakeFiles/Half.dir/half.cpp.o
+/home/21603498/.linuxbrew/bin/ranlib libHalf.a

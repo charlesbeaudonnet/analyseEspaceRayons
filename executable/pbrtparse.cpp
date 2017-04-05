@@ -63,7 +63,7 @@
 
 /* Copy the first part of user declarations.  */
 /* Line 336 of yacc.c  */
-#line 33 "/home/21603498/Documents/Licence3/be/git/pbrt-v3/src/core/pbrtparse.y"
+#line 33 "/home/21603498/Documents/Licence3/be/git/analyseEspaceRayons/pbrt-v3/src/core/pbrtparse.y"
 
 #include "api.h"
 #include "pbrt.h"
@@ -191,7 +191,7 @@ static bool lookupType(const char *name, int *type, std::string &sname);
 
 
 /* Line 336 of yacc.c  */
-#line 195 "/home/21603498/Documents/Licence3/be/git/executable/pbrtparse.c"
+#line 195 "/home/21603498/Documents/Licence3/be/git/analyseEspaceRayons/executable/pbrtparse.c"
 
 # ifndef YY_NULL
 #  if defined __cplusplus && 201103L <= __cplusplus
@@ -211,8 +211,8 @@ static bool lookupType(const char *name, int *type, std::string &sname);
 
 /* In a future release of Bison, this section will be replaced
    by #include "pbrtparse.h".  */
-#ifndef YY_HOME_21603498_DOCUMENTS_LICENCE3_BE_GIT_EXECUTABLE_PBRTPARSE_H
-# define YY_HOME_21603498_DOCUMENTS_LICENCE3_BE_GIT_EXECUTABLE_PBRTPARSE_H
+#ifndef YY_HOME_21603498_DOCUMENTS_LICENCE3_BE_GIT_ANALYSEESPACERAYONS_EXECUTABLE_PBRTPARSE_H
+# define YY_HOME_21603498_DOCUMENTS_LICENCE3_BE_GIT_ANALYSEESPACERAYONS_EXECUTABLE_PBRTPARSE_H
 /* Enabling traces.  */
 #ifndef YYDEBUG
 # define YYDEBUG 1
@@ -281,7 +281,7 @@ extern int yydebug;
 typedef union YYSTYPE
 {
 /* Line 350 of yacc.c  */
-#line 160 "/home/21603498/Documents/Licence3/be/git/pbrt-v3/src/core/pbrtparse.y"
+#line 160 "/home/21603498/Documents/Licence3/be/git/analyseEspaceRayons/pbrt-v3/src/core/pbrtparse.y"
 
 char string[1024];
 double num;
@@ -289,7 +289,7 @@ pbrt::ParamArray *ribarray;
 
 
 /* Line 350 of yacc.c  */
-#line 293 "/home/21603498/Documents/Licence3/be/git/executable/pbrtparse.c"
+#line 293 "/home/21603498/Documents/Licence3/be/git/analyseEspaceRayons/executable/pbrtparse.c"
 } YYSTYPE;
 # define YYSTYPE_IS_TRIVIAL 1
 # define yystype YYSTYPE /* obsolescent; will be withdrawn */
@@ -312,12 +312,12 @@ int yyparse ();
 #endif
 #endif /* ! YYPARSE_PARAM */
 
-#endif /* !YY_HOME_21603498_DOCUMENTS_LICENCE3_BE_GIT_EXECUTABLE_PBRTPARSE_H  */
+#endif /* !YY_HOME_21603498_DOCUMENTS_LICENCE3_BE_GIT_ANALYSEESPACERAYONS_EXECUTABLE_PBRTPARSE_H  */
 
 /* Copy the second part of user declarations.  */
 
 /* Line 353 of yacc.c  */
-#line 321 "/home/21603498/Documents/Licence3/be/git/executable/pbrtparse.c"
+#line 321 "/home/21603498/Documents/Licence3/be/git/analyseEspaceRayons/executable/pbrtparse.c"
 
 #ifdef short
 # undef short
@@ -1645,14 +1645,14 @@ yyreduce:
     {
         case 2:
 /* Line 1787 of yacc.c  */
-#line 185 "/home/21603498/Documents/Licence3/be/git/pbrt-v3/src/core/pbrtparse.y"
+#line 185 "/home/21603498/Documents/Licence3/be/git/analyseEspaceRayons/pbrt-v3/src/core/pbrtparse.y"
     {
 }
     break;
 
   case 3:
 /* Line 1787 of yacc.c  */
-#line 191 "/home/21603498/Documents/Licence3/be/git/pbrt-v3/src/core/pbrtparse.y"
+#line 191 "/home/21603498/Documents/Licence3/be/git/analyseEspaceRayons/pbrt-v3/src/core/pbrtparse.y"
     {
     CHECK(pbrt::cur_array == nullptr);
     pbrt::cur_array = new pbrt::ParamArray;
@@ -1661,7 +1661,7 @@ yyreduce:
 
   case 4:
 /* Line 1787 of yacc.c  */
-#line 199 "/home/21603498/Documents/Licence3/be/git/pbrt-v3/src/core/pbrtparse.y"
+#line 199 "/home/21603498/Documents/Licence3/be/git/analyseEspaceRayons/pbrt-v3/src/core/pbrtparse.y"
     {
     pbrt::cur_array->element_size = sizeof(const char *);
     pbrt::cur_array->isString = true;
@@ -1670,7 +1670,7 @@ yyreduce:
 
   case 5:
 /* Line 1787 of yacc.c  */
-#line 207 "/home/21603498/Documents/Licence3/be/git/pbrt-v3/src/core/pbrtparse.y"
+#line 207 "/home/21603498/Documents/Licence3/be/git/analyseEspaceRayons/pbrt-v3/src/core/pbrtparse.y"
     {
     pbrt::cur_array->element_size = sizeof(double);
     pbrt::cur_array->isString = false;
@@ -1679,7 +1679,7 @@ yyreduce:
 
   case 6:
 /* Line 1787 of yacc.c  */
-#line 215 "/home/21603498/Documents/Licence3/be/git/pbrt-v3/src/core/pbrtparse.y"
+#line 215 "/home/21603498/Documents/Licence3/be/git/analyseEspaceRayons/pbrt-v3/src/core/pbrtparse.y"
     {
     (yyval.ribarray) = (yyvsp[(1) - (1)].ribarray);
 }
@@ -1687,7 +1687,7 @@ yyreduce:
 
   case 7:
 /* Line 1787 of yacc.c  */
-#line 221 "/home/21603498/Documents/Licence3/be/git/pbrt-v3/src/core/pbrtparse.y"
+#line 221 "/home/21603498/Documents/Licence3/be/git/analyseEspaceRayons/pbrt-v3/src/core/pbrtparse.y"
     {
     (yyval.ribarray) = (yyvsp[(1) - (1)].ribarray);
 }
@@ -1695,7 +1695,7 @@ yyreduce:
 
   case 8:
 /* Line 1787 of yacc.c  */
-#line 228 "/home/21603498/Documents/Licence3/be/git/pbrt-v3/src/core/pbrtparse.y"
+#line 228 "/home/21603498/Documents/Licence3/be/git/analyseEspaceRayons/pbrt-v3/src/core/pbrtparse.y"
     {
     (yyval.ribarray) = pbrt::cur_array;
     pbrt::cur_array = nullptr;
@@ -1704,7 +1704,7 @@ yyreduce:
 
   case 9:
 /* Line 1787 of yacc.c  */
-#line 235 "/home/21603498/Documents/Licence3/be/git/pbrt-v3/src/core/pbrtparse.y"
+#line 235 "/home/21603498/Documents/Licence3/be/git/analyseEspaceRayons/pbrt-v3/src/core/pbrtparse.y"
     {
     (yyval.ribarray) = pbrt::cur_array;
     pbrt::cur_array = nullptr;
@@ -1713,28 +1713,28 @@ yyreduce:
 
   case 10:
 /* Line 1787 of yacc.c  */
-#line 243 "/home/21603498/Documents/Licence3/be/git/pbrt-v3/src/core/pbrtparse.y"
+#line 243 "/home/21603498/Documents/Licence3/be/git/analyseEspaceRayons/pbrt-v3/src/core/pbrtparse.y"
     {
 }
     break;
 
   case 11:
 /* Line 1787 of yacc.c  */
-#line 249 "/home/21603498/Documents/Licence3/be/git/pbrt-v3/src/core/pbrtparse.y"
+#line 249 "/home/21603498/Documents/Licence3/be/git/analyseEspaceRayons/pbrt-v3/src/core/pbrtparse.y"
     {
 }
     break;
 
   case 12:
 /* Line 1787 of yacc.c  */
-#line 254 "/home/21603498/Documents/Licence3/be/git/pbrt-v3/src/core/pbrtparse.y"
+#line 254 "/home/21603498/Documents/Licence3/be/git/analyseEspaceRayons/pbrt-v3/src/core/pbrtparse.y"
     {
 }
     break;
 
   case 13:
 /* Line 1787 of yacc.c  */
-#line 260 "/home/21603498/Documents/Licence3/be/git/pbrt-v3/src/core/pbrtparse.y"
+#line 260 "/home/21603498/Documents/Licence3/be/git/analyseEspaceRayons/pbrt-v3/src/core/pbrtparse.y"
     {
     char *to_add = strdup((yyvsp[(2) - (2)].string));
     pbrt::AddArrayElement(&to_add);
@@ -1743,7 +1743,7 @@ yyreduce:
 
   case 14:
 /* Line 1787 of yacc.c  */
-#line 268 "/home/21603498/Documents/Licence3/be/git/pbrt-v3/src/core/pbrtparse.y"
+#line 268 "/home/21603498/Documents/Licence3/be/git/analyseEspaceRayons/pbrt-v3/src/core/pbrtparse.y"
     {
     (yyval.ribarray) = pbrt::cur_array;
     pbrt::cur_array = nullptr;
@@ -1752,7 +1752,7 @@ yyreduce:
 
   case 15:
 /* Line 1787 of yacc.c  */
-#line 275 "/home/21603498/Documents/Licence3/be/git/pbrt-v3/src/core/pbrtparse.y"
+#line 275 "/home/21603498/Documents/Licence3/be/git/analyseEspaceRayons/pbrt-v3/src/core/pbrtparse.y"
     {
     (yyval.ribarray) = pbrt::cur_array;
     pbrt::cur_array = nullptr;
@@ -1761,28 +1761,28 @@ yyreduce:
 
   case 16:
 /* Line 1787 of yacc.c  */
-#line 283 "/home/21603498/Documents/Licence3/be/git/pbrt-v3/src/core/pbrtparse.y"
+#line 283 "/home/21603498/Documents/Licence3/be/git/analyseEspaceRayons/pbrt-v3/src/core/pbrtparse.y"
     {
 }
     break;
 
   case 17:
 /* Line 1787 of yacc.c  */
-#line 289 "/home/21603498/Documents/Licence3/be/git/pbrt-v3/src/core/pbrtparse.y"
+#line 289 "/home/21603498/Documents/Licence3/be/git/analyseEspaceRayons/pbrt-v3/src/core/pbrtparse.y"
     {
 }
     break;
 
   case 18:
 /* Line 1787 of yacc.c  */
-#line 294 "/home/21603498/Documents/Licence3/be/git/pbrt-v3/src/core/pbrtparse.y"
+#line 294 "/home/21603498/Documents/Licence3/be/git/analyseEspaceRayons/pbrt-v3/src/core/pbrtparse.y"
     {
 }
     break;
 
   case 19:
 /* Line 1787 of yacc.c  */
-#line 300 "/home/21603498/Documents/Licence3/be/git/pbrt-v3/src/core/pbrtparse.y"
+#line 300 "/home/21603498/Documents/Licence3/be/git/analyseEspaceRayons/pbrt-v3/src/core/pbrtparse.y"
     {
     double to_add = (yyvsp[(2) - (2)].num);
     pbrt::AddArrayElement(&to_add);
@@ -1791,14 +1791,14 @@ yyreduce:
 
   case 20:
 /* Line 1787 of yacc.c  */
-#line 308 "/home/21603498/Documents/Licence3/be/git/pbrt-v3/src/core/pbrtparse.y"
+#line 308 "/home/21603498/Documents/Licence3/be/git/analyseEspaceRayons/pbrt-v3/src/core/pbrtparse.y"
     {
 }
     break;
 
   case 21:
 /* Line 1787 of yacc.c  */
-#line 314 "/home/21603498/Documents/Licence3/be/git/pbrt-v3/src/core/pbrtparse.y"
+#line 314 "/home/21603498/Documents/Licence3/be/git/analyseEspaceRayons/pbrt-v3/src/core/pbrtparse.y"
     {
     for (size_t i = 0; i < pbrt::cur_paramlist.size(); ++i) {
         if (pbrt::cur_paramlist[i].isString) {
@@ -1812,21 +1812,21 @@ yyreduce:
 
   case 22:
 /* Line 1787 of yacc.c  */
-#line 327 "/home/21603498/Documents/Licence3/be/git/pbrt-v3/src/core/pbrtparse.y"
+#line 327 "/home/21603498/Documents/Licence3/be/git/analyseEspaceRayons/pbrt-v3/src/core/pbrtparse.y"
     {
 }
     break;
 
   case 23:
 /* Line 1787 of yacc.c  */
-#line 332 "/home/21603498/Documents/Licence3/be/git/pbrt-v3/src/core/pbrtparse.y"
+#line 332 "/home/21603498/Documents/Licence3/be/git/analyseEspaceRayons/pbrt-v3/src/core/pbrtparse.y"
     {
 }
     break;
 
   case 24:
 /* Line 1787 of yacc.c  */
-#line 338 "/home/21603498/Documents/Licence3/be/git/pbrt-v3/src/core/pbrtparse.y"
+#line 338 "/home/21603498/Documents/Licence3/be/git/analyseEspaceRayons/pbrt-v3/src/core/pbrtparse.y"
     {
     pbrt::cur_paramlist.push_back(pbrt::ParamListItem((yyvsp[(1) - (2)].string), (yyvsp[(2) - (2)].ribarray)));
     pbrt::ArrayFree((yyvsp[(2) - (2)].ribarray));
@@ -1835,21 +1835,21 @@ yyreduce:
 
   case 25:
 /* Line 1787 of yacc.c  */
-#line 346 "/home/21603498/Documents/Licence3/be/git/pbrt-v3/src/core/pbrtparse.y"
+#line 346 "/home/21603498/Documents/Licence3/be/git/analyseEspaceRayons/pbrt-v3/src/core/pbrtparse.y"
     {
 }
     break;
 
   case 26:
 /* Line 1787 of yacc.c  */
-#line 351 "/home/21603498/Documents/Licence3/be/git/pbrt-v3/src/core/pbrtparse.y"
+#line 351 "/home/21603498/Documents/Licence3/be/git/analyseEspaceRayons/pbrt-v3/src/core/pbrtparse.y"
     {
 }
     break;
 
   case 27:
 /* Line 1787 of yacc.c  */
-#line 357 "/home/21603498/Documents/Licence3/be/git/pbrt-v3/src/core/pbrtparse.y"
+#line 357 "/home/21603498/Documents/Licence3/be/git/analyseEspaceRayons/pbrt-v3/src/core/pbrtparse.y"
     {
     pbrt::ParamSet params;
     pbrt::InitParamSet(params, pbrt::SpectrumType::Reflectance);
@@ -1860,7 +1860,7 @@ yyreduce:
 
   case 28:
 /* Line 1787 of yacc.c  */
-#line 366 "/home/21603498/Documents/Licence3/be/git/pbrt-v3/src/core/pbrtparse.y"
+#line 366 "/home/21603498/Documents/Licence3/be/git/analyseEspaceRayons/pbrt-v3/src/core/pbrtparse.y"
     {
     pbrt::pbrtActiveTransformAll();
 }
@@ -1868,7 +1868,7 @@ yyreduce:
 
   case 29:
 /* Line 1787 of yacc.c  */
-#line 372 "/home/21603498/Documents/Licence3/be/git/pbrt-v3/src/core/pbrtparse.y"
+#line 372 "/home/21603498/Documents/Licence3/be/git/analyseEspaceRayons/pbrt-v3/src/core/pbrtparse.y"
     {
     pbrt::pbrtActiveTransformEndTime();
 }
@@ -1876,7 +1876,7 @@ yyreduce:
 
   case 30:
 /* Line 1787 of yacc.c  */
-#line 378 "/home/21603498/Documents/Licence3/be/git/pbrt-v3/src/core/pbrtparse.y"
+#line 378 "/home/21603498/Documents/Licence3/be/git/analyseEspaceRayons/pbrt-v3/src/core/pbrtparse.y"
     {
     pbrt::pbrtActiveTransformStartTime();
 }
@@ -1884,7 +1884,7 @@ yyreduce:
 
   case 31:
 /* Line 1787 of yacc.c  */
-#line 384 "/home/21603498/Documents/Licence3/be/git/pbrt-v3/src/core/pbrtparse.y"
+#line 384 "/home/21603498/Documents/Licence3/be/git/analyseEspaceRayons/pbrt-v3/src/core/pbrtparse.y"
     {
     pbrt::ParamSet params;
     pbrt::InitParamSet(params, pbrt::SpectrumType::Illuminant);
@@ -1895,7 +1895,7 @@ yyreduce:
 
   case 32:
 /* Line 1787 of yacc.c  */
-#line 393 "/home/21603498/Documents/Licence3/be/git/pbrt-v3/src/core/pbrtparse.y"
+#line 393 "/home/21603498/Documents/Licence3/be/git/analyseEspaceRayons/pbrt-v3/src/core/pbrtparse.y"
     {
     pbrt::pbrtAttributeBegin();
 }
@@ -1903,7 +1903,7 @@ yyreduce:
 
   case 33:
 /* Line 1787 of yacc.c  */
-#line 399 "/home/21603498/Documents/Licence3/be/git/pbrt-v3/src/core/pbrtparse.y"
+#line 399 "/home/21603498/Documents/Licence3/be/git/analyseEspaceRayons/pbrt-v3/src/core/pbrtparse.y"
     {
     pbrt::pbrtAttributeEnd();
 }
@@ -1911,7 +1911,7 @@ yyreduce:
 
   case 34:
 /* Line 1787 of yacc.c  */
-#line 405 "/home/21603498/Documents/Licence3/be/git/pbrt-v3/src/core/pbrtparse.y"
+#line 405 "/home/21603498/Documents/Licence3/be/git/analyseEspaceRayons/pbrt-v3/src/core/pbrtparse.y"
     {
     pbrt::ParamSet params;
     pbrt::InitParamSet(params, pbrt::SpectrumType::Reflectance);
@@ -1922,7 +1922,7 @@ yyreduce:
 
   case 35:
 /* Line 1787 of yacc.c  */
-#line 414 "/home/21603498/Documents/Licence3/be/git/pbrt-v3/src/core/pbrtparse.y"
+#line 414 "/home/21603498/Documents/Licence3/be/git/analyseEspaceRayons/pbrt-v3/src/core/pbrtparse.y"
     {
     if (pbrt::VerifyArrayLength((yyvsp[(2) - (2)].ribarray), 16, "ConcatTransform")) {
         pbrt::Float m[16];
@@ -1936,7 +1936,7 @@ yyreduce:
 
   case 36:
 /* Line 1787 of yacc.c  */
-#line 426 "/home/21603498/Documents/Licence3/be/git/pbrt-v3/src/core/pbrtparse.y"
+#line 426 "/home/21603498/Documents/Licence3/be/git/analyseEspaceRayons/pbrt-v3/src/core/pbrtparse.y"
     {
     pbrt::pbrtCoordinateSystem((yyvsp[(2) - (2)].string));
 }
@@ -1944,7 +1944,7 @@ yyreduce:
 
   case 37:
 /* Line 1787 of yacc.c  */
-#line 432 "/home/21603498/Documents/Licence3/be/git/pbrt-v3/src/core/pbrtparse.y"
+#line 432 "/home/21603498/Documents/Licence3/be/git/analyseEspaceRayons/pbrt-v3/src/core/pbrtparse.y"
     {
     pbrt::pbrtCoordSysTransform((yyvsp[(2) - (2)].string));
 }
@@ -1952,7 +1952,7 @@ yyreduce:
 
   case 38:
 /* Line 1787 of yacc.c  */
-#line 438 "/home/21603498/Documents/Licence3/be/git/pbrt-v3/src/core/pbrtparse.y"
+#line 438 "/home/21603498/Documents/Licence3/be/git/analyseEspaceRayons/pbrt-v3/src/core/pbrtparse.y"
     {
     pbrt::ParamSet params;
     pbrt::InitParamSet(params, pbrt::SpectrumType::Reflectance);
@@ -1963,7 +1963,7 @@ yyreduce:
 
   case 39:
 /* Line 1787 of yacc.c  */
-#line 447 "/home/21603498/Documents/Licence3/be/git/pbrt-v3/src/core/pbrtparse.y"
+#line 447 "/home/21603498/Documents/Licence3/be/git/analyseEspaceRayons/pbrt-v3/src/core/pbrtparse.y"
     {
     pbrt::pbrtIdentity();
 }
@@ -1971,7 +1971,7 @@ yyreduce:
 
   case 40:
 /* Line 1787 of yacc.c  */
-#line 453 "/home/21603498/Documents/Licence3/be/git/pbrt-v3/src/core/pbrtparse.y"
+#line 453 "/home/21603498/Documents/Licence3/be/git/analyseEspaceRayons/pbrt-v3/src/core/pbrtparse.y"
     {
     pbrt::include_push((yyvsp[(2) - (2)].string));
 }
@@ -1979,7 +1979,7 @@ yyreduce:
 
   case 41:
 /* Line 1787 of yacc.c  */
-#line 459 "/home/21603498/Documents/Licence3/be/git/pbrt-v3/src/core/pbrtparse.y"
+#line 459 "/home/21603498/Documents/Licence3/be/git/analyseEspaceRayons/pbrt-v3/src/core/pbrtparse.y"
     {
     pbrt::ParamSet params;
     pbrt::InitParamSet(params, pbrt::SpectrumType::Illuminant);
@@ -1990,7 +1990,7 @@ yyreduce:
 
   case 42:
 /* Line 1787 of yacc.c  */
-#line 468 "/home/21603498/Documents/Licence3/be/git/pbrt-v3/src/core/pbrtparse.y"
+#line 468 "/home/21603498/Documents/Licence3/be/git/analyseEspaceRayons/pbrt-v3/src/core/pbrtparse.y"
     {
     pbrt::pbrtLookAt((yyvsp[(2) - (10)].num), (yyvsp[(3) - (10)].num), (yyvsp[(4) - (10)].num), (yyvsp[(5) - (10)].num), (yyvsp[(6) - (10)].num), (yyvsp[(7) - (10)].num), (yyvsp[(8) - (10)].num), (yyvsp[(9) - (10)].num), (yyvsp[(10) - (10)].num));
 }
@@ -1998,7 +1998,7 @@ yyreduce:
 
   case 43:
 /* Line 1787 of yacc.c  */
-#line 474 "/home/21603498/Documents/Licence3/be/git/pbrt-v3/src/core/pbrtparse.y"
+#line 474 "/home/21603498/Documents/Licence3/be/git/analyseEspaceRayons/pbrt-v3/src/core/pbrtparse.y"
     {
     pbrt::ParamSet params;
     pbrt::InitParamSet(params, pbrt::SpectrumType::Reflectance);
@@ -2009,7 +2009,7 @@ yyreduce:
 
   case 44:
 /* Line 1787 of yacc.c  */
-#line 483 "/home/21603498/Documents/Licence3/be/git/pbrt-v3/src/core/pbrtparse.y"
+#line 483 "/home/21603498/Documents/Licence3/be/git/analyseEspaceRayons/pbrt-v3/src/core/pbrtparse.y"
     {
     pbrt::ParamSet params;
     pbrt::InitParamSet(params, pbrt::SpectrumType::Reflectance);
@@ -2020,7 +2020,7 @@ yyreduce:
 
   case 45:
 /* Line 1787 of yacc.c  */
-#line 492 "/home/21603498/Documents/Licence3/be/git/pbrt-v3/src/core/pbrtparse.y"
+#line 492 "/home/21603498/Documents/Licence3/be/git/analyseEspaceRayons/pbrt-v3/src/core/pbrtparse.y"
     {
     pbrt::ParamSet params;
     pbrt::InitParamSet(params, pbrt::SpectrumType::Reflectance);
@@ -2031,7 +2031,7 @@ yyreduce:
 
   case 46:
 /* Line 1787 of yacc.c  */
-#line 501 "/home/21603498/Documents/Licence3/be/git/pbrt-v3/src/core/pbrtparse.y"
+#line 501 "/home/21603498/Documents/Licence3/be/git/analyseEspaceRayons/pbrt-v3/src/core/pbrtparse.y"
     {
     pbrt::pbrtMediumInterface((yyvsp[(2) - (2)].string), (yyvsp[(2) - (2)].string));
 }
@@ -2039,7 +2039,7 @@ yyreduce:
 
   case 47:
 /* Line 1787 of yacc.c  */
-#line 507 "/home/21603498/Documents/Licence3/be/git/pbrt-v3/src/core/pbrtparse.y"
+#line 507 "/home/21603498/Documents/Licence3/be/git/analyseEspaceRayons/pbrt-v3/src/core/pbrtparse.y"
     {
     pbrt::pbrtMediumInterface((yyvsp[(2) - (3)].string), (yyvsp[(3) - (3)].string));
 }
@@ -2047,7 +2047,7 @@ yyreduce:
 
   case 48:
 /* Line 1787 of yacc.c  */
-#line 513 "/home/21603498/Documents/Licence3/be/git/pbrt-v3/src/core/pbrtparse.y"
+#line 513 "/home/21603498/Documents/Licence3/be/git/analyseEspaceRayons/pbrt-v3/src/core/pbrtparse.y"
     {
     pbrt::pbrtNamedMaterial((yyvsp[(2) - (2)].string));
 }
@@ -2055,7 +2055,7 @@ yyreduce:
 
   case 49:
 /* Line 1787 of yacc.c  */
-#line 519 "/home/21603498/Documents/Licence3/be/git/pbrt-v3/src/core/pbrtparse.y"
+#line 519 "/home/21603498/Documents/Licence3/be/git/analyseEspaceRayons/pbrt-v3/src/core/pbrtparse.y"
     {
     pbrt::pbrtObjectBegin((yyvsp[(2) - (2)].string));
 }
@@ -2063,7 +2063,7 @@ yyreduce:
 
   case 50:
 /* Line 1787 of yacc.c  */
-#line 525 "/home/21603498/Documents/Licence3/be/git/pbrt-v3/src/core/pbrtparse.y"
+#line 525 "/home/21603498/Documents/Licence3/be/git/analyseEspaceRayons/pbrt-v3/src/core/pbrtparse.y"
     {
     pbrt::pbrtObjectEnd();
 }
@@ -2071,7 +2071,7 @@ yyreduce:
 
   case 51:
 /* Line 1787 of yacc.c  */
-#line 531 "/home/21603498/Documents/Licence3/be/git/pbrt-v3/src/core/pbrtparse.y"
+#line 531 "/home/21603498/Documents/Licence3/be/git/analyseEspaceRayons/pbrt-v3/src/core/pbrtparse.y"
     {
     pbrt::pbrtObjectInstance((yyvsp[(2) - (2)].string));
 }
@@ -2079,7 +2079,7 @@ yyreduce:
 
   case 52:
 /* Line 1787 of yacc.c  */
-#line 537 "/home/21603498/Documents/Licence3/be/git/pbrt-v3/src/core/pbrtparse.y"
+#line 537 "/home/21603498/Documents/Licence3/be/git/analyseEspaceRayons/pbrt-v3/src/core/pbrtparse.y"
     {
     pbrt::ParamSet params;
     pbrt::InitParamSet(params, pbrt::SpectrumType::Reflectance);
@@ -2090,7 +2090,7 @@ yyreduce:
 
   case 53:
 /* Line 1787 of yacc.c  */
-#line 546 "/home/21603498/Documents/Licence3/be/git/pbrt-v3/src/core/pbrtparse.y"
+#line 546 "/home/21603498/Documents/Licence3/be/git/analyseEspaceRayons/pbrt-v3/src/core/pbrtparse.y"
     {
     pbrt::pbrtReverseOrientation();
 }
@@ -2098,7 +2098,7 @@ yyreduce:
 
   case 54:
 /* Line 1787 of yacc.c  */
-#line 552 "/home/21603498/Documents/Licence3/be/git/pbrt-v3/src/core/pbrtparse.y"
+#line 552 "/home/21603498/Documents/Licence3/be/git/analyseEspaceRayons/pbrt-v3/src/core/pbrtparse.y"
     {
     pbrt::pbrtRotate((yyvsp[(2) - (5)].num), (yyvsp[(3) - (5)].num), (yyvsp[(4) - (5)].num), (yyvsp[(5) - (5)].num));
 }
@@ -2106,7 +2106,7 @@ yyreduce:
 
   case 55:
 /* Line 1787 of yacc.c  */
-#line 558 "/home/21603498/Documents/Licence3/be/git/pbrt-v3/src/core/pbrtparse.y"
+#line 558 "/home/21603498/Documents/Licence3/be/git/analyseEspaceRayons/pbrt-v3/src/core/pbrtparse.y"
     {
     pbrt::ParamSet params;
     pbrt::InitParamSet(params, pbrt::SpectrumType::Reflectance);
@@ -2117,7 +2117,7 @@ yyreduce:
 
   case 56:
 /* Line 1787 of yacc.c  */
-#line 567 "/home/21603498/Documents/Licence3/be/git/pbrt-v3/src/core/pbrtparse.y"
+#line 567 "/home/21603498/Documents/Licence3/be/git/analyseEspaceRayons/pbrt-v3/src/core/pbrtparse.y"
     {
     pbrt::pbrtScale((yyvsp[(2) - (4)].num), (yyvsp[(3) - (4)].num), (yyvsp[(4) - (4)].num));
 }
@@ -2125,7 +2125,7 @@ yyreduce:
 
   case 57:
 /* Line 1787 of yacc.c  */
-#line 573 "/home/21603498/Documents/Licence3/be/git/pbrt-v3/src/core/pbrtparse.y"
+#line 573 "/home/21603498/Documents/Licence3/be/git/analyseEspaceRayons/pbrt-v3/src/core/pbrtparse.y"
     {
     pbrt::ParamSet params;
     pbrt::InitParamSet(params, pbrt::SpectrumType::Reflectance);
@@ -2136,7 +2136,7 @@ yyreduce:
 
   case 58:
 /* Line 1787 of yacc.c  */
-#line 582 "/home/21603498/Documents/Licence3/be/git/pbrt-v3/src/core/pbrtparse.y"
+#line 582 "/home/21603498/Documents/Licence3/be/git/analyseEspaceRayons/pbrt-v3/src/core/pbrtparse.y"
     {
     pbrt::ParamSet params;
     pbrt::InitParamSet(params, pbrt::SpectrumType::Reflectance);
@@ -2147,7 +2147,7 @@ yyreduce:
 
   case 59:
 /* Line 1787 of yacc.c  */
-#line 591 "/home/21603498/Documents/Licence3/be/git/pbrt-v3/src/core/pbrtparse.y"
+#line 591 "/home/21603498/Documents/Licence3/be/git/analyseEspaceRayons/pbrt-v3/src/core/pbrtparse.y"
     {
     pbrt::ParamSet params;
     pbrt::InitParamSet(params, pbrt::SpectrumType::Reflectance);
@@ -2158,7 +2158,7 @@ yyreduce:
 
   case 60:
 /* Line 1787 of yacc.c  */
-#line 600 "/home/21603498/Documents/Licence3/be/git/pbrt-v3/src/core/pbrtparse.y"
+#line 600 "/home/21603498/Documents/Licence3/be/git/analyseEspaceRayons/pbrt-v3/src/core/pbrtparse.y"
     {
     pbrt::pbrtTransformBegin();
 }
@@ -2166,7 +2166,7 @@ yyreduce:
 
   case 61:
 /* Line 1787 of yacc.c  */
-#line 606 "/home/21603498/Documents/Licence3/be/git/pbrt-v3/src/core/pbrtparse.y"
+#line 606 "/home/21603498/Documents/Licence3/be/git/analyseEspaceRayons/pbrt-v3/src/core/pbrtparse.y"
     {
     pbrt::pbrtTransformEnd();
 }
@@ -2174,7 +2174,7 @@ yyreduce:
 
   case 62:
 /* Line 1787 of yacc.c  */
-#line 612 "/home/21603498/Documents/Licence3/be/git/pbrt-v3/src/core/pbrtparse.y"
+#line 612 "/home/21603498/Documents/Licence3/be/git/analyseEspaceRayons/pbrt-v3/src/core/pbrtparse.y"
     {
     pbrt::pbrtTransformTimes((yyvsp[(2) - (3)].num), (yyvsp[(3) - (3)].num));
 }
@@ -2182,7 +2182,7 @@ yyreduce:
 
   case 63:
 /* Line 1787 of yacc.c  */
-#line 618 "/home/21603498/Documents/Licence3/be/git/pbrt-v3/src/core/pbrtparse.y"
+#line 618 "/home/21603498/Documents/Licence3/be/git/analyseEspaceRayons/pbrt-v3/src/core/pbrtparse.y"
     {
     if (pbrt::VerifyArrayLength((yyvsp[(2) - (2)].ribarray), 16, "Transform")) {
         pbrt::Float m[16];
@@ -2196,7 +2196,7 @@ yyreduce:
 
   case 64:
 /* Line 1787 of yacc.c  */
-#line 630 "/home/21603498/Documents/Licence3/be/git/pbrt-v3/src/core/pbrtparse.y"
+#line 630 "/home/21603498/Documents/Licence3/be/git/analyseEspaceRayons/pbrt-v3/src/core/pbrtparse.y"
     {
     pbrt::pbrtTranslate((yyvsp[(2) - (4)].num), (yyvsp[(3) - (4)].num), (yyvsp[(4) - (4)].num));
 }
@@ -2204,7 +2204,7 @@ yyreduce:
 
   case 65:
 /* Line 1787 of yacc.c  */
-#line 636 "/home/21603498/Documents/Licence3/be/git/pbrt-v3/src/core/pbrtparse.y"
+#line 636 "/home/21603498/Documents/Licence3/be/git/analyseEspaceRayons/pbrt-v3/src/core/pbrtparse.y"
     {
     pbrt::pbrtWorldBegin();
 }
@@ -2212,7 +2212,7 @@ yyreduce:
 
   case 66:
 /* Line 1787 of yacc.c  */
-#line 642 "/home/21603498/Documents/Licence3/be/git/pbrt-v3/src/core/pbrtparse.y"
+#line 642 "/home/21603498/Documents/Licence3/be/git/analyseEspaceRayons/pbrt-v3/src/core/pbrtparse.y"
     {
     pbrt::pbrtWorldEnd();
 }
@@ -2220,7 +2220,7 @@ yyreduce:
 
 
 /* Line 1787 of yacc.c  */
-#line 2224 "/home/21603498/Documents/Licence3/be/git/executable/pbrtparse.c"
+#line 2224 "/home/21603498/Documents/Licence3/be/git/analyseEspaceRayons/executable/pbrtparse.c"
       default: break;
     }
   /* User semantic actions sometimes alter yychar, and that requires
@@ -2450,7 +2450,7 @@ yyreturn:
 
 
 /* Line 2048 of yacc.c  */
-#line 647 "/home/21603498/Documents/Licence3/be/git/pbrt-v3/src/core/pbrtparse.y"
+#line 647 "/home/21603498/Documents/Licence3/be/git/analyseEspaceRayons/pbrt-v3/src/core/pbrtparse.y"
 
 
 namespace pbrt {

@@ -6,19 +6,19 @@
 
 #IncludeRegexTransform: 
 
-/home/21603498/Documents/Licence3/be/git/pbrt-v3/src/ext/openexr/IlmBase/Half/half.h
+/home/21603498/Documents/Licence3/be/git/analyseEspaceRayons/pbrt-v3/src/ext/openexr/IlmBase/Half/half.h
 halfExport.h
-/home/21603498/Documents/Licence3/be/git/pbrt-v3/src/ext/openexr/IlmBase/Half/halfExport.h
+/home/21603498/Documents/Licence3/be/git/analyseEspaceRayons/pbrt-v3/src/ext/openexr/IlmBase/Half/halfExport.h
 iostream
 -
 
-/home/21603498/Documents/Licence3/be/git/pbrt-v3/src/ext/openexr/IlmBase/Half/halfExport.h
+/home/21603498/Documents/Licence3/be/git/analyseEspaceRayons/pbrt-v3/src/ext/openexr/IlmBase/Half/halfExport.h
 
-/home/21603498/Documents/Licence3/be/git/pbrt-v3/src/ext/openexr/IlmBase/Iex/IexBaseExc.h
+/home/21603498/Documents/Licence3/be/git/analyseEspaceRayons/pbrt-v3/src/ext/openexr/IlmBase/Iex/IexBaseExc.h
 IexNamespace.h
-/home/21603498/Documents/Licence3/be/git/pbrt-v3/src/ext/openexr/IlmBase/Iex/IexNamespace.h
+/home/21603498/Documents/Licence3/be/git/analyseEspaceRayons/pbrt-v3/src/ext/openexr/IlmBase/Iex/IexNamespace.h
 IexExport.h
-/home/21603498/Documents/Licence3/be/git/pbrt-v3/src/ext/openexr/IlmBase/Iex/IexExport.h
+/home/21603498/Documents/Licence3/be/git/analyseEspaceRayons/pbrt-v3/src/ext/openexr/IlmBase/Iex/IexExport.h
 string
 -
 exception
@@ -26,23 +26,23 @@ exception
 sstream
 -
 
-/home/21603498/Documents/Licence3/be/git/pbrt-v3/src/ext/openexr/IlmBase/Iex/IexExport.h
+/home/21603498/Documents/Licence3/be/git/analyseEspaceRayons/pbrt-v3/src/ext/openexr/IlmBase/Iex/IexExport.h
 
-/home/21603498/Documents/Licence3/be/git/pbrt-v3/src/ext/openexr/IlmBase/Iex/IexMathExc.h
+/home/21603498/Documents/Licence3/be/git/analyseEspaceRayons/pbrt-v3/src/ext/openexr/IlmBase/Iex/IexMathExc.h
 IexBaseExc.h
-/home/21603498/Documents/Licence3/be/git/pbrt-v3/src/ext/openexr/IlmBase/Iex/IexBaseExc.h
+/home/21603498/Documents/Licence3/be/git/analyseEspaceRayons/pbrt-v3/src/ext/openexr/IlmBase/Iex/IexBaseExc.h
 
-/home/21603498/Documents/Licence3/be/git/pbrt-v3/src/ext/openexr/IlmBase/Iex/IexNamespace.h
+/home/21603498/Documents/Licence3/be/git/analyseEspaceRayons/pbrt-v3/src/ext/openexr/IlmBase/Iex/IexNamespace.h
 IlmBaseConfig.h
-/home/21603498/Documents/Licence3/be/git/pbrt-v3/src/ext/openexr/IlmBase/Iex/IlmBaseConfig.h
+/home/21603498/Documents/Licence3/be/git/analyseEspaceRayons/pbrt-v3/src/ext/openexr/IlmBase/Iex/IlmBaseConfig.h
 
-/home/21603498/Documents/Licence3/be/git/pbrt-v3/src/ext/openexr/IlmBase/IlmThread/IlmThread.h
+/home/21603498/Documents/Licence3/be/git/analyseEspaceRayons/pbrt-v3/src/ext/openexr/IlmBase/IlmThread/IlmThread.h
 IlmBaseConfig.h
-/home/21603498/Documents/Licence3/be/git/pbrt-v3/src/ext/openexr/IlmBase/IlmThread/IlmBaseConfig.h
+/home/21603498/Documents/Licence3/be/git/analyseEspaceRayons/pbrt-v3/src/ext/openexr/IlmBase/IlmThread/IlmBaseConfig.h
 IlmThreadExport.h
-/home/21603498/Documents/Licence3/be/git/pbrt-v3/src/ext/openexr/IlmBase/IlmThread/IlmThreadExport.h
+/home/21603498/Documents/Licence3/be/git/analyseEspaceRayons/pbrt-v3/src/ext/openexr/IlmBase/IlmThread/IlmThreadExport.h
 IlmThreadNamespace.h
-/home/21603498/Documents/Licence3/be/git/pbrt-v3/src/ext/openexr/IlmBase/IlmThread/IlmThreadNamespace.h
+/home/21603498/Documents/Licence3/be/git/analyseEspaceRayons/pbrt-v3/src/ext/openexr/IlmBase/IlmThread/IlmThreadNamespace.h
 windows.h
 -
 process.h
@@ -50,19 +50,19 @@ process.h
 pthread.h
 -
 
-/home/21603498/Documents/Licence3/be/git/pbrt-v3/src/ext/openexr/IlmBase/IlmThread/IlmThreadExport.h
+/home/21603498/Documents/Licence3/be/git/analyseEspaceRayons/pbrt-v3/src/ext/openexr/IlmBase/IlmThread/IlmThreadExport.h
 
-/home/21603498/Documents/Licence3/be/git/pbrt-v3/src/ext/openexr/IlmBase/IlmThread/IlmThreadNamespace.h
+/home/21603498/Documents/Licence3/be/git/analyseEspaceRayons/pbrt-v3/src/ext/openexr/IlmBase/IlmThread/IlmThreadNamespace.h
 IlmBaseConfig.h
-/home/21603498/Documents/Licence3/be/git/pbrt-v3/src/ext/openexr/IlmBase/IlmThread/IlmBaseConfig.h
+/home/21603498/Documents/Licence3/be/git/analyseEspaceRayons/pbrt-v3/src/ext/openexr/IlmBase/IlmThread/IlmBaseConfig.h
 
-/home/21603498/Documents/Licence3/be/git/pbrt-v3/src/ext/openexr/IlmBase/IlmThread/IlmThreadSemaphore.h
+/home/21603498/Documents/Licence3/be/git/analyseEspaceRayons/pbrt-v3/src/ext/openexr/IlmBase/IlmThread/IlmThreadSemaphore.h
 IlmBaseConfig.h
-/home/21603498/Documents/Licence3/be/git/pbrt-v3/src/ext/openexr/IlmBase/IlmThread/IlmBaseConfig.h
+/home/21603498/Documents/Licence3/be/git/analyseEspaceRayons/pbrt-v3/src/ext/openexr/IlmBase/IlmThread/IlmBaseConfig.h
 IlmThreadExport.h
-/home/21603498/Documents/Licence3/be/git/pbrt-v3/src/ext/openexr/IlmBase/IlmThread/IlmThreadExport.h
+/home/21603498/Documents/Licence3/be/git/analyseEspaceRayons/pbrt-v3/src/ext/openexr/IlmBase/IlmThread/IlmThreadExport.h
 IlmThreadNamespace.h
-/home/21603498/Documents/Licence3/be/git/pbrt-v3/src/ext/openexr/IlmBase/IlmThread/IlmThreadNamespace.h
+/home/21603498/Documents/Licence3/be/git/analyseEspaceRayons/pbrt-v3/src/ext/openexr/IlmBase/IlmThread/IlmThreadNamespace.h
 windows.h
 -
 pthread.h
@@ -70,51 +70,51 @@ pthread.h
 semaphore.h
 -
 
-/home/21603498/Documents/Licence3/be/git/pbrt-v3/src/ext/openexr/IlmBase/Imath/ImathInt64.h
+/home/21603498/Documents/Licence3/be/git/analyseEspaceRayons/pbrt-v3/src/ext/openexr/IlmBase/Imath/ImathInt64.h
 ImathNamespace.h
-/home/21603498/Documents/Licence3/be/git/pbrt-v3/src/ext/openexr/IlmBase/Imath/ImathNamespace.h
+/home/21603498/Documents/Licence3/be/git/analyseEspaceRayons/pbrt-v3/src/ext/openexr/IlmBase/Imath/ImathNamespace.h
 limits.h
 -
 
-/home/21603498/Documents/Licence3/be/git/pbrt-v3/src/ext/openexr/IlmBase/Imath/ImathNamespace.h
+/home/21603498/Documents/Licence3/be/git/analyseEspaceRayons/pbrt-v3/src/ext/openexr/IlmBase/Imath/ImathNamespace.h
 IlmBaseConfig.h
-/home/21603498/Documents/Licence3/be/git/pbrt-v3/src/ext/openexr/IlmBase/Imath/IlmBaseConfig.h
+/home/21603498/Documents/Licence3/be/git/analyseEspaceRayons/pbrt-v3/src/ext/openexr/IlmBase/Imath/IlmBaseConfig.h
 
-/home/21603498/Documents/Licence3/be/git/pbrt-v3/src/ext/openexr/OpenEXR/IlmImf/ImfExport.h
+/home/21603498/Documents/Licence3/be/git/analyseEspaceRayons/pbrt-v3/src/ext/openexr/OpenEXR/IlmImf/ImfExport.h
 
-/home/21603498/Documents/Licence3/be/git/pbrt-v3/src/ext/openexr/OpenEXR/IlmImf/ImfIO.h
+/home/21603498/Documents/Licence3/be/git/analyseEspaceRayons/pbrt-v3/src/ext/openexr/OpenEXR/IlmImf/ImfIO.h
 ImfInt64.h
-/home/21603498/Documents/Licence3/be/git/pbrt-v3/src/ext/openexr/OpenEXR/IlmImf/ImfInt64.h
+/home/21603498/Documents/Licence3/be/git/analyseEspaceRayons/pbrt-v3/src/ext/openexr/OpenEXR/IlmImf/ImfInt64.h
 ImfNamespace.h
-/home/21603498/Documents/Licence3/be/git/pbrt-v3/src/ext/openexr/OpenEXR/IlmImf/ImfNamespace.h
+/home/21603498/Documents/Licence3/be/git/analyseEspaceRayons/pbrt-v3/src/ext/openexr/OpenEXR/IlmImf/ImfNamespace.h
 ImfExport.h
-/home/21603498/Documents/Licence3/be/git/pbrt-v3/src/ext/openexr/OpenEXR/IlmImf/ImfExport.h
+/home/21603498/Documents/Licence3/be/git/analyseEspaceRayons/pbrt-v3/src/ext/openexr/OpenEXR/IlmImf/ImfExport.h
 string
 -
 
-/home/21603498/Documents/Licence3/be/git/pbrt-v3/src/ext/openexr/OpenEXR/IlmImf/ImfInt64.h
+/home/21603498/Documents/Licence3/be/git/analyseEspaceRayons/pbrt-v3/src/ext/openexr/OpenEXR/IlmImf/ImfInt64.h
 ImathInt64.h
-/home/21603498/Documents/Licence3/be/git/pbrt-v3/src/ext/openexr/OpenEXR/IlmImf/ImathInt64.h
+/home/21603498/Documents/Licence3/be/git/analyseEspaceRayons/pbrt-v3/src/ext/openexr/OpenEXR/IlmImf/ImathInt64.h
 ImfNamespace.h
-/home/21603498/Documents/Licence3/be/git/pbrt-v3/src/ext/openexr/OpenEXR/IlmImf/ImfNamespace.h
+/home/21603498/Documents/Licence3/be/git/analyseEspaceRayons/pbrt-v3/src/ext/openexr/OpenEXR/IlmImf/ImfNamespace.h
 
-/home/21603498/Documents/Licence3/be/git/pbrt-v3/src/ext/openexr/OpenEXR/IlmImf/ImfNamespace.h
+/home/21603498/Documents/Licence3/be/git/analyseEspaceRayons/pbrt-v3/src/ext/openexr/OpenEXR/IlmImf/ImfNamespace.h
 OpenEXRConfig.h
-/home/21603498/Documents/Licence3/be/git/pbrt-v3/src/ext/openexr/OpenEXR/IlmImf/OpenEXRConfig.h
+/home/21603498/Documents/Licence3/be/git/analyseEspaceRayons/pbrt-v3/src/ext/openexr/OpenEXR/IlmImf/OpenEXRConfig.h
 
-/home/21603498/Documents/Licence3/be/git/pbrt-v3/src/ext/openexr/OpenEXR/IlmImf/ImfXdr.h
+/home/21603498/Documents/Licence3/be/git/analyseEspaceRayons/pbrt-v3/src/ext/openexr/OpenEXR/IlmImf/ImfXdr.h
 ImfInt64.h
-/home/21603498/Documents/Licence3/be/git/pbrt-v3/src/ext/openexr/OpenEXR/IlmImf/ImfInt64.h
+/home/21603498/Documents/Licence3/be/git/analyseEspaceRayons/pbrt-v3/src/ext/openexr/OpenEXR/IlmImf/ImfInt64.h
 IexMathExc.h
-/home/21603498/Documents/Licence3/be/git/pbrt-v3/src/ext/openexr/OpenEXR/IlmImf/IexMathExc.h
+/home/21603498/Documents/Licence3/be/git/analyseEspaceRayons/pbrt-v3/src/ext/openexr/OpenEXR/IlmImf/IexMathExc.h
 half.h
-/home/21603498/Documents/Licence3/be/git/pbrt-v3/src/ext/openexr/OpenEXR/IlmImf/half.h
+/home/21603498/Documents/Licence3/be/git/analyseEspaceRayons/pbrt-v3/src/ext/openexr/OpenEXR/IlmImf/half.h
 limits.h
 -
 ImfNamespace.h
-/home/21603498/Documents/Licence3/be/git/pbrt-v3/src/ext/openexr/OpenEXR/IlmImf/ImfNamespace.h
+/home/21603498/Documents/Licence3/be/git/analyseEspaceRayons/pbrt-v3/src/ext/openexr/OpenEXR/IlmImf/ImfNamespace.h
 
-/home/21603498/Documents/Licence3/be/git/pbrt-v3/src/ext/openexr/OpenEXR/IlmImf/dwaLookups.cpp
+/home/21603498/Documents/Licence3/be/git/analyseEspaceRayons/pbrt-v3/src/ext/openexr/OpenEXR/IlmImf/dwaLookups.cpp
 cstddef
 -
 stdio.h
@@ -140,7 +140,7 @@ ImfIO.h
 ImfXdr.h
 -
 ImfNamespace.h
-/home/21603498/Documents/Licence3/be/git/pbrt-v3/src/ext/openexr/OpenEXR/IlmImf/ImfNamespace.h
+/home/21603498/Documents/Licence3/be/git/analyseEspaceRayons/pbrt-v3/src/ext/openexr/OpenEXR/IlmImf/ImfNamespace.h
 
 src/ext/openexr/IlmBase/config/IlmBaseConfig.h
 

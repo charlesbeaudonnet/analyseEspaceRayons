@@ -172,7 +172,7 @@
 #define STL_NAMESPACE std
 
 /* location of source code */
-#define TEST_SRC_DIR "/home/21603498/Documents/Licence3/be/git/pbrt-v3/src/ext/glog"
+#define TEST_SRC_DIR "/home/21603498/Documents/Licence3/be/git/analyseEspaceRayons/pbrt-v3/src/ext/glog"
 
 /* Version number of package */
 /* #undef VERSION */
