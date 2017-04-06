@@ -231,8 +231,6 @@ std::unique_ptr<Distribution1D> ComputeLightPowerDistribution(
 void SamplerIntegrator::Render(const Scene &scene) {
 
 	std::ofstream fichier;
-	fichier.open("./paths.txt");
-	fichier.close();
 	fichier.open("./pixelCompute.txt");
 	if(!fichier){
 		std::cerr << "Can't open paths.txt" << std::endl;

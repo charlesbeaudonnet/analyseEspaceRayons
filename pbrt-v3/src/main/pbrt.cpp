@@ -78,8 +78,10 @@ Reformatting options:
 int main(int argc, char *argv[]) {
 	google::InitGoogleLogging(argv[0]);
 	FLAGS_stderrthreshold = 1; // Warning and above.
-
 	Options options;
+	std::ofstream fichier;
+	fichier.open("./paths.txt");
+	fichier.close();
 	std::vector<std::string> filenames;
 	// Process command-line arguments
 	for (int i = 1; i < argc; ++i) {

@@ -115,11 +115,8 @@ Spectrum PathIntegrator::Li(const RayDifferential &r, const Scene &scene,
 			}
 
 			// Terminate path if ray escaped or _maxDepth_ was reached
-			if (!foundIntersection || bounces >= maxDepth){
-				fichier<<"]\n";
-				break;
-			}
-			fichier << ";";
+			if (!foundIntersection || bounces >= maxDepth)break;
+
 
 			// Compute scattering functions and skip over medium boundaries
 			isect.ComputeScatteringFunctions(ray, arena, true);
@@ -152,7 +149,7 @@ Spectrum PathIntegrator::Li(const RayDifferential &r, const Scene &scene,
 			Spectrum f = isect.bsdf->Sample_f(wo, &wi, sampler.Get2D(), &pdf,
 					BSDF_ALL, &flags);
 			VLOG(2) << "Sampled BSDF, f = " << f << ", pdf = " << pdf;
-			if (f.IsBlack() || pdf == 0.f) break;
+			if (f.IsBlack() || pdf == 0.f)break;
 			beta *= f * AbsDot(wi, isect.shading.n) / pdf;
 			VLOG(2) << "Updated beta = " << beta;
 			CHECK_GE(beta.y(), 0.f);
@@ -174,7 +171,7 @@ Spectrum PathIntegrator::Li(const RayDifferential &r, const Scene &scene,
 				Spectrum S = isect.bssrdf->Sample_S(
 						scene, sampler.Get1D(), sampler.Get2D(), arena, &pi, &pdf);
 				DCHECK(!std::isinf(beta.y()));
-				if (S.IsBlack() || pdf == 0) break;
+				if (S.IsBlack() || pdf == 0)break;
 				beta *= S / pdf;
 
 				// Account for the direct subsurface scattering component
@@ -184,7 +181,8 @@ Spectrum PathIntegrator::Li(const RayDifferential &r, const Scene &scene,
 				// Account for the indirect subsurface scattering component
 				Spectrum f = pi.bsdf->Sample_f(pi.wo, &wi, sampler.Get2D(), &pdf,
 						BSDF_ALL, &flags);
-				if (f.IsBlack() || pdf == 0) break;
+				if (f.IsBlack() || pdf == 0)break;
+
 				beta *= f * AbsDot(wi, pi.shading.n) / pdf;
 				DCHECK(!std::isinf(beta.y()));
 				specularBounce = (flags & BSDF_SPECULAR) != 0;
@@ -196,14 +194,15 @@ Spectrum PathIntegrator::Li(const RayDifferential &r, const Scene &scene,
 			Spectrum rrBeta = beta * etaScale;
 			if (rrBeta.MaxComponentValue() < rrThreshold && bounces > 3) {
 				Float q = std::max((Float).05, 1 - rrBeta.MaxComponentValue());
-				if (sampler.Get1D() < q) break;
+				if (sampler.Get1D() < q)break;
 				beta /= 1 - q;
 				DCHECK(!std::isinf(beta.y()));
 			}
-			L.ToRGB(couleur);
+			fichier << ";";
 		}
+		fichier<<"]\n";
 		ReportValue(pathLength, bounces);
-		L.ToRGB(couleur);
+		//L.ToRGB(couleur);
 		return L;
 		fichier.close();
 	}
