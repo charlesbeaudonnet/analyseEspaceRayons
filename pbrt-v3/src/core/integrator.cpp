@@ -272,6 +272,7 @@ void SamplerIntegrator::Render(const Scene &scene) {
 
 				// Loop over pixels in tile to render them
 				for (Point2i pixel : tileBounds) {
+					printf("%d %d\n", pixel[0], pixel[1]);
 					fichier << "[" << pixel[0]<<","<<pixel[1]<<";\n";
 					{
 						ProfilePhase pp(Prof::StartPixel);

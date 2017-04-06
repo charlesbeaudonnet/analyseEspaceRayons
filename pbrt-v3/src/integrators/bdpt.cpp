@@ -143,7 +143,9 @@ int RandomWalk(const Scene &scene, RayDifferential ray, Sampler &sampler,
     int bounces = 0;
     // Declare variables for forward and reverse probability densities
     Float pdfFwd = pdf, pdfRev = 0;
+    //printf("ceci est un pixel maybe\n");
     while (true) {
+    	//printf("  et ça un rayon :\n  orig: %f %f %f\n  dir: %f %f %f\n",ray.o[0], ray.o[1], ray.o[2], ray.d[0], ray.d[1], ray.d[2]);
         // Attempt to create the next subpath vertex in _path_
         MediumInteraction mi;
 
@@ -356,6 +358,7 @@ void BDPTIntegrator::Render(const Scene &scene) {
             std::unique_ptr<FilmTile> filmTile =
                 camera->film->GetFilmTile(tileBounds);
             for (Point2i pPixel : tileBounds) {
+				printf("%d %d\n", pPixel[0], pPixel[1]);
                 tileSampler->StartPixel(pPixel);
                 if (!InsideExclusive(pPixel, pixelBounds))
                     continue;
@@ -369,6 +372,13 @@ void BDPTIntegrator::Render(const Scene &scene) {
                     int nCamera = GenerateCameraSubpath(
                         scene, *tileSampler, arena, maxDepth + 2, *camera,
                         pFilm, cameraVertices);
+                    //-------------------
+                    printf("Camera : \n");
+                    for(int i = 0; i<nCamera; i++) {
+                    	printf("%f %f %f %f %f %f\n", cameraVertices[i].p().x, cameraVertices[i].p().y, cameraVertices[i].p().z,
+                    			cameraVertices[i].ng().x, cameraVertices[i].ng().y, cameraVertices[i].ng().z);
+                    }
+                    //-------------------
                     // Get a distribution for sampling the light at the
                     // start of the light subpath. Because the light path
                     // follows multiple bounces, basing the sampling
@@ -383,7 +393,13 @@ void BDPTIntegrator::Render(const Scene &scene) {
                         scene, *tileSampler, arena, maxDepth + 1,
                         cameraVertices[0].time(), *lightDistr, lightToIndex,
                         lightVertices);
-
+                    //----------------------
+                    printf("Lumiere : \n");
+                    for(int i = 0; i<nLight; i++) {
+                    	printf("%f %f %f %f %f %f\n", lightVertices[i].p().x, lightVertices[i].p().y, lightVertices[i].p().z,
+                    			lightVertices[i].ng().x, lightVertices[i].ng().y, lightVertices[i].ng().z);
+                    }
+                    //----------------------
                     // Execute all BDPT connection strategies
                     Spectrum L(0.f);
                     for (int t = 1; t <= nCamera; ++t) {
@@ -457,6 +473,12 @@ Spectrum ConnectBDPT(
         const Vertex &pt = cameraVertices[t - 1];
         if (pt.IsLight()) L = pt.Le(scene, cameraVertices[t - 2]) * pt.beta;
         DCHECK(!L.HasNaNs());
+        Point3f o;
+        for(int k = 0; k <= t-1; k++){
+        	o = cameraVertices[k].p();
+        	std::cout << "("<<o.x<<","<<o.y<<","<<o.z<<");\n";
+        }
+        //printf("%f %f %f %f %f %f\n", pt.p().x, pt.p().y, pt.p().z, pt.ng().x, pt.ng().y, pt.ng().z);
     } else if (t == 1) {
         // Sample a point on the camera and connect it to the light subpath
         const Vertex &qs = lightVertices[s - 1];
@@ -528,6 +550,7 @@ Spectrum ConnectBDPT(
     DCHECK(!std::isnan(misWeight));
     L *= misWeight;
     if (misWeightPtr) *misWeightPtr = misWeight;
+    printf("%d\n", totalPaths);
     return L;
 }
 

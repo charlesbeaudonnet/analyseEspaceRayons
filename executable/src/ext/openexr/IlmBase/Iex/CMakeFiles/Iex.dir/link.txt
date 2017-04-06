@@ -1,2 +1,0 @@
-/home/21603498/.linuxbrew/bin/ar qc libIex.a  CMakeFiles/Iex.dir/IexBaseExc.cpp.o CMakeFiles/Iex.dir/IexThrowErrnoExc.cpp.o
-/home/21603498/.linuxbrew/bin/ranlib libIex.a

@@ -1,1 +1,0 @@
-/home/21603498/.linuxbrew/bin/c++    -std=gnu++11 -Wno-conversion-null -O3 -DNDEBUG   CMakeFiles/utilities_unittest.dir/src/utilities_unittest.cc.o  -o utilities_unittest -rdynamic libglog.a -lpthread 
