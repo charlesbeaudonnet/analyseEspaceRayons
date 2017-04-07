@@ -26,3 +26,23 @@ make -j4
 
 g++ helloworld.cpp -o testGL -lglut -lGL -std=c++11
 
+# compte rendu 7 avril
+
+Q&A:
+Q: Qu'est-ce que comment ça marche la lumière ??
+A: La lumière a pas de coordonées, on utilise la direction d'un vecteur pour savoir s'il touche un objet ou la lumière
+
+Q: Radium ça compile paaaaaaaaaaaas !
+A: Essayer mieux, sinon, utiliser tungsten ou g3d.
+
+Q: c'est quoi beta ?
+A: un coef d'importance pour savoir si ça vaut le coup de continuer a tracer le rayon ou pas (probablement, maybe)
+
+-Récupération du livre de pbrt v1
+
+-Prise de contact avec sofian
+
+-Pas de nouvelle tâches assignées
+
+-Mise en place d'une réunion hebdomadaire le lundi qui commence le mardi 18 avril à 14h30
+
