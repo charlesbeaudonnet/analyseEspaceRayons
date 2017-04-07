@@ -19,9 +19,9 @@ make -j4
 # à faire:-
 - [ ] Bien analyser le code
 - [ ] Afficher les données stockées dans la structure des rayons
-- [ ] Faire un executable pour afficher les arbres avec OpenGL
-  - [ ] Makefile
-  - [ ] Fonction de rasterization de ligne à partir de 2 points dans l'espace
+- [x] Faire un executable pour afficher les arbres avec OpenGL
+  - [x] Makefile
+  - [x] Fonction de rasterization de ligne à partir de 2 points dans l'espace
   - [ ] autres..
 
 g++ helloworld.cpp -o testGL -lglut -lGL -std=c++11
