@@ -23,3 +23,6 @@ make -j4
   - [ ] Makefile
   - [ ] Fonction de rasterization de ligne à partir de 2 points dans l'espace
   - [ ] autres..
+
+g++ helloworld.cpp -o testGL -lglut -lGL -std=c++11
+
