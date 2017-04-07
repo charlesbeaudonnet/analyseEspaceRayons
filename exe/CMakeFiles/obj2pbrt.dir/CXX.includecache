@@ -1,0 +1,42 @@
+#IncludeRegexLine: ^[ 	]*#[ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/home/21303468/workspace/analyseEspaceRayons/pbrt-v3/src/tools/obj2pbrt.cpp
+string
+-
+vector
+-
+map
+-
+cmath
+-
+cstdlib
+-
+cstring
+-
+cassert
+-
+cmath
+-
+cstddef
+-
+cctype
+-
+fstream
+-
+sstream
+-
+set
+-
+stdio.h
+-
+string.h
+-
+algorithm
+-
+

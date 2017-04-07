@@ -1,0 +1,1 @@
+/home/21303468/.linuxbrew/bin/c++    -std=gnu++11 -Wno-conversion-null -O3 -DNDEBUG   CMakeFiles/demangle_unittest.dir/src/demangle_unittest.cc.o  -o demangle_unittest -rdynamic libglog.a -lpthread 
