@@ -29,20 +29,28 @@ g++ helloworld.cpp -o testGL -lglut -lGL -std=c++11
 # compte rendu 7 avril
 
 Q&A:
-Q: Qu'est-ce que comment ça marche la lumière ??
-A: La lumière a pas de coordonées, on utilise la direction d'un vecteur pour savoir s'il touche un objet ou la lumière
+Q: Comment fonctionne sur pbrt la lumière ?
+A: La lumière n'a pas de coordonnées, on utilise la direction d'un rayon pour savoir s'il touche un objet ou la lumière
 
-Q: Radium ça compile paaaaaaaaaaaas !
-A: Essayer mieux, sinon, utiliser tungsten ou g3d.
+Q: Encore des problème de compilation de Radium, problème de linkage de librairies.
+A: Essayer hors du dossier "Documents". Si Radium est vraiment impossible a compiler, utiliser tungsten ou g3d.
 
-Q: c'est quoi beta ?
-A: un coef d'importance pour savoir si ça vaut le coup de continuer a tracer le rayon ou pas (probablement, maybe)
+Q: C'est quoi la variable beta utilisée un peu partout dans le code ?
+A: C'est (presque sûr) un coefficient d'importance pour savoir si ça vaut le coup de continuer a tracer le rayon ou pas.
 
 -Récupération du livre de pbrt v1
-
 -Prise de contact avec sofian
-
--Pas de nouvelle tâches assignées
-
 -Mise en place d'une réunion hebdomadaire le lundi qui commence le mardi 18 avril à 14h30
+
+Ce qu'on a fait jusque là :
+Récupération des chemins des rayons pour plusieurs integrators différents sur pbrt.
+
+# compte rendu 18 avril
+
+-D'autres problèmes de compilation de Radium :
+Le programme de test utilise un librairie indisponible. Solution : désactiver les tests.
+
+-On arrive pas non plus a compiler tungsten ni g3d.
+
+Prochaine réu : lundi 1 mai à 10h
 
