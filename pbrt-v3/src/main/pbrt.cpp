@@ -40,6 +40,7 @@
 #include "parser.h"
 #include "parallel.h"
 #include <glog/logging.h>
+#include "singleton.h"
 
 using namespace pbrt;
 using namespace std;
@@ -78,10 +79,8 @@ Reformatting options:
 int main(int argc, char *argv[]) {
 	google::InitGoogleLogging(argv[0]);
 	FLAGS_stderrthreshold = 1; // Warning and above.
+	Singleton * rayPath = Singleton::createInstance("./rayPath.txt");
 	Options options;
-	std::ofstream fichier;
-	fichier.open("./paths.txt");
-	fichier.close();
 	std::vector<std::string> filenames;
 	// Process command-line arguments
 	for (int i = 1; i < argc; ++i) {
@@ -164,7 +163,7 @@ int main(int argc, char *argv[]) {
 				Error("Couldn't open scene file \"%s\"", f.c_str());
 	}
 	pbrtCleanup();
-	std::ifstream pixelC,paths;
+	/*std::ifstream pixelC,paths;
 	std::ofstream rayPath;
 	pixelC.open("./pixelCompute.txt");
 	if(!pixelC){
@@ -192,6 +191,6 @@ int main(int argc, char *argv[]) {
 	}
 	pixelC.close();
 	paths.close();
-	rayPath.close();
+	rayPath.close();*/
 	return 0;
 }
