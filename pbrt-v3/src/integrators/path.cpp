@@ -91,7 +91,7 @@ Spectrum PathIntegrator::Li(const RayDifferential &r, const Scene &scene,
 		for (bounces = 0;; ++bounces) {
 			//--------------
 
-			LOG(WARNING) << "( " << ray.o[0] << ", " << ray.o[1] << "," << ray.o[2] <<  "),(" << ray.d[0] << "," << ray.d[1] << "," <<  ray.d[2] << ")";
+			LOG(WARNING) << "(" << ray.o[0] << "," << ray.o[1] << "," << ray.o[2] <<  "),(" << ray.d[0] << "," << ray.d[1] << "," <<  ray.d[2] << ")";
 			//--------------
 			// Find next path vertex and accumulate contribution
 			VLOG(2)  << "Path tracer bounce " << bounces << ", current L = " << L
@@ -198,7 +198,7 @@ Spectrum PathIntegrator::Li(const RayDifferential &r, const Scene &scene,
 				beta /= 1 - q;
 				DCHECK(!std::isinf(beta.y()));
 			}
-			LOG(WARNING) << "; ";
+			LOG(WARNING) << ";";
 		}
 		LOG(WARNING) << "]\n";
 		ReportValue(pathLength, bounces);

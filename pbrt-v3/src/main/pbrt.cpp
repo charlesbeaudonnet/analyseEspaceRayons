@@ -40,6 +40,7 @@
 #include "parser.h"
 #include "parallel.h"
 #include <glog/logging.h>
+#include <rayPathParser.hpp>
 
 using namespace pbrt;
 using namespace std;
@@ -162,5 +163,7 @@ int main(int argc, char *argv[]) {
 				Error("Couldn't open scene file \"%s\"", f.c_str());
 	}
 	pbrtCleanup();
+	rayPathParser * rpp = new rayPathParser();
+	rpp->parseFile();
 	return 0;
 }
