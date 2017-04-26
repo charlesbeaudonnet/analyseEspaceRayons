@@ -67,11 +67,11 @@ void PathIntegrator::Preprocess(const Scene &scene, Sampler &sampler) {
 Spectrum PathIntegrator::Li(const RayDifferential &r, const Scene &scene,
 		Sampler &sampler, MemoryArena &arena,
 		int depth) const {
-	std::ofstream fichier;
+	/*std::ofstream fichier;
 	fichier.open("./paths.txt",std::ios_base::app);
 	if(!fichier){
 		std::cerr << "Can't open paths.txt" << std::endl;
-	}else{
+	}else{*/
 
 		Float couleur[3];
 		//----------
@@ -91,10 +91,10 @@ Spectrum PathIntegrator::Li(const RayDifferential &r, const Scene &scene,
 		for (bounces = 0;; ++bounces) {
 			//--------------
 
-			fichier <<"("<<ray.o[0]<<","<<ray.o[1]<<","<<ray.o[2]<< "),("<<ray.d[0]<<","<<ray.d[1]<<","<< ray.d[2]<<")";
+			LOG(WARNING) << "( " << ray.o[0] << ", " << ray.o[1] << "," << ray.o[2] <<  "),(" << ray.d[0] << "," << ray.d[1] << "," <<  ray.d[2] << ")";
 			//--------------
 			// Find next path vertex and accumulate contribution
-			VLOG(2) << "Path tracer bounce " << bounces << ", current L = " << L
+			VLOG(2)  << "Path tracer bounce " << bounces << ", current L = " << L
 			<< ", beta = " << beta;
 
 			// Intersect _ray_ with scene and store intersection in _isect_
@@ -198,14 +198,14 @@ Spectrum PathIntegrator::Li(const RayDifferential &r, const Scene &scene,
 				beta /= 1 - q;
 				DCHECK(!std::isinf(beta.y()));
 			}
-			fichier << ";";
+			LOG(WARNING) << "; ";
 		}
-		fichier<<"]\n";
+		LOG(WARNING) << "]\n";
 		ReportValue(pathLength, bounces);
 		//L.ToRGB(couleur);
 		return L;
-		fichier.close();
-	}
+		//fichier.close();
+//	}
 }
 
 PathIntegrator *CreatePathIntegrator(const ParamSet &params,

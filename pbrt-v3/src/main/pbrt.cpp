@@ -40,7 +40,6 @@
 #include "parser.h"
 #include "parallel.h"
 #include <glog/logging.h>
-#include "singleton.h"
 
 using namespace pbrt;
 using namespace std;
@@ -77,9 +76,9 @@ Reformatting options:
 
 // main program
 int main(int argc, char *argv[]) {
+	google::SetLogDestination(google::GLOG_WARNING,"./rayPath.WARNING" );
 	google::InitGoogleLogging(argv[0]);
-	FLAGS_stderrthreshold = 1; // Warning and above.
-	Singleton * rayPath = Singleton::createInstance("./rayPath.txt");
+	FLAGS_stderrthreshold = 2; // Warning and above.
 	Options options;
 	std::vector<std::string> filenames;
 	// Process command-line arguments
@@ -163,34 +162,5 @@ int main(int argc, char *argv[]) {
 				Error("Couldn't open scene file \"%s\"", f.c_str());
 	}
 	pbrtCleanup();
-	/*std::ifstream pixelC,paths;
-	std::ofstream rayPath;
-	pixelC.open("./pixelCompute.txt");
-	if(!pixelC){
-		std::cerr << "Can't open pixelCompute.txt" << std::endl;
-	}else{
-		paths.open("./paths.txt");
-		if(!paths){
-			pixelC.close();
-			std::cerr << "Can't open paths.txt" << std::endl;
-		}else{
-			rayPath.open("./rayPath.txt");
-			if(!rayPath){
-				pixelC.close();
-				paths.close();
-				std::cerr << "Can't open rayPath.txt" << std::endl;
-			}else{
-				std::string lignePath, lignePix;
-				while(!paths.eof() && !pixelC.eof()){
-					std::getline(paths,lignePath);
-					std::getline(pixelC,lignePix);
-					rayPath << lignePix << lignePath << std::endl;
-				}
-			}
-		}
-	}
-	pixelC.close();
-	paths.close();
-	rayPath.close();*/
 	return 0;
 }
