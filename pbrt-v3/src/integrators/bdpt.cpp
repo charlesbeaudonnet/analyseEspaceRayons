@@ -359,7 +359,7 @@ void BDPTIntegrator::Render(const Scene &scene) {
 					camera->film->GetFilmTile(tileBounds);
 
 			for (Point2i pPixel : tileBounds) {
-				printf("\E[1m\E[33m\nPixel (%d, %d) :\n\E(B\E[m", pPixel[0], pPixel[1]);
+				LOG(WARNING) << "[" << pPixel[0] << "," << pPixel[1];
 				tileSampler->StartPixel(pPixel);
 				if (!InsideExclusive(pPixel, pixelBounds))
 					continue;
@@ -374,11 +374,11 @@ void BDPTIntegrator::Render(const Scene &scene) {
 							scene, *tileSampler, arena, maxDepth + 2, *camera,
 							pFilm, cameraVertices);
 					//-------------------
-					printf("\E[1m\E[36mIntersections camera : \E(B\E[m\n");
+					/*printf("\E[1m\E[36mIntersections camera : \E(B\E[m\n");
 					for(int i = 0; i<nCamera; i++) {
 						printf("  (%f,%f,%f)\n", cameraVertices[i].p().x, cameraVertices[i].p().y, cameraVertices[i].p().z);
 						//cameraVertices[i].ng().x, cameraVertices[i].ng().y, cameraVertices[i].ng().z);
-					}
+					}*/
 					//-------------------
 					// Get a distribution for sampling the light at the
 					// start of the light subpath. Because the light path
@@ -395,11 +395,11 @@ void BDPTIntegrator::Render(const Scene &scene) {
 							cameraVertices[0].time(), *lightDistr, lightToIndex,
 							lightVertices);
 					//----------------------
-					printf("\E[1m\E[35mIntersections lumiere : \E(B\E[m\n");
+					/*printf("\E[1m\E[35mIntersections lumiere : \E(B\E[m\n");
 					for(int i = 0; i<nLight; i++) {
 						printf("  (%f,%f,%f)\n", lightVertices[i].p().x, lightVertices[i].p().y, lightVertices[i].p().z);
 						//,lightVertices[i].ng().x, lightVertices[i].ng().y, lightVertices[i].ng().z);
-					}
+					}*/
 					//----------------------
 					// Execute all BDPT connection strategies
 					Spectrum L(0.f);
@@ -547,17 +547,16 @@ Spectrum ConnectBDPT(
 	DCHECK(!std::isnan(misWeight));
 	L *= misWeight;
 	if (misWeightPtr) *misWeightPtr = misWeight;
-	printf("Path n° %d\n", totalPaths);
-	std::cout << "  [";
 	for(int k = 0; k < t; k++){
 		o = cameraVertices[k].p();
-		std::cout << "("<<o.x<<","<<o.y<<","<<o.z<<");";
+		LOG(WARNING) << "(" << o.x << "," << o.y << "," << o.z << ");";
 	}
 	for(int k = s-1; k >= 0; k--){
 		o = lightVertices[k].p();
-		std::cout << "("<<o.x<<","<<o.y<<","<<o.z<<");";
+		LOG(WARNING) << "(" << o.x << "," << o.y << "," << o.z << ");";
 	}
-	std::cout << L.ToString()<<"] (s:"<< s <<",t:"<< t <<")\n";
+	LOG(WARNING) << ";RGB::" << L.ToRGBSpectrum().toStr();
+	LOG(WARNING) << "}\n";
 	return L;
 }
 
