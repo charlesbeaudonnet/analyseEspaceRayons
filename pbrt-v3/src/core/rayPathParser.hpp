@@ -134,7 +134,7 @@ void rayPathParser::parseFile() {
 
 	}while(true);
 	std::remove("UNKNOWN.WARNING");
-	std::remove(filename.c_str());
+	//std::remove(filename.c_str());
 }
 
 #endif /* PBRT_V3_SRC_CORE_RAYPATHPARSER_HPP_ */

@@ -44,6 +44,7 @@ A: C'est (presque sûr) un coefficient d'importance pour savoir si ça vaut le c
 
 -Prise de contact avec sofian
 
+
 -Mise en place d'une réunion hebdomadaire le lundi qui commence le mardi 18 avril à 14h30
 
 
@@ -86,6 +87,16 @@ y'a aussi la méthode maline (qu'on utilise pas parce que yolo) :
 dire au ld de linuxbrew d'aller chercher les librairies dans le fichier où elles sont.
 
 info ici : http://stackoverflow.com/questions/9922949/how-to-print-the-ldlinker-search-path
+
+# compte rendu 27 avril
+
+-Redirection de la sortie WARNING du google logger dans un fichier
+-Parsing du fichier pour obtenir le format voulu  {[x,y];(point1);(point2);......;(point_n);RGB::[couleurFinale]}
+-Log de path
+-Log de bdpt (donc de mlt)
+- A FAIRE sppm, volpath, directlighting, whitted.
+volpath ~= path    whitted ~= path
+
 
 -------------------
 
@@ -198,11 +209,8 @@ make -j4 :
 pour paralléliser le make (utiliser les 4 coeurs du CPU)
 
 
-
 export :
 
 je sais pas : rtfm
-
-
 
 ls -l /lib64/*
