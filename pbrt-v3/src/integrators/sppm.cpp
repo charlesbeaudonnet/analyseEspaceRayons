@@ -240,7 +240,7 @@ void SPPMIntegrator::Render(const Scene &scene) {
                         }
                     }
                     //-------------
-                    LOG(WARNING) << "]";
+                    LOG(WARNING) << "}";
                     //-------------
                 }
             }, nTiles);
@@ -424,7 +424,7 @@ void SPPMIntegrator::Render(const Scene &scene) {
                     photonRay = (RayDifferential)isect.SpawnRay(wi);
                 }
                 //-----------
-            	LOG(WARNING) << "]";
+            	LOG(WARNING) << "}";
             	//-----------
                 arena.Reset();
             }, photonsPerIteration, 8192);
