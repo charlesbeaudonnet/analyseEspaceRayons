@@ -148,6 +148,10 @@ void SPPMIntegrator::Render(const Scene &scene) {
                 int y1 = std::min(y0 + tileSize, pixelBounds.pMax.y);
                 Bounds2i tileBounds(Point2i(x0, y0), Point2i(x1, y1));
                 for (Point2i pPixel : tileBounds) {
+                	//6------------
+                	LOG(WARNING) << "[" << pPixel[0] << ","<< pPixel[1];
+                	//std::cout  << "[" << pPixel[0] << ","<< pPixel[1];
+                	//-------------
                     // Prepare _tileSampler_ for _pPixel_
                     tileSampler->StartPixel(pPixel);
                     tileSampler->SetSampleNumber(iter);
@@ -170,6 +174,10 @@ void SPPMIntegrator::Render(const Scene &scene) {
                     SPPMPixel &pixel = pixels[pixelOffset];
                     bool specularBounce = false;
                     for (int depth = 0; depth < maxDepth; ++depth) {
+                    	//--------------------
+                    	LOG(WARNING) << ";(" << ray.o[0] << "," << ray.o[1] << "," << ray.o[2] <<  "),(" << ray.d[0] << "," << ray.d[1] << "," <<  ray.d[2] << ")";
+                    	//std::cout << "(" << ray.o[0] << "," << ray.o[1] << "," << ray.o[2] <<  "),(" << ray.d[0] << "," << ray.d[1] << "," <<  ray.d[2] << ")";
+                    	//-------------------
                         SurfaceInteraction isect;
                         ++totalPhotonSurfaceInteractions;
                         if (!scene.Intersect(ray, &isect)) {
@@ -231,6 +239,9 @@ void SPPMIntegrator::Render(const Scene &scene) {
                             ray = (RayDifferential)isect.SpawnRay(wi);
                         }
                     }
+                    //-------------
+                    LOG(WARNING) << "]";
+                    //-------------
                 }
             }, nTiles);
         }
@@ -303,6 +314,9 @@ void SPPMIntegrator::Render(const Scene &scene) {
             ProfilePhase _(Prof::SPPMPhotonPass);
             std::vector<MemoryArena> photonShootArenas(MaxThreadIndex());
             ParallelFor([&](int photonIndex) {
+            	//---------------
+            	LOG(WARNING) << "[" << photonIndex;
+            	//---------------
                 MemoryArena &arena = photonShootArenas[ThreadIndex];
                 // Follow photon path for _photonIndex_
                 uint64_t haltonIndex =
@@ -342,6 +356,9 @@ void SPPMIntegrator::Render(const Scene &scene) {
                 // Follow photon path through scene and record intersections
                 SurfaceInteraction isect;
                 for (int depth = 0; depth < maxDepth; ++depth) {
+                	//------------------
+                	LOG(WARNING) << ";(" << photonRay.o[0] << "," << photonRay.o[1] << "," << photonRay.o[2] <<  "),(" << photonRay.d[0] << "," << photonRay.d[1] << "," <<  photonRay.d[2] << ")";
+                	//------------------
                     if (!scene.Intersect(photonRay, &isect)) break;
                     ++totalPhotonSurfaceInteractions;
                     if (depth > 0) {
@@ -406,6 +423,9 @@ void SPPMIntegrator::Render(const Scene &scene) {
                     beta = bnew / (1 - q);
                     photonRay = (RayDifferential)isect.SpawnRay(wi);
                 }
+                //-----------
+            	LOG(WARNING) << "]";
+            	//-----------
                 arena.Reset();
             }, photonsPerIteration, 8192);
             progress.Update();
