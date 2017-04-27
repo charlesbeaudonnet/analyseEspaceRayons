@@ -5,6 +5,21 @@
  *      Author: todo
  */
 
+/*
+ *
+ *
+ * PIXEL :  LOG(WARNING) << "[" << pixel[0] << pixel[1];
+ *
+ * SOMMET : LOG(WARNING) << "(" << ray.o[0] << "," << ray.o[1] << "," << ray.o[2] << ")";
+ *
+ * SEPARATEUR DE SOMMETS : LOG(WARNING) << ";";
+ *
+ * COULEUR : LOG(WARNING) << ";RGB::" << L.ToRGB().toStr();
+ *
+ * FIN LE CHEMIN : LOG(WARNING) << "}\n";
+ *
+ *
+ */
 #ifndef PBRT_V3_SRC_CORE_RAYPATHPARSER_HPP_
 #define PBRT_V3_SRC_CORE_RAYPATHPARSER_HPP_
 #include <regex>
@@ -86,7 +101,7 @@ void rayPathParser::parseFile() {
 		getline(reader,line);
 	}while(line.substr(std::max<int>(line.size()- 4,0)).compare("[0,0") != 0);
 
-	std::string path = "[0,0]";
+	std::string path = "{[0,0]";
 	std::string info;
 	int i,size;
 	do{
@@ -100,25 +115,26 @@ void rayPathParser::parseFile() {
 		stringstream ss(line);
 		while (ss >> info){};
 
-		//Si info == ] alors on est à la fin d'un chemin donc on l'écrit dans rayPath
-		if( info.compare("]") == 0){
+		//Si info == } alors on est à la fin d'un chemin donc on l'écrit dans rayPath
+		if( info.compare("}") == 0){
 			//std::cout << path << info << "\n";
 			rayPath << path << info << "\n";
+			//Reset de path pour le prochain chemin
 			path = "";
 		}else{
 			//Sinon on rajoute info au chemin
 
-			//Si path est vide alors info est une coordonnee de pixel
-			//Donc on l'écrit [[x,y]
+			//Si path est vide alors info est une coordonnee de pixel de forme  :   [x,y
+			//Donc on l'écrit {[x,y]
 			if( path.compare("") == 0 )
-				path += "[" + info.substr(0,info.size()) + "]";
+				path += "{" + info.substr(0,info.size()) + "]";
 			else
 				path += info.substr(0,info.size());
 		}
 
 	}while(true);
 	std::remove("UNKNOWN.WARNING");
-	std::remove(filename.c_str());
+	//std::remove(filename.c_str());
 }
 
 #endif /* PBRT_V3_SRC_CORE_RAYPATHPARSER_HPP_ */
