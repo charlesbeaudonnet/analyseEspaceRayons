@@ -49,11 +49,9 @@ Spectrum WhittedIntegrator::Li(const RayDifferential &ray, const Scene &scene,
 	SurfaceInteraction isect;
 	if (!scene.Intersect(ray, &isect)) {
 		for (const auto &light : scene.lights) L += light->Le(ray);
+		LOG(WARNING) << ";RGB::" << L.ToRGBSpectrum().toStr();
 		return L;
 	}
-	// Compute emitted and reflected light at ray intersection point
-	if(depth == 0) std::cout << "[";
-		std::cout << "("<< ray.o.x << "," << ray.o.y << "," << ray.o.z << ");";
 	// Initialize common variables for Whitted integrator
 	const Normal3f &n = isect.shading.n;
 	Vector3f wo = isect.wo;
@@ -62,7 +60,11 @@ Spectrum WhittedIntegrator::Li(const RayDifferential &ray, const Scene &scene,
 	isect.ComputeScatteringFunctions(ray, arena);
 	if (!isect.bsdf)
 		return Li(isect.SpawnRay(ray.d), scene, sampler, arena, depth);
-
+	//LOG 
+	if(depth)
+		LOG(WARNING) << ";";
+	LOG(WARNING) << "(" << ray.o[0] << "," << ray.o[1] << "," << ray.o[2] << ")";
+	
 	// Compute emitted light if ray hit an area light source
 	L += isect.Le(wo);
 
@@ -78,12 +80,13 @@ Spectrum WhittedIntegrator::Li(const RayDifferential &ray, const Scene &scene,
 		if (!f.IsBlack() && visibility.Unoccluded(scene))
 			L += f * Li * AbsDot(wi, n) / pdf;
 	}
+	// Compute emitted and reflected light at ray intersection point
 	if (depth + 1 < maxDepth) {
 		// Trace rays for specular reflection and refraction
 		L += SpecularReflect(ray, isect, scene, sampler, arena, depth);
 		L += SpecularTransmit(ray, isect, scene, sampler, arena, depth);
 	}
-	std::cout << L.ToString()<<"]\n";
+	LOG(WARNING) << ";RGB::" << L.ToRGBSpectrum().toStr();
 	return L;
 }
 
