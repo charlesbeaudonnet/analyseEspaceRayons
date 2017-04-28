@@ -70,6 +70,7 @@ Spectrum VolPathIntegrator::Li(const RayDifferential &r, const Scene &scene,
     Float etaScale = 1;
 
     for (bounces = 0;; ++bounces) {
+    	LOG(WARNING) << "(" << ray.o[0] << "," << ray.o[1] << "," << ray.o[2] << ")::(" << ray.d[0] << "," << ray.d[1] << "," <<  ray.d[2] << ")";
         // Intersect _ray_ with scene and store intersection in _isect_
         SurfaceInteraction isect;
         bool foundIntersection = scene.Intersect(ray, &isect);
@@ -182,8 +183,11 @@ Spectrum VolPathIntegrator::Li(const RayDifferential &r, const Scene &scene,
             beta /= 1 - q;
             DCHECK(std::isinf(beta.y()) == false);
         }
+        LOG(WARNING) << ";";
     }
     ReportValue(pathLength, bounces);
+    LOG(WARNING) << ";RGB::" << L.ToRGBSpectrum().toStr();
+    LOG(WARNING) << "}\n";
     return L;
 }
 

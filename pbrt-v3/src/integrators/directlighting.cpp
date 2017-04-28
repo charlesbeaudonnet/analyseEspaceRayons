@@ -70,7 +70,7 @@ Spectrum DirectLightingIntegrator::Li(const RayDifferential &ray,
         for (const auto &light : scene.lights) L += light->Le(ray);
         return L;
     }
-
+    LOG(WARNING) << "coucou";
     // Compute scattering functions for surface interaction
     isect.ComputeScatteringFunctions(ray, arena);
     if (!isect.bsdf)
@@ -92,6 +92,8 @@ Spectrum DirectLightingIntegrator::Li(const RayDifferential &ray,
         L += SpecularReflect(ray, isect, scene, sampler, arena, depth);
         L += SpecularTransmit(ray, isect, scene, sampler, arena, depth);
     }
+    LOG(WARNING) << "RGB::" << L.ToRGBSpectrum().toStr();
+    LOG(WARNING) << "}\n";
     return L;
 }
 

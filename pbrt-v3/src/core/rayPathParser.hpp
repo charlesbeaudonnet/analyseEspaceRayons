@@ -8,13 +8,11 @@
 /*
  *
  *
- * PIXEL :  LOG(WARNING) << "[" << pixel[0] << pixel[1];
+ * PIXEL :  LOG(WARNING) << "[" << pixel[0] << "," << pixel[1];
  *
- * SOMMET : LOG(WARNING) << "(" << ray.o[0] << "," << ray.o[1] << "," << ray.o[2] << ")";
+ * SOMMET : LOG(WARNING) << "(" << ray.o[0] << "," << ray.o[1] << "," << ray.o[2] << ")::(" << ray.d[0] << "," << ray.d[1] << "," <<  ray.d[2] << ");";
  *
- * SEPARATEUR DE SOMMETS : LOG(WARNING) << ";";
- *
- * COULEUR : LOG(WARNING) << ";RGB::" << L.ToRGB().toStr();
+ * COULEUR : LOG(WARNING) << ";RGB::" << L.ToRGBSpectrum().toStr();
  *
  * FIN LE CHEMIN : LOG(WARNING) << "}\n";
  *
