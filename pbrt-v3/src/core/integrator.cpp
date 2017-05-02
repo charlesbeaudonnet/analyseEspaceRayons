@@ -45,6 +45,7 @@
 #include "progressreporter.h"
 #include "camera.h"
 #include "stats.h"
+#include "logBE.h"
 
 namespace pbrt {
 
@@ -265,7 +266,7 @@ void SamplerIntegrator::Render(const Scene &scene) {
 
 			// Loop over pixels in tile to render them
 			for (Point2i pixel : tileBounds) {
-				LOG(WARNING) << "[" << pixel[0] << ","<< pixel[1];
+				log("{"); log(pixel); /////////////////////////////////////////////////BE
 				{
 					ProfilePhase pp(Prof::StartPixel);
 					tileSampler->StartPixel(pixel);
@@ -352,8 +353,8 @@ Spectrum SamplerIntegrator::SpecularReflect(
 	Float pdf;
 	BxDFType type = BxDFType(BSDF_REFLECTION | BSDF_SPECULAR);
 	Spectrum f = isect.bsdf->Sample_f(wo, &wi, sampler.Get2D(), &pdf, type);
-	LOG(WARNING) << "(" << ray.o[0] << "," << ray.o[1] << "," << ray.o[2] << ")::(" << ray.d[0] << "," << ray.d[1] << "," <<  ray.d[2] << ");";
-	LOG(WARNING) << "REFLECT";
+	//LOG(WARNING) << "(" << ray.o[0] << "," << ray.o[1] << "," << ray.o[2] << ")::(" << ray.d[0] << "," << ray.d[1] << "," <<  ray.d[2] << ")";
+	//LOG(WARNING) << "REFLECT";
 	// Return contribution of specular reflection
 	const Normal3f &ns = isect.shading.n;
 	if (pdf > 0.f && !f.IsBlack() && AbsDot(wi, ns) != 0.f) {
@@ -377,7 +378,7 @@ Spectrum SamplerIntegrator::SpecularReflect(
 			rd.ryDirection =
 					wi - dwody + 2.f * Vector3f(Dot(wo, ns) * dndy + dDNdy * ns);
 		}
-		LOG(WARNING) << ";";
+		//LOG(WARNING) << ";";
 		return f * Li(rd, scene, sampler, arena, depth + 1) * AbsDot(wi, ns) /
 				pdf;
 	} else
@@ -394,9 +395,9 @@ Spectrum SamplerIntegrator::SpecularTransmit(
 	const BSDF &bsdf = *isect.bsdf;
 	Spectrum f = bsdf.Sample_f(wo, &wi, sampler.Get2D(), &pdf,
 			BxDFType(BSDF_TRANSMISSION | BSDF_SPECULAR));
-	LOG(WARNING) << "(" << ray.o[0] << "," << ray.o[1] << "," << ray.o[2]
-	             << ")::(" << ray.d[0] << "," << ray.d[1] << "," <<  ray.d[2] << ");";
-	LOG(WARNING) << "TRANSMIT";
+	//LOG(WARNING) << "(" << ray.o[0] << "," << ray.o[1] << "," << ray.o[2]
+	//             << ")::(" << ray.d[0] << "," << ray.d[1] << "," <<  ray.d[2] << ");";
+	//LOG(WARNING) << "TRANSMIT";
 	Spectrum L = Spectrum(0.f);
 	if (pdf > 0.f && !f.IsBlack() && AbsDot(wi, ns) != 0.f) {
 		// Compute ray differential _rd_ for specular transmission

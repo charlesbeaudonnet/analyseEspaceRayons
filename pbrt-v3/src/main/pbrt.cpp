@@ -39,6 +39,7 @@
 #include "api.h"
 #include "parser.h"
 #include "parallel.h"
+#include "logBE.h"
 #include <glog/logging.h>
 #include <rayPathParser.hpp>
 
@@ -72,6 +73,18 @@ Reformatting options:
   --toply              Print a reformatted version of the input file(s) to
                        standard output and convert all triangle meshes to
                        PLY files. Does not render an image.
+Logging options (BE):
+  --log <[n[m[dos]][pP]]>	--log: Create a log file in which data will
+  								be stored during the rendering process.
+  								The stored data can be configured using the
+  								following options :-
+  							n: normal vector corresponding to each pixel.
+  							o: each object.
+  							d: diffuse color for each object.
+  							s: specular color for each object.
+  							m: d,o,s.
+  							p: each path used during the rendering process.
+  							P: each path used during the rendering process.
 )");
 }
 
@@ -130,6 +143,27 @@ int main(int argc, char *argv[]) {
 				!strcmp(argv[i], "-h")) {
 			usage();
 			return 0;
+		} else if (!strcmp(argv[i], "--log") || !strcmp(argv[i], "-log")) {
+			options.log = true; i++;
+			if (i != argc){
+				if(strchr(argv[i],(int)'n'))
+					options.normal=true;
+				if(strchr(argv[i],(int)'d'))
+					options.dif=true;
+				if(strchr(argv[i],(int)'o'))
+					options.obj=true;
+				if(strchr(argv[i],(int)'s'))
+					options.spec=true;
+				if(strchr(argv[i],(int)'m')){
+					options.dif=true;
+					options.obj=true;
+					options.spec=true;
+				}
+				if(strchr(argv[i],(int)'p'))
+					options.path=true;
+				if(strchr(argv[i],(int)'P'))
+					options.col=true;
+			}
 		} else
 			filenames.push_back(argv[i]);
 	}
@@ -142,6 +176,8 @@ int main(int argc, char *argv[]) {
 		LOG(INFO) << "Running debug build";
 		printf("*** DEBUG BUILD ***\n");
 #endif // !NDEBUG
+		if(options.log)
+			logInit("test.txt",options);
 		printf(
 				"Copyright (c)1998-2016 Matt Pharr, Greg Humphreys, and Wenzel "
 				"Jakob.\n");
@@ -163,7 +199,9 @@ int main(int argc, char *argv[]) {
 				Error("Couldn't open scene file \"%s\"", f.c_str());
 	}
 	pbrtCleanup();
-	rayPathParser * rpp = new rayPathParser();
-	rpp->parseFile();
+	//rayPathParser * rpp = new rayPathParser();
+	//rpp->parseFile();
+	if(options.log)
+		logClose();
 	return 0;
 }

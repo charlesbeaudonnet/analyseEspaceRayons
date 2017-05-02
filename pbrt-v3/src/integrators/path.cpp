@@ -41,6 +41,7 @@
 #include "interaction.h"
 #include "paramset.h"
 #include "scene.h"
+#include "logBE.h"
 #include "stats.h"
 
 namespace pbrt {
@@ -90,8 +91,8 @@ Spectrum PathIntegrator::Li(const RayDifferential &r, const Scene &scene,
 		Float etaScale = 1;
 		for (bounces = 0;; ++bounces) {
 			//--------------
-
-			LOG(WARNING) << "(" << ray.o[0] << "," << ray.o[1] << "," << ray.o[2] << ")::(" << ray.d[0] << "," << ray.d[1] << "," <<  ray.d[2] << ")";
+			log(ray.o); log("::"); log(ray.d);
+			//LOG(WARNING) << "(" << ray.o[0] << "," << ray.o[1] << "," << ray.o[2] << ")::(" << ray.d[0] << "," << ray.d[1] << "," <<  ray.d[2] << ")";
 			//--------------
 			// Find next path vertex and accumulate contribution
 			VLOG(2)  << "Path tracer bounce " << bounces << ", current L = " << L
@@ -198,11 +199,11 @@ Spectrum PathIntegrator::Li(const RayDifferential &r, const Scene &scene,
 				beta /= 1 - q;
 				DCHECK(!std::isinf(beta.y()));
 			}
-			LOG(WARNING) << ";";
+			log(";");
 		}
 		ReportValue(pathLength, bounces);
-		LOG(WARNING) << ";RGB::" << L.ToRGBSpectrum().toStr();
-		LOG(WARNING) << "}\n";
+		log(";RGB::"); log(L.ToRGBSpectrum());
+		log("}\n");
 		return L;
 //	}
 }
