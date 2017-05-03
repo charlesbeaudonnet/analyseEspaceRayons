@@ -90,7 +90,7 @@ Logging options (BE):
 
 // main program
 int main(int argc, char *argv[]) {
-	google::SetLogDestination(google::GLOG_WARNING,"./rayPath.WARNING" );
+	//google::SetLogDestination(google::GLOG_WARNING,"./rayPath.WARNING" );
 	google::InitGoogleLogging(argv[0]);
 	FLAGS_stderrthreshold = 2; // Warning and above.
 	Options options;
@@ -189,7 +189,6 @@ int main(int argc, char *argv[]) {
 		fflush(stdout);
 	}
 	pbrtInit(options);
-	printf("%d\n", true);
 	// Process scene description
 	if (filenames.empty()) {
 		// Parse scene from standard input

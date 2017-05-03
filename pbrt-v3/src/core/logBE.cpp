@@ -1,9 +1,9 @@
 #include "logBE.h"
 
 std::ofstream fileBE;
-unsigned char logOptions;
+OptionsBE logOptions;
 
-void logInit(const char* filename, pbrt::Options opt){
+void logInit(std::string filename, pbrt::Options opt){
 	if(opt.log) logOptions|=LOG_LOGGING;
 	if(opt.normal) logOptions|=LOG_NORMAL;
 	if(opt.obj) logOptions|=LOG_OBJECT;

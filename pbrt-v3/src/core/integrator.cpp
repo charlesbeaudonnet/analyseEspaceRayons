@@ -266,7 +266,7 @@ void SamplerIntegrator::Render(const Scene &scene) {
 
 			// Loop over pixels in tile to render them
 			for (Point2i pixel : tileBounds) {
-				log("{"); log(pixel); /////////////////////////////////////////////////BE
+				log(LOG_LOGGING,"{",pixel); /////////////////////////////////////////////////BE
 				{
 					ProfilePhase pp(Prof::StartPixel);
 					tileSampler->StartPixel(pixel);
