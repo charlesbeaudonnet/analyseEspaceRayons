@@ -17,9 +17,6 @@ void logInit(const char* filename, pbrt::Options opt){
 void log(const char* text){
 	fileBE << text;
 }
-void log(int i){
-	fileBE << i;
-}
 void log(pbrt::Point3f p){
 	fileBE << "(" << p[0] << "," << p[1] << "," << p[2] << ")";
 }

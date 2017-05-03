@@ -144,6 +144,7 @@ int main(int argc, char *argv[]) {
 			usage();
 			return 0;
 		} else if (!strcmp(argv[i], "--log") || !strcmp(argv[i], "-log")) {
+			options.nThreads = 1;
 			options.log = true; i++;
 			if (i != argc){
 				if(strchr(argv[i],(int)'n'))
@@ -188,6 +189,7 @@ int main(int argc, char *argv[]) {
 		fflush(stdout);
 	}
 	pbrtInit(options);
+	printf("%d\n", true);
 	// Process scene description
 	if (filenames.empty()) {
 		// Parse scene from standard input
