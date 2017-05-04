@@ -145,9 +145,11 @@ int main(int argc, char *argv[]) {
 			return 0;
 		} else if (!strcmp(argv[i], "--log") || !strcmp(argv[i], "-log")) {
 			options.nThreads = 1;
-			options.log = true; i++;
-			if (i != argc){
-				if(strchr(argv[i],(int)'n'))
+			options.log = true;
+			if (i + 1 == argc){
+				options.col=true;
+			}else{
+				if(strchr(argv[++i],(int)'n'))
 					options.normal=true;
 				if(strchr(argv[i],(int)'d'))
 					options.dif=true;
@@ -177,8 +179,6 @@ int main(int argc, char *argv[]) {
 		LOG(INFO) << "Running debug build";
 		printf("*** DEBUG BUILD ***\n");
 #endif // !NDEBUG
-		if(options.log)
-			logInit("test.txt",options);
 		printf(
 				"Copyright (c)1998-2016 Matt Pharr, Greg Humphreys, and Wenzel "
 				"Jakob.\n");
@@ -195,14 +195,18 @@ int main(int argc, char *argv[]) {
 		ParseFile("-");
 	} else {
 		// Parse scene from input files
-		for (const std::string &f : filenames)
+		for (const std::string &f : filenames){
+			string ff=f.substr(f.find_last_of('/')+1);
+			if(options.log)
+				logInit(ff.substr(0, ff.find("."))+".txt",options);
 			if (!ParseFile(f))
 				Error("Couldn't open scene file \"%s\"", f.c_str());
+			if(options.log)
+			 	logClose();
+		}
 	}
 	pbrtCleanup();
 	//rayPathParser * rpp = new rayPathParser();
 	//rpp->parseFile();
-	if(options.log)
-		logClose();
 	return 0;
 }
