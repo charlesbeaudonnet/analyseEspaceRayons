@@ -12,14 +12,14 @@ void logInit(std::string filename, pbrt::Options opt){
 	if(opt.path) logOptions|=LOG_PATH;
 	if(opt.col) logOptions|=LOG_PATHCOLOR; 
 	fileBE.open(filename);
-	fileBE << "["
-	<< (((logOptions & LOG_NORMAL)==LOG_NORMAL)?"n":"")
-	<< (((logOptions & LOG_OBJECT)==LOG_OBJECT)?"o":"")
-	<< (((logOptions & LOG_DIFFUSE)==LOG_DIFFUSE)?"d":"")
-	<< (((logOptions & LOG_SPECULAR)==LOG_SPECULAR)?"s":"")
-	<< (((logOptions & LOG_PATH)==LOG_PATH)?"p":"")
-	<< (((logOptions & LOG_PATHCOLOR)==LOG_PATHCOLOR)?"P":"")
-	<< "]\n";
+	fileBE << "[";
+	log(LOG_NORMAL, "n");
+	log(LOG_OBJECT, "o");
+	log(LOG_DIFFUSE, "d");
+	log(LOG_SPECULAR, "s");
+	log(LOG_PATH, "p");
+	log(LOG_PATHCOLOR, "P");
+	fileBE << "]\n";
 }
 
 void log(const char* text){
