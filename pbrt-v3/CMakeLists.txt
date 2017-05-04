@@ -165,6 +165,7 @@ SET ( PBRT_CORE_SOURCE
   src/core/light.cpp
   src/core/lightdistrib.cpp
   src/core/logBE.cpp
+  src/core/matrix.cpp
   src/core/lowdiscrepancy.cpp
   src/core/material.cpp
   src/core/medium.cpp
@@ -205,6 +206,7 @@ SET ( PBRT_CORE_HEADERS
   src/core/interpolation.h
   src/core/light.h
   src/core/logBE.h
+  src/core/matrix.h
   src/core/lowdiscrepancy.h
   src/core/material.h
   src/core/medium.h

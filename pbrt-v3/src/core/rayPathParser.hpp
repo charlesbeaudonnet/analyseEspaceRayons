@@ -5,38 +5,26 @@
  *      Author: todo
  */
 
-/*
- *
- *
- * PIXEL :  LOG(WARNING) << "[" << pixel[0] << "," << pixel[1];
- *
- * SOMMET : LOG(WARNING) << "(" << ray.o[0] << "," << ray.o[1] << "," << ray.o[2] << ")::(" << ray.d[0] << "," << ray.d[1] << "," <<  ray.d[2] << ");";
- *
- * COULEUR : LOG(WARNING) << ";RGB::" << L.ToRGBSpectrum().toStr();
- *
- * FIN LE CHEMIN : LOG(WARNING) << "}\n";
- *
- *
- */
 #ifndef PBRT_V3_SRC_CORE_RAYPATHPARSER_HPP_
 #define PBRT_V3_SRC_CORE_RAYPATHPARSER_HPP_
 #include <regex>
 #include <sys/types.h>
 #include <dirent.h>
 #include <fstream>
+
+#include <matrix.h>
+
 using namespace std;
 class rayPathParser {
 public:
 	DIR * directory;
 	ofstream rayPath;
 	std::string filename;
-	rayPathParser();
+	rayPathParser(std::string fileName);
 	virtual ~rayPathParser();
-	char * findFile();
-	int renameFile();
 	void parseFile();
 };
-rayPathParser::rayPathParser() {
+rayPathParser::rayPathParser(std::string fileName) {
 
 	directory = opendir( "." );
 	if( directory == NULL ){
@@ -44,95 +32,88 @@ rayPathParser::rayPathParser() {
 		exit( -2 );
 	}
 
-	rayPath.open("rayPath.txt",std::ios::trunc);
+	rayPath.open("rayPath.txt",std::ios::app);
 	if( !rayPath.is_open() ){
 		perror( "Can't open rayPath.txt" );
 		exit( -2 );
 	}
 
-	filename = this->findFile();
+	filename = fileName;
 }
 
 rayPathParser::~rayPathParser() {
 	closedir(directory);
 	rayPath.close();
-	filename.~basic_string();
 }
-
-/*
- * Cette fonction à pour but trouver un fichier nommé rayPath.WARNING*******
- * retourne le nom du fichier ou la chaine vide si il n'existe pas
- */
-char * rayPathParser::findFile() {
-	std::regex re("rayPath\\.WARNING*");
-	std::cmatch m;
-	// Read the directory, and pull in every file that doesn't start with '.'
-	struct dirent *entry;
-	while( NULL != ( entry = readdir(directory) ) )
-	{
-		if( entry->d_name[0] != '.'  )
-		{
-			if(std::regex_search(entry->d_name,m,re))
-				break;
-		}
-	}
-	return entry->d_name;
-}
-
 /*
  * réécrit le fichier rayPath.txt avec la syntaxe voulut
  */
 void rayPathParser::parseFile() {
-	//On ouvre les deux fichiers
-	//On ecrit dans rayPath
-	//On lit dans reader ( rayPath.WARNING* )
-	ifstream reader(filename);
+	//On lit et ecrit dans rayPath
+	ifstream reader(filename.c_str());
+
+	//Contient les cordonnées du pixel [x,y]
+	std::string pixel;
+	int x,y;
+
+	//char en cours de traitement et position dans le texte
+	char current;
+	unsigned long long int octet = 0;
+
+	/* On créé la matrice des pixels (il faudra aménager tout ca quand on aura mit la taille
+	 * de l'image dans le fichier txt)
+	 */
+	Matrix mat(200,200);
+
+
 	if( !reader.is_open() ){
 		std::cerr << "Can't open " << filename<<"\n";
 		exit( -2 );
 	}
 
-	//On elimine le blabla du début du fichier
-	std::string line;
-	int numlig =0;
+	//On lit char par char
 	do{
-		getline(reader,line);
-	}while(line.substr(std::max<int>(line.size()- 4,0)).compare("[0,0") != 0);
-
-	std::string path = "{[0,0]";
-	std::string info;
-	int i,size;
-	do{
-		//On check si on est pas à la fin du fichier
+		//Si c'est la fin du fichier on sort
 		if(reader.eof())
 			break;
 
-		getline(reader,line);
+		//Sinon on prend un char
+		reader.get(current);
+		//Si on a une accolade alors on est au début d'un chemin
+		if(current == '{'){
+			//Sauvegarde le decalage dans le fichier suite à la recupération des coordonnees du pixel
+			int offset = 0;
 
-		//On prend le dernier mot de la phrase
-		stringstream ss(line);
-		while (ss >> info){};
-
-		//Si info == } alors on est à la fin d'un chemin donc on l'écrit dans rayPath
-		if( info.compare("}") == 0){
-			//std::cout << path << info << "\n";
-			rayPath << path << info << "\n";
-			//Reset de path pour le prochain chemin
-			path = "";
-		}else{
-			//Sinon on rajoute info au chemin
-
-			//Si path est vide alors info est une coordonnee de pixel de forme  :   [x,y
-			//Donc on l'écrit {[x,y]
-			if( path.compare("") == 0 )
-				path += "{" + info.substr(0,info.size()) + "]";
-			else
-				path += info.substr(0,info.size());
+			//On recupère les char jusqu'à ] (marqueur de fin de pixel)
+			do{
+				reader.get(current);
+				pixel += current;
+				offset++;
+			}while(current != ']' || reader.eof());
+			//On recupère X et Y sous forme de string
+			int i = 0;
+			std::string strX = "", strY = "";
+			for(; i < pixel.length() && pixel[i] != ','; i++){
+				if(isdigit(pixel[i])){
+					strX += pixel[i];
+				}
+			}
+			for(; i < pixel.length(); i++){
+				if(isdigit(pixel[i])){
+					strY += pixel[i];
+				}
+			}
+			x = atoi(strX.c_str());
+			y = atoi(strY.c_str());
+			//On ecrit sa position dans la matrice
+			mat.set(x,y,octet);
+			octet += offset;
+			pixel = "";
 		}
-
+		octet++;
 	}while(true);
-	std::remove("UNKNOWN.WARNING");
-	//std::remove(filename.c_str());
+
+	mat.display(filename);
 }
 
 #endif /* PBRT_V3_SRC_CORE_RAYPATHPARSER_HPP_ */
