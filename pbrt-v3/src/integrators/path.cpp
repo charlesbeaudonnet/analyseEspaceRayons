@@ -90,7 +90,7 @@ Spectrum PathIntegrator::Li(const RayDifferential &r, const Scene &scene,
 		// out of a medium and thus have their beta value increased.
 		Float etaScale = 1;
 		for (bounces = 0;; ++bounces) {
-			log(LOG_LOGGING,ray.o,"::",ray.d);
+			log(LOG_PATH | LOG_PATHCOLOR,ray.o,ray.d);
 			// Find next path vertex and accumulate contribution
 			VLOG(2)  << "Path tracer bounce " << bounces << ", current L = " << L
 			<< ", beta = " << beta;
@@ -186,6 +186,7 @@ Spectrum PathIntegrator::Li(const RayDifferential &r, const Scene &scene,
 				specularBounce = (flags & BSDF_SPECULAR) != 0;
 				ray = pi.SpawnRay(wi);
 			}
+			log(LOG_NORMAL,"->",isect.n);
 
 			// Possibly terminate the path with Russian roulette.
 			// Factor out radiance scaling due to refraction in rrBeta.
@@ -196,10 +197,10 @@ Spectrum PathIntegrator::Li(const RayDifferential &r, const Scene &scene,
 				beta /= 1 - q;
 				DCHECK(!std::isinf(beta.y()));
 			}
-			log(LOG_LOGGING, ";");
+			log(LOG_PATH | LOG_PATHCOLOR, ";");
 		}
 		ReportValue(pathLength, bounces);
-		log(LOG_LOGGING, ";RGB::"); log(LOG_LOGGING, L.ToRGBSpectrum());
+		log(LOG_PATHCOLOR, ";RGB:", L.ToRGBSpectrum());
 		log(LOG_LOGGING, "}\n");
 		return L;
 //	}

@@ -24,6 +24,7 @@ void log(const char* text);
 void log(pbrt::Point3f p);
 void log(pbrt::Point2i p);
 void log(pbrt::Vector3f p);
+void log(pbrt::Normal3f p);
 void log(pbrt::RGBSpectrum s);
 template<typename T>
 void log(T data){
@@ -32,7 +33,7 @@ void log(T data){
 }
 template<typename T,typename... Args>
 void log(OptionsBE opt, T first, Args... args){
-	if(opt == (opt & logOptions)){
+	if(opt & logOptions){
 		log(first);log(opt,args...);
 	}
 }

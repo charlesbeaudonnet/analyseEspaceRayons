@@ -26,12 +26,15 @@ void log(const char* text){
 	fileBE << text;
 }
 void log(pbrt::Point3f p){
-	fileBE << "(" << p[0] << "," << p[1] << "," << p[2] << ")";
+	fileBE << "[" << p[0] << "," << p[1] << "," << p[2] << "]";
 }
 void log(pbrt::Point2i p){
 	fileBE << "[" << p[0] << "," << p[1] << "]";
 }
 void log(pbrt::Vector3f p){
+	fileBE << "(" << p[0] << "," << p[1] << "," << p[2] << ")";
+}
+void log(pbrt::Normal3f p){
 	fileBE << "(" << p[0] << "," << p[1] << "," << p[2] << ")";
 }
 void log(pbrt::RGBSpectrum s){
