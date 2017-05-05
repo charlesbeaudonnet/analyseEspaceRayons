@@ -42,7 +42,7 @@ void Matrix::display(std::string filename)
 		perror( "Can't open rayPath.txt" );
 		exit( -2 );
 	}
-	output << "\n\n";
+	output << "\nMATRIX\n";
 	for(int i = 0;i < row;++i)
 	{
 		for(int j = 0;j < col;++j)
