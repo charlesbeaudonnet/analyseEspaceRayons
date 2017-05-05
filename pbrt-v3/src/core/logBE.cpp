@@ -1,7 +1,10 @@
 #include "logBE.h"
+#include <map>
 
 std::ofstream fileBE;
 OptionsBE logOptions;
+
+std::map<pbrt::Shape*,int> shapeMap;
 
 void logInit(std::string filename, pbrt::Options opt){
 	if(opt.log) logOptions|=LOG_LOGGING;
@@ -20,6 +23,7 @@ void logInit(std::string filename, pbrt::Options opt){
 	log(LOG_PATH, "p");
 	log(LOG_PATHCOLOR, "P");
 	fileBE << "]\n";
+	shapeMap.clear();
 }
 
 void log(const char* text){
@@ -41,6 +45,13 @@ void log(pbrt::RGBSpectrum s){
 	static float rgb[3];
 	s.ToRGB(rgb);
 	fileBE << "[" << rgb[0] << "," << rgb[1] << "," << rgb[2] << "]";
+}
+void log(pbrt::Shape *s){
+	if(shapeMap.find(s) == shapeMap.end()){
+		printf("vroum\n");
+		shapeMap[s]=7;
+	}
+	fileBE << shapeMap[s];
 }
 
 void logClose(){

@@ -187,7 +187,7 @@ Spectrum PathIntegrator::Li(const RayDifferential &r, const Scene &scene,
 				ray = pi.SpawnRay(wi);
 			}
 			log(LOG_NORMAL,"->",isect.n);
-
+			log(LOG_OBJECT,isect.shape);
 			// Possibly terminate the path with Russian roulette.
 			// Factor out radiance scaling due to refraction in rrBeta.
 			Spectrum rrBeta = beta * etaScale;

@@ -1,9 +1,16 @@
 #ifndef LOGBE_H
 #define LOGBE_H
 
+
+/**
+{[pixelX,pixelY][pointX,pointY,pointZ](dirX,dirY,dirZ)->(nX,nY,nZ)OBJ; ... ;RGB:(r,g,b)}
+*/
+
+
 #include <fstream>
 #include "geometry.h"
 #include "spectrum.h"
+#include "shape.h"
 #include "pbrt.h"
 
 #define LOG_LOGGING     1
