@@ -147,7 +147,7 @@ int main(int argc, char *argv[]) {
 			options.nThreads = 1;
 			options.log = true;
 			if (i + 1 == argc){
-				options.col=true;
+				options.dir=true;
 			}else{
 				if(strchr(argv[++i],(int)'n'))
 					options.normal=true;
@@ -165,7 +165,7 @@ int main(int argc, char *argv[]) {
 				if(strchr(argv[i],(int)'p'))
 					options.path=true;
 				if(strchr(argv[i],(int)'P'))
-					options.col=true;
+					options.dir=true;
 			}
 		} else
 			filenames.push_back(argv[i]);
