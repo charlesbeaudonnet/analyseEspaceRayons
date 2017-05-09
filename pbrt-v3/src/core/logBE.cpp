@@ -3,7 +3,6 @@
 #include <iostream>
 std::ofstream fileBE;
 OptionsBE logOptions;
-
 std::map<const pbrt::Shape*,int> shapeMap;
 
 void logInit(std::string filename, pbrt::Options opt){
@@ -13,7 +12,7 @@ void logInit(std::string filename, pbrt::Options opt){
 	if(opt.dif) logOptions|=LOG_DIFFUSE;
 	if(opt.spec) logOptions|=LOG_SPECULAR;
 	if(opt.path) logOptions|=LOG_PATH;
-	if(opt.dir) logOptions|=LOG_PATHDIR; 
+	if(opt.dir) logOptions|=LOG_PATHDIR;
 	fileBE.open(filename);
 	fileBE << "[";
 	log(LOG_NORMAL, "n");

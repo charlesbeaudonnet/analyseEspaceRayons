@@ -35,6 +35,12 @@ inline void log(T data){
 		fileBE << data;
 }
 template <>
+inline void log(pbrt::RGBSpectrum s){
+	static float rgb[3];
+	s.ToRGB(rgb);
+	fileBE << "[" << rgb[0] << "," << rgb[1] << "," << rgb[2] << "]";
+}
+template <>
 inline void log(const pbrt::Shape* s){
 	if(shapeMap.find(s) == shapeMap.end()){
 		shapeMap[s]=shapeMap.size();

@@ -542,11 +542,11 @@ inline std::ostream &operator<<(std::ostream &os, const Point3<T> &v) {
     return os;
 }
 
-template <>
-inline std::ostream &operator<<(std::ostream &os, const Point3<Float> &v) {
-    os << StringPrintf("[%f,%f,%f]", v.x, v.y, v.z);
-    return os;
-}
+//template <>
+//inline std::ostream &operator<<(std::ostream &os, const Point3<Float> &v) {
+//    os << StringPrintf("[%f,%f,%f]", v.x, v.y, v.z);
+//    return os;
+//}
 
 typedef Point2<Float> Point2f;
 typedef Point2<int> Point2i;
