@@ -214,3 +214,22 @@ export :
 je sais pas : rtfm
 
 ls -l /lib64/*
+
+# compte rendu 2 mai
+
+Trop de problèmes avec radium, on abandonne.
+
+nouveau todo :
+
+-interface en Qt ou gl qui affiche l'image et 
+permet de cliquer sur un pixel pour afficher ses infos
+
+-rajouter plus d'informations dans les logs
+etrajouter des options a l'exe de pbrt pour choisir quelles informations logger
+
+-revoir le stockage des logs pour pouvoir y accéder plus rapidement
+
+
+# compte rendu 9 mai
+
+Conseils sur le code.
