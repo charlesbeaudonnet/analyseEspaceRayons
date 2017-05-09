@@ -68,11 +68,6 @@ void PathIntegrator::Preprocess(const Scene &scene, Sampler &sampler) {
 Spectrum PathIntegrator::Li(const RayDifferential &r, const Scene &scene,
 		Sampler &sampler, MemoryArena &arena,
 		int depth) const {
-	/*std::ofstream fichier;
-	fichier.open("./paths.txt",std::ios_base::app);
-	if(!fichier){
-		std::cerr << "Can't open paths.txt" << std::endl;
-	}else{*/
 
 		Float couleur[3];
 		//----------
@@ -90,8 +85,8 @@ Spectrum PathIntegrator::Li(const RayDifferential &r, const Scene &scene,
 		// out of a medium and thus have their beta value increased.
 		Float etaScale = 1;
 		for (bounces = 0;; ++bounces) {
-			log(LOG_PATH | LOG_PATHDIR,ray.o);
-			log(LOG_PATHDIR,ray.d);
+			log(LOG_PATH | LOG_PATHDIR,"p",ray.o);
+			log(LOG_PATHDIR,"D",ray.d);
 			// Find next path vertex and accumulate contribution
 			VLOG(2)  << "Path tracer bounce " << bounces << ", current L = " << L
 			<< ", beta = " << beta;
@@ -201,10 +196,9 @@ Spectrum PathIntegrator::Li(const RayDifferential &r, const Scene &scene,
 				beta /= 1 - q;
 				DCHECK(!std::isinf(beta.y()));
 			}
-			log(LOG_PATH | LOG_PATHDIR, ";");
 		}
 		ReportValue(pathLength, bounces);
-		log(LOG_PATH | LOG_PATHDIR, ";RGB", L.ToRGBSpectrum());
+		log(LOG_PATH | LOG_PATHDIR, "C", L.ToRGBSpectrum());
 		log(LOG_LOGGING, "}\n");
 		return L;
 //	}
