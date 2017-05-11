@@ -292,10 +292,11 @@ void SamplerIntegrator::Render(const Scene &scene) {
 							1 / std::sqrt((Float)tileSampler->samplesPerPixel));
 					++nCameraRays;
 
+					log(LOG_PATH | LOG_PATHDIR,"p",ray.o);
+					log(LOG_PATHDIR,"d",ray.d);
 					// Evaluate radiance along camera ray
 					Spectrum L(0.f);
 					if (rayWeight > 0) L = Li(ray, scene, *tileSampler, arena);
-
 					// Issue warning if unexpected radiance value returned
 					if (L.HasNaNs()) {
 						LOG(ERROR) << StringPrintf(

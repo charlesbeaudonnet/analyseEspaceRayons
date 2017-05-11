@@ -39,7 +39,7 @@ void Matrix::display(std::string filename)
 {
 	std::ofstream output(filename,std::ios::app);
 	if( !output.is_open() ){
-		perror( "Can't open rayPath.txt" );
+        perror( "Can't open file.txt" );
 		exit( -2 );
 	}
 	output << "\nMATRIX\n";

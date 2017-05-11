@@ -90,7 +90,6 @@ Logging options (BE):
 
 // main program
 int main(int argc, char *argv[]) {
-	//google::SetLogDestination(google::GLOG_WARNING,"./rayPath.WARNING" );
 	google::InitGoogleLogging(argv[0]);
 	FLAGS_stderrthreshold = 2; // Warning and above.
 	Options options;
@@ -147,7 +146,7 @@ int main(int argc, char *argv[]) {
 			options.nThreads = 1;
 			options.log = true;
 			if (i + 1 == argc){
-				options.col=true;
+				options.dir=true;
 			}else{
 				if(strchr(argv[++i],(int)'n'))
 					options.normal=true;
@@ -165,7 +164,7 @@ int main(int argc, char *argv[]) {
 				if(strchr(argv[i],(int)'p'))
 					options.path=true;
 				if(strchr(argv[i],(int)'P'))
-					options.col=true;
+					options.dir=true;
 			}
 		} else
 			filenames.push_back(argv[i]);

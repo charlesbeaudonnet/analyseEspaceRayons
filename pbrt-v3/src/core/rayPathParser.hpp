@@ -32,18 +32,11 @@ rayPathParser::rayPathParser(std::string fileName) {
 		exit( -2 );
 	}
 
-	rayPath.open("rayPath.txt",std::ios::app);
-	if( !rayPath.is_open() ){
-		perror( "Can't open rayPath.txt" );
-		exit( -2 );
-	}
-
 	filename = fileName;
 }
 
 rayPathParser::~rayPathParser() {
-	closedir(directory);
-	rayPath.close();
+    closedir(directory);
 }
 /*
  * réécrit le fichier rayPath.txt avec la syntaxe voulut
@@ -89,23 +82,11 @@ void rayPathParser::parseFile() {
 				reader.get(current);
 				pixel += current;
 				offset++;
-			}while(current != ']' || reader.eof());
-			//On recupère X et Y sous forme de string
-			int i = 0;
-			std::string strX = "", strY = "";
-			for(; i < pixel.length() && pixel[i] != ','; i++){
-				if(isdigit(pixel[i])){
-					strX += pixel[i];
-				}
-			}
-			for(; i < pixel.length(); i++){
-				if(isdigit(pixel[i])){
-					strY += pixel[i];
-				}
-			}
-			x = atoi(strX.c_str());
-			y = atoi(strY.c_str());
-			//On ecrit sa position dans la matrice
+            }while(current != ']' || reader.eof());
+
+            sscanf(pixel.c_str(),"[%d,%d]",&x,&y);
+
+            //On ecrit sa position dans la matrice
 			mat.set(x,y,octet);
 			octet += offset;
 			pixel = "";

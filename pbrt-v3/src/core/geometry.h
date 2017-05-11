@@ -152,13 +152,13 @@ class Vector2 {
 
 template <typename T>
 inline std::ostream &operator<<(std::ostream &os, const Vector2<T> &v) {
-    os << "[ " << v.x << ", " << v.y << " ]";
+    os << "[" << v.x << "," << v.y << "]";
     return os;
 }
 
 template <>
 inline std::ostream &operator<<(std::ostream &os, const Vector2<Float> &v) {
-    os << StringPrintf("[ %f, %f ]", v.x, v.y);
+    os << StringPrintf("[%f,%f]", v.x, v.y);
     return os;
 }
 
@@ -267,13 +267,13 @@ class Vector3 {
 
 template <typename T>
 inline std::ostream &operator<<(std::ostream &os, const Vector3<T> &v) {
-    os << "[ " << v.x << ", " << v.y << ", " << v.z << " ]";
+    os << "(" << v.x << "," << v.y << "," << v.z << ")";
     return os;
 }
 
 template <>
 inline std::ostream &operator<<(std::ostream &os, const Vector3<Float> &v) {
-    os << StringPrintf("[ %f, %f, %f ]", v.x, v.y, v.z);
+    os << StringPrintf("(%f,%f,%f)", v.x, v.y, v.z);
     return os;
 }
 
@@ -406,13 +406,13 @@ class Point2 {
 
 template <typename T>
 inline std::ostream &operator<<(std::ostream &os, const Point2<T> &v) {
-    os << "[ " << v.x << ", " << v.y << " ]";
+    os << "[" << v.x << "," << v.y << "]";
     return os;
 }
 
 template <>
 inline std::ostream &operator<<(std::ostream &os, const Point2<Float> &v) {
-    os << StringPrintf("[ %f, %f ]", v.x, v.y);
+    os << StringPrintf("[%f,%f]", v.x, v.y);
     return os;
 }
 
@@ -538,15 +538,15 @@ class Point3 {
 
 template <typename T>
 inline std::ostream &operator<<(std::ostream &os, const Point3<T> &v) {
-    os << "[ " << v.x << ", " << v.y << ", " << v.z << " ]";
+    os << "[" << v.x << "," << v.y << "," << v.z << "]";
     return os;
 }
 
-template <>
-inline std::ostream &operator<<(std::ostream &os, const Point3<Float> &v) {
-    os << StringPrintf("[ %f, %f, %f ]", v.x, v.y, v.z);
-    return os;
-}
+//template <>
+//inline std::ostream &operator<<(std::ostream &os, const Point3<Float> &v) {
+//    os << StringPrintf("[%f,%f,%f]", v.x, v.y, v.z);
+//    return os;
+//}
 
 typedef Point2<Float> Point2f;
 typedef Point2<int> Point2i;
@@ -663,13 +663,13 @@ class Normal3 {
 
 template <typename T>
 inline std::ostream &operator<<(std::ostream &os, const Normal3<T> &v) {
-    os << "[ " << v.x << ", " << v.y << ", " << v.z << " ]";
+    os << "(" << v.x << "," << v.y << "," << v.z << ")";
     return os;
 }
 
 template <>
 inline std::ostream &operator<<(std::ostream &os, const Normal3<Float> &v) {
-    os << StringPrintf("[ %f, %f, %f ]", v.x, v.y, v.z);
+    os << StringPrintf("(%f,%f,%f)", v.x, v.y, v.z);
     return os;
 }
 
@@ -737,7 +737,7 @@ class Bounds2 {
         *rad = Inside(*c, *this) ? Distance(*c, pMax) : 0;
     }
     friend std::ostream &operator<<(std::ostream &os, const Bounds2<T> &b) {
-        os << "[ " << b.pMin << " - " << b.pMax << " ]";
+        os << "[" << b.pMin << "-" << b.pMax << "]";
         return os;
     }
 
@@ -818,7 +818,7 @@ class Bounds3 {
     inline bool IntersectP(const Ray &ray, const Vector3f &invDir,
                            const int dirIsNeg[3]) const;
     friend std::ostream &operator<<(std::ostream &os, const Bounds3<T> &b) {
-        os << "[ " << b.pMin << " - " << b.pMax << " ]";
+        os << "[" << b.pMin << "-" << b.pMax << "]";
         return os;
     }
 

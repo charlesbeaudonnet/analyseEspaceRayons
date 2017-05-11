@@ -156,7 +156,7 @@ struct Options {
     bool quiet = false;
     bool cat = false, toPly = false;
     bool log = false, normal = false, dif = false, obj = false,
-         spec = false, path = false, col = false; 
+         spec = false, path = false, dir = false; 
     std::string imageFile;
 };
 
