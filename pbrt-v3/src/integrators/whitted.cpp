@@ -88,8 +88,12 @@ Spectrum WhittedIntegrator::Li(const RayDifferential &ray, const Scene &scene,
 		L += SpecularReflect(ray, isect, scene, sampler, arena, depth);
 		L += SpecularTransmit(ray, isect, scene, sampler, arena, depth);
 	}
-	log(LOG_PATH | LOG_PATHDIR, "C", L.ToRGBSpectrum());
-	log(LOG_LOGGING,"\n");
+	if(logOptions==(LOG_NORMAL|LOG_LOGGING))
+		log(LOG_NORMAL,bounces==0?"":"\n");
+	else{
+		log(LOG_PATH | LOG_PATHDIR, "C", L.ToRGBSpectrum());
+		log(LOG_LOGGING,"\n");
+	}
 	return L;
 }
 
