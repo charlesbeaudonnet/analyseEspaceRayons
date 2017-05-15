@@ -330,7 +330,7 @@ void SamplerIntegrator::Render(const Scene &scene) {
 					// value
 					arena.Reset();
 				} while (tileSampler->StartNextSample());
-
+				log(LOG_LOGGING, "}\n");
 			}
 			LOG(INFO) << "Finished image tile " << tileBounds;
 

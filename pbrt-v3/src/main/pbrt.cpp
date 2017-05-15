@@ -74,7 +74,7 @@ Reformatting options:
                        standard output and convert all triangle meshes to
                        PLY files. Does not render an image.
 Logging options (BE):
-  --log <[n[m[dos]][pP]]>	--log: Create a log file in which data will
+  --log <[n][m|[d][o][s]][p|P]]>	--log: Create a log file in which data will
   								be stored during the rendering process.
   								The stored data can be configured using the
   								following options :-

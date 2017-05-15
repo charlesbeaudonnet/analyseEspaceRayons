@@ -1,7 +1,7 @@
 #ifndef LOGBE_H
 #define LOGBE_H
 /**
-{[pixelX,pixelY][pointX,pointY,pointZ](dirX,dirY,dirZ)->(nX,nY,nZ)OBJ; ... ;RGB:(r,g,b)}
+{[pixelX,pixelY]p[pointX,pointY,pointZ]d(dirX,dirY,dirZ)N(nX,nY,nZ)OxC(r,g,b)}
 */
 #include <iostream>
 #include <map>
@@ -12,13 +12,13 @@
 #include "shape.h"
 #include "pbrt.h"
 
-#define LOG_LOGGING		1
-#define LOG_NORMAL		2
-#define LOG_OBJECT		4
-#define LOG_DIFFUSE		8
-#define LOG_SPECULAR	16
-#define LOG_PATH		32
-#define LOG_PATHDIR		64
+#define LOG_LOGGING		1<<0
+#define LOG_NORMAL		1<<1
+#define LOG_OBJECT		1<<2
+#define LOG_DIFFUSE		1<<3
+#define LOG_SPECULAR	1<<4
+#define LOG_PATH		1<<5
+#define LOG_PATHDIR		1<<6
 
 //namespace LogBE{
 
