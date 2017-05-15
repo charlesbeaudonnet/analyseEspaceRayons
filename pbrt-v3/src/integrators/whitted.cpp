@@ -36,6 +36,7 @@
 #include "interaction.h"
 #include "camera.h"
 #include "film.h"
+#include "logBE.h"
 #include "paramset.h"
 
 namespace pbrt {
@@ -49,7 +50,8 @@ Spectrum WhittedIntegrator::Li(const RayDifferential &ray, const Scene &scene,
 	SurfaceInteraction isect;
 	if (!scene.Intersect(ray, &isect)) {
 		for (const auto &light : scene.lights) L += light->Le(ray);
-		LOG(WARNING) << ";RGB::" << L.ToRGBSpectrum().toStr();
+		log(LOG_OBJECT, "sky");
+		log(LOG_PATH | LOG_PATHDIR, "C", L.ToRGBSpectrum());
 		return L;
 	}
 	// Initialize common variables for Whitted integrator
@@ -60,10 +62,10 @@ Spectrum WhittedIntegrator::Li(const RayDifferential &ray, const Scene &scene,
 	isect.ComputeScatteringFunctions(ray, arena);
 	if (!isect.bsdf)
 		return Li(isect.SpawnRay(ray.d), scene, sampler, arena, depth);
-	//LOG 
-	if(depth)
-		LOG(WARNING) << ";";
-	LOG(WARNING) << "(" << ray.o[0] << "," << ray.o[1] << "," << ray.o[2] << ")";
+
+	log(LOG_PATH | LOG_PATHDIR,"p",ray.o);
+	log(LOG_PATHDIR,"d",ray.d);
+	log(LOG_NORMAL,"N",isect.n);
 	
 	// Compute emitted light if ray hit an area light source
 	L += isect.Le(wo);
@@ -86,7 +88,8 @@ Spectrum WhittedIntegrator::Li(const RayDifferential &ray, const Scene &scene,
 		L += SpecularReflect(ray, isect, scene, sampler, arena, depth);
 		L += SpecularTransmit(ray, isect, scene, sampler, arena, depth);
 	}
-	LOG(WARNING) << ";RGB::" << L.ToRGBSpectrum().toStr();
+	log(LOG_PATH | LOG_PATHDIR, "C", L.ToRGBSpectrum());
+	log(LOG_LOGGING,"\n");
 	return L;
 }
 

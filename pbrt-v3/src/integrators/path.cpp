@@ -200,8 +200,12 @@ Spectrum PathIntegrator::Li(const RayDifferential &r, const Scene &scene,
 			}
 		}
 		ReportValue(pathLength, bounces);
-		log(LOG_PATH | LOG_PATHDIR, "C", L.ToRGBSpectrum(),"\n");
-		log(~(LOG_PATH | LOG_PATHDIR | LOG_OBJECT), bounces==0?"":"\n");
+		if(logOptions==(LOG_NORMAL|LOG_LOGGING))
+			log(LOG_NORMAL,bounces==0?"":"\n");
+		else{
+			log(LOG_PATH | LOG_PATHDIR, "C", L.ToRGBSpectrum());
+			log(LOG_LOGGING,"\n");
+		}
 		return L;
 //	}
 }

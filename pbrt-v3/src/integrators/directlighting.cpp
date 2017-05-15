@@ -37,6 +37,7 @@
 #include "paramset.h"
 #include "camera.h"
 #include "film.h"
+#include "logBE.h"
 #include "stats.h"
 
 namespace pbrt {
@@ -68,13 +69,17 @@ Spectrum DirectLightingIntegrator::Li(const RayDifferential &ray,
     SurfaceInteraction isect;
     if (!scene.Intersect(ray, &isect)) {
         for (const auto &light : scene.lights) L += light->Le(ray);
+        log(LOG_OBJECT, "sky");
+        log(LOG_PATH | LOG_PATHDIR, "C", L.ToRGBSpectrum());
         return L;
     }
-    LOG(WARNING) << "coucou";
     // Compute scattering functions for surface interaction
     isect.ComputeScatteringFunctions(ray, arena);
     if (!isect.bsdf)
         return Li(isect.SpawnRay(ray.d), scene, sampler, arena, depth);
+    log(LOG_PATH | LOG_PATHDIR,"p",ray.o);
+    log(LOG_PATHDIR,"d",ray.d);
+    log(LOG_NORMAL,"N",isect.n);
     Vector3f wo = isect.wo;
     // Compute emitted light if ray hit an area light source
     L += isect.Le(wo);
@@ -92,8 +97,8 @@ Spectrum DirectLightingIntegrator::Li(const RayDifferential &ray,
         L += SpecularReflect(ray, isect, scene, sampler, arena, depth);
         L += SpecularTransmit(ray, isect, scene, sampler, arena, depth);
     }
-    LOG(WARNING) << "RGB::" << L.ToRGBSpectrum().toStr();
-    LOG(WARNING) << "}\n";
+    log(LOG_PATH | LOG_PATHDIR, "C", L.ToRGBSpectrum());
+    log(LOG_LOGGING,"\n");
     return L;
 }
 
