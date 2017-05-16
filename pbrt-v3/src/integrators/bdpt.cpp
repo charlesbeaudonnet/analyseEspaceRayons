@@ -40,6 +40,7 @@
 #include "progressreporter.h"
 #include "sampler.h"
 #include "stats.h"
+#include "logBE.h"
 
 namespace pbrt {
 
@@ -359,7 +360,7 @@ void BDPTIntegrator::Render(const Scene &scene) {
 					camera->film->GetFilmTile(tileBounds);
 
 			for (Point2i pPixel : tileBounds) {
-				LOG(WARNING) << "[" << pPixel[0] << "," << pPixel[1];
+				log(LOG_LOGGING, "{", pPixel);
 				tileSampler->StartPixel(pPixel);
 				if (!InsideExclusive(pPixel, pixelBounds))
 					continue;
@@ -439,6 +440,7 @@ void BDPTIntegrator::Render(const Scene &scene) {
 					filmTile->AddSample(pFilm, L);
 					arena.Reset();
 				} while (tileSampler->StartNextSample());
+				log(LOG_LOGGING,"}\n");
 			}
 			film->MergeFilmTile(std::move(filmTile));
 			reporter.Update();
@@ -549,14 +551,14 @@ Spectrum ConnectBDPT(
 	if (misWeightPtr) *misWeightPtr = misWeight;
 	for(int k = 0; k < t; k++){
 		o = cameraVertices[k].p();
-		LOG(WARNING) << "(" << o.x << "," << o.y << "," << o.z << ");";
+		log(LOG_PATH,o);
 	}
 	for(int k = s-1; k >= 0; k--){
 		o = lightVertices[k].p();
-		LOG(WARNING) << "(" << o.x << "," << o.y << "," << o.z << ");";
+		log(LOG_PATH,o);
 	}
-	LOG(WARNING) << ";RGB::" << L.ToRGBSpectrum().toStr();
-	LOG(WARNING) << "}\n";
+	log(LOG_PATH | LOG_PATHDIR, "C", L.ToRGBSpectrum());
+	log(LOG_LOGGING, "\n");
 	return L;
 }
 
@@ -590,6 +592,7 @@ BDPTIntegrator *CreateBDPTIntegrator(const ParamSet &params,
 
 	std::string lightStrategy = params.FindOneString("lightsamplestrategy",
 			"power");
+	log(LOG_LOGGING,"[bdpt]\n");
 	return new BDPTIntegrator(sampler, camera, maxDepth, visualizeStrategies,
 			visualizeWeights, pixelBounds, lightStrategy);
 }

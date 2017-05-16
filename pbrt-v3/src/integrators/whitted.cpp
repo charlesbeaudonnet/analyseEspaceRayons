@@ -52,6 +52,7 @@ Spectrum WhittedIntegrator::Li(const RayDifferential &ray, const Scene &scene,
 		for (const auto &light : scene.lights) L += light->Le(ray);
 		log(LOG_OBJECT, "sky");
 		log(LOG_PATH | LOG_PATHDIR, "C", L.ToRGBSpectrum());
+		log(LOG_LOGGING,"\n");
 		return L;
 	}
 	// Initialize common variables for Whitted integrator
@@ -89,7 +90,7 @@ Spectrum WhittedIntegrator::Li(const RayDifferential &ray, const Scene &scene,
 		L += SpecularTransmit(ray, isect, scene, sampler, arena, depth);
 	}
 	if(logOptions==(LOG_NORMAL|LOG_LOGGING))
-		log(LOG_NORMAL,bounces==0?"":"\n");
+		log(LOG_NORMAL,depth==0?"":"\n");
 	else{
 		log(LOG_PATH | LOG_PATHDIR, "C", L.ToRGBSpectrum());
 		log(LOG_LOGGING,"\n");
@@ -115,6 +116,7 @@ WhittedIntegrator *CreateWhittedIntegrator(
 				Error("Degenerate \"pixelbounds\" specified.");
 		}
 	}
+	log(LOG_LOGGING,"[whitted]\n");
 	return new WhittedIntegrator(maxDepth, camera, sampler, pixelBounds);
 }
 

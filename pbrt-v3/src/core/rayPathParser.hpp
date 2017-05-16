@@ -47,7 +47,7 @@ void rayPathParser::parseFile() {
 
 	//Contient les cordonnées du pixel [x,y]
 	std::string pixel;
-	int x,y;
+	int x,y,row,col,i=1;
 
 	//char en cours de traitement et position dans le texte
 	char current;
@@ -56,8 +56,15 @@ void rayPathParser::parseFile() {
 	/* On créé la matrice des pixels (il faudra aménager tout ca quand on aura mit la taille
 	 * de l'image dans le fichier txt)
 	 */
-	Matrix mat(200,200);
-
+	std::string line;
+	getline(reader,line);
+	octet += line.length()+1;
+	getline(reader,line);
+	octet += line.length()+1;
+	getline(reader,line);
+	octet += line.length()+1;
+	sscanf(line.c_str(),"[%d,%d]\n",&row,&col);
+	Matrix mat(row,col);
 
 	if( !reader.is_open() ){
 		std::cerr << "Can't open " << filename<<"\n";
