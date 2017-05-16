@@ -39,6 +39,7 @@
 #include "paramset.h"
 #include "scene.h"
 #include "stats.h"
+#include "logBE.h"
 
 namespace pbrt {
 
@@ -70,8 +71,7 @@ Spectrum VolPathIntegrator::Li(const RayDifferential &r, const Scene &scene,
     Float etaScale = 1;
 
     for (bounces = 0;; ++bounces) {
-    	LOG(WARNING) << "(" << ray.o[0] << "," << ray.o[1] << "," << ray.o[2] << ")::(" << ray.d[0] << "," << ray.d[1] << "," <<  ray.d[2] << ")";
-        // Intersect _ray_ with scene and store intersection in _isect_
+    	// Intersect _ray_ with scene and store intersection in _isect_
         SurfaceInteraction isect;
         bool foundIntersection = scene.Intersect(ray, &isect);
 
@@ -110,7 +110,10 @@ Spectrum VolPathIntegrator::Li(const RayDifferential &r, const Scene &scene,
             }
 
             // Terminate path if ray escaped or _maxDepth_ was reached
-            if (!foundIntersection || bounces >= maxDepth) break;
+            if (!foundIntersection || bounces >= maxDepth){
+                if(!foundIntersection)log(LOG_OBJECT,"sky");
+                break;
+            }
 
             // Compute scattering functions and skip over medium boundaries
             isect.ComputeScatteringFunctions(ray, arena, true);
@@ -173,7 +176,10 @@ Spectrum VolPathIntegrator::Li(const RayDifferential &r, const Scene &scene,
                 ray = pi.SpawnRay(wi);
             }
         }
-
+        log(LOG_PATH | LOG_PATHDIR,"p",ray.o);
+        log(LOG_PATHDIR,"d",ray.d);
+        log(LOG_NORMAL,"N",isect.n);
+        log(LOG_OBJECT,"O",isect.shape);
         // Possibly terminate the path with Russian roulette
         // Factor out radiance scaling due to refraction in rrBeta.
         Spectrum rrBeta = beta * etaScale;
@@ -183,11 +189,14 @@ Spectrum VolPathIntegrator::Li(const RayDifferential &r, const Scene &scene,
             beta /= 1 - q;
             DCHECK(std::isinf(beta.y()) == false);
         }
-        LOG(WARNING) << ";";
     }
     ReportValue(pathLength, bounces);
-    LOG(WARNING) << ";RGB::" << L.ToRGBSpectrum().toStr();
-    LOG(WARNING) << "}\n";
+    if(logOptions==(LOG_NORMAL|LOG_LOGGING))
+        log(LOG_NORMAL,bounces==0?"":"\n");
+    else{
+        log(LOG_PATH | LOG_PATHDIR, "C", L.ToRGBSpectrum());
+        log(LOG_LOGGING,"\n");
+    }
     return L;
 }
 
