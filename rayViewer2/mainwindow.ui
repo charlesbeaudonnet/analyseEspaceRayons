@@ -14,7 +14,7 @@
    </rect>
   </property>
   <property name="sizePolicy">
-   <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+   <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
     <horstretch>0</horstretch>
     <verstretch>0</verstretch>
    </sizepolicy>
@@ -32,7 +32,7 @@
    </size>
   </property>
   <property name="windowTitle">
-   <string>Ray viewer v1</string>
+   <string>Ray Viewer</string>
   </property>
   <widget class="QWidget" name="centralWidget">
    <widget class="QPushButton" name="butImg">
@@ -44,8 +44,57 @@
       <height>28</height>
      </rect>
     </property>
+    <property name="sizePolicy">
+     <sizepolicy hsizetype="Maximum" vsizetype="Fixed">
+      <horstretch>0</horstretch>
+      <verstretch>0</verstretch>
+     </sizepolicy>
+    </property>
     <property name="text">
      <string>Import image</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="loadedImg">
+    <property name="geometry">
+     <rect>
+      <x>918</x>
+      <y>6</y>
+      <width>471</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Cliquez sur Import image pour charger une image et ses logs.</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="pixLabel">
+    <property name="geometry">
+     <rect>
+      <x>820</x>
+      <y>50</y>
+      <width>120</width>
+      <height>41</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+   </widget>
+   <widget class="QTextBrowser" name="logLabel">
+    <property name="geometry">
+     <rect>
+      <x>820</x>
+      <y>420</y>
+      <width>571</width>
+      <height>391</height>
+     </rect>
+    </property>
+    <property name="html">
+     <string>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
+&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
+p, li { white-space: pre-wrap; }
+&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'MS Shell Dlg 2'; font-size:7.8pt; font-weight:400; font-style:normal;&quot;&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Modifier le niveau de traitement peut vous permettre d'acceder à des informations plus précises ou plus claires&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
     </property>
    </widget>
    <widget class="MouseLabel" name="imgLabel">
@@ -64,36 +113,10 @@
      <bool>true</bool>
     </property>
     <property name="frameShape">
-     <enum>QFrame::NoFrame</enum>
-    </property>
-    <property name="text">
-     <string/>
-    </property>
-   </widget>
-   <widget class="QLabel" name="pixLabel">
-    <property name="geometry">
-     <rect>
-      <x>820</x>
-      <y>48</y>
-      <width>120</width>
-      <height>28</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string/>
-    </property>
-   </widget>
-   <widget class="QLabel" name="Cadre">
-    <property name="geometry">
-     <rect>
-      <x>9</x>
-      <y>9</y>
-      <width>802</width>
-      <height>802</height>
-     </rect>
-    </property>
-    <property name="frameShape">
      <enum>QFrame::Box</enum>
+    </property>
+    <property name="lineWidth">
+     <number>1</number>
     </property>
     <property name="text">
      <string>Pas d'image</string>
@@ -102,42 +125,189 @@
      <set>Qt::AlignCenter</set>
     </property>
    </widget>
-   <widget class="QTextBrowser" name="logLabel">
+   <widget class="QLabel" name="ColorLabel">
     <property name="geometry">
      <rect>
-      <x>820</x>
-      <y>86</y>
-      <width>570</width>
-      <height>724</height>
-     </rect>
-    </property>
-    <property name="html">
-     <string>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
-&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
-p, li { white-space: pre-wrap; }
-&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'MS Shell Dlg 2'; font-size:7.8pt; font-weight:400; font-style:normal;&quot;&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Cliquez sur Import image pour charger une image et ses logs.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-    </property>
-   </widget>
-   <widget class="QLabel" name="loadedImg">
-    <property name="geometry">
-     <rect>
-      <x>923</x>
-      <y>10</y>
-      <width>400</width>
-      <height>28</height>
+      <x>940</x>
+      <y>50</y>
+      <width>271</width>
+      <height>41</height>
      </rect>
     </property>
     <property name="text">
-     <string>Pas d'image chargée</string>
+     <string/>
     </property>
    </widget>
-   <zorder>Cadre</zorder>
+   <widget class="QLabel" name="COLORBG">
+    <property name="geometry">
+     <rect>
+      <x>1240</x>
+      <y>50</y>
+      <width>85</width>
+      <height>41</height>
+     </rect>
+    </property>
+    <property name="autoFillBackground">
+     <bool>true</bool>
+    </property>
+    <property name="frameShape">
+     <enum>QFrame::Box</enum>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+   </widget>
+   <widget class="QLabel" name="PrecisionLabel">
+    <property name="geometry">
+     <rect>
+      <x>1260</x>
+      <y>110</y>
+      <width>71</width>
+      <height>21</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Precision :</string>
+    </property>
+    <property name="alignment">
+     <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+    </property>
+   </widget>
+   <widget class="QLabel" name="RawLabel">
+    <property name="geometry">
+     <rect>
+      <x>830</x>
+      <y>391</y>
+      <width>91</width>
+      <height>20</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Données Brutes</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="RawLevelLabel">
+    <property name="geometry">
+     <rect>
+      <x>1190</x>
+      <y>390</y>
+      <width>141</width>
+      <height>21</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Niveau de traitement :</string>
+    </property>
+    <property name="alignment">
+     <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+    </property>
+   </widget>
+   <widget class="QSpinBox" name="precisionSpin">
+    <property name="geometry">
+     <rect>
+      <x>1340</x>
+      <y>110</y>
+      <width>41</width>
+      <height>22</height>
+     </rect>
+    </property>
+    <property name="minimum">
+     <number>1</number>
+    </property>
+    <property name="maximum">
+     <number>7</number>
+    </property>
+    <property name="value">
+     <number>4</number>
+    </property>
+   </widget>
+   <widget class="QSpinBox" name="rawLevelSpin">
+    <property name="geometry">
+     <rect>
+      <x>1340</x>
+      <y>390</y>
+      <width>41</width>
+      <height>21</height>
+     </rect>
+    </property>
+    <property name="maximum">
+     <number>2</number>
+    </property>
+    <property name="value">
+     <number>2</number>
+    </property>
+   </widget>
+   <widget class="QComboBox" name="pathPicker">
+    <property name="geometry">
+     <rect>
+      <x>940</x>
+      <y>110</y>
+      <width>101</width>
+      <height>22</height>
+     </rect>
+    </property>
+   </widget>
+   <widget class="QLabel" name="tableLabel">
+    <property name="geometry">
+     <rect>
+      <x>830</x>
+      <y>110</y>
+      <width>111</width>
+      <height>21</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Choix du chemin :</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="labelMousePos">
+    <property name="geometry">
+     <rect>
+      <x>0</x>
+      <y>0</y>
+      <width>0</width>
+      <height>12</height>
+     </rect>
+    </property>
+    <property name="cursor">
+     <cursorShape>CrossCursor</cursorShape>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-color: rgba(255, 255, 255, 100)</string>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+   </widget>
+   <widget class="QTableView" name="DataTable">
+    <property name="geometry">
+     <rect>
+      <x>820</x>
+      <y>140</y>
+      <width>571</width>
+      <height>241</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QHeaderView::section { background-color:lightgray }</string>
+    </property>
+   </widget>
    <zorder>butImg</zorder>
-   <zorder>imgLabel</zorder>
+   <zorder>loadedImg</zorder>
    <zorder>pixLabel</zorder>
    <zorder>logLabel</zorder>
-   <zorder>loadedImg</zorder>
+   <zorder>imgLabel</zorder>
+   <zorder>ColorLabel</zorder>
+   <zorder>COLORBG</zorder>
+   <zorder>PrecisionLabel</zorder>
+   <zorder>RawLabel</zorder>
+   <zorder>RawLevelLabel</zorder>
+   <zorder>precisionSpin</zorder>
+   <zorder>rawLevelSpin</zorder>
+   <zorder>pathPicker</zorder>
+   <zorder>tableLabel</zorder>
+   <zorder>DataTable</zorder>
+   <zorder>labelMousePos</zorder>
   </widget>
  </widget>
  <layoutdefault spacing="6" margin="11"/>

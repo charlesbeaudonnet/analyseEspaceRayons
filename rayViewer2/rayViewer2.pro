@@ -25,9 +25,13 @@ DEFINES += QT_DEPRECATED_WARNINGS
 
 SOURCES += main.cpp\
         mainwindow.cpp \
-    mouselabel.cpp
+    mouselabel.cpp \
+    matrix.cpp \
+    parserapi.cpp
 
 HEADERS  += mainwindow.h \
-    mouselabel.h
+    mouselabel.h \
+    matrix.h \
+    parserapi.h
 
 FORMS    += mainwindow.ui
