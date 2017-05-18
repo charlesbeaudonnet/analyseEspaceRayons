@@ -155,8 +155,8 @@ struct Options {
     bool quickRender = false;
     bool quiet = false;
     bool cat = false, toPly = false;
-    bool log = false, normal = false, dif = false, obj = false,
-         spec = false, path = false, dir = false; 
+    bool log = false, normal = false, obj = false,
+         mat = false, path = false, dir = false; 
     std::string imageFile;
 };
 

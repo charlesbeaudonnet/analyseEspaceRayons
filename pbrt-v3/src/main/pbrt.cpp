@@ -74,15 +74,13 @@ Reformatting options:
                        standard output and convert all triangle meshes to
                        PLY files. Does not render an image.
 Logging options (BE):
-  --log <[n][m|[d][o][s]][p|P]]>	--log: Create a log file in which data will
+  --log <[n][m][o][p|P]]>	--log: Create a log file in which data will
   								be stored during the rendering process.
   								The stored data can be configured using the
   								following options :-
   							n: normal vector corresponding to each pixel.
   							o: each object.
-  							d: diffuse color for each object.
-  							s: specular color for each object.
-  							m: d,o,s.
+  							m: material for each object at the beginning of the log file
   							p: each path used during the rendering process.
   							P: each path used during the rendering process.
 )");
@@ -145,22 +143,14 @@ int main(int argc, char *argv[]) {
 		} else if (!strcmp(argv[i], "--log") || !strcmp(argv[i], "-log")) {
 			options.nThreads = 1;
 			options.log = true;
-			if (i + 1 == argc){
-				options.dir=true;
-			}else{
+			if (i + 1 == argc) options.dir=true;
+			else{
 				if(strchr(argv[++i],(int)'n'))
 					options.normal=true;
-				if(strchr(argv[i],(int)'d'))
-					options.dif=true;
 				if(strchr(argv[i],(int)'o'))
 					options.obj=true;
-				if(strchr(argv[i],(int)'s'))
-					options.spec=true;
-				if(strchr(argv[i],(int)'m')){
-					options.dif=true;
-					options.obj=true;
-					options.spec=true;
-				}
+				if(strchr(argv[i],(int)'m'))
+					options.mat=true;
 				if(strchr(argv[i],(int)'p'))
 					options.path=true;
 				if(strchr(argv[i],(int)'P'))

@@ -80,4 +80,9 @@ SubstrateMaterial *CreateSubstrateMaterial(const TextureParams &mp) {
                                  remapRoughness);
 }
 
+std::ostream &SubstrateMaterial::operator<<(std::ostream &os){
+   os << "Kd:" << this->Kd << "Ks:" << this->Ks;
+   return os;
+}
+
 }  // namespace pbrt

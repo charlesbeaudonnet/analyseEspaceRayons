@@ -65,7 +65,7 @@ class GlassMaterial : public Material {
     void ComputeScatteringFunctions(SurfaceInteraction *si, MemoryArena &arena,
                                     TransportMode mode,
                                     bool allowMultipleLobes) const;
-
+    std::ostream &operator<<(std::ostream &os);
   private:
     // GlassMaterial Private Data
     std::shared_ptr<Texture<Spectrum>> Kr, Kt;

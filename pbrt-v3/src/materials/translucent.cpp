@@ -97,4 +97,9 @@ TranslucentMaterial *CreateTranslucentMaterial(const TextureParams &mp) {
                                    bumpMap, remapRoughness);
 }
 
+std::ostream &TranslucentMaterial::operator<<(std::ostream &os){
+   os << "Kd:" << this->Kd << "Ks:" << this->Ks;
+   return os;
+}
+
 }  // namespace pbrt

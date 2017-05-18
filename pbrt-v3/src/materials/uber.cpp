@@ -126,4 +126,9 @@ UberMaterial *CreateUberMaterial(const TextureParams &mp) {
                             opacity, eta, bumpMap, remapRoughness);
 }
 
+std::ostream &UberMaterial::operator<<(std::ostream &os){
+   os << "Kd:" << this->Kd << "Ks:" << this->Ks << "Kr:" << this->Kr << "Kt:" << this->Kt << "opacity:" << this->opacity;
+   return os;
+}
+
 }  // namespace pbrt

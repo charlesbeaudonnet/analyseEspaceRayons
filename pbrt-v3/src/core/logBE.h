@@ -4,7 +4,6 @@
 {[pixelX,pixelY]p[pointX,pointY,pointZ]d(dirX,dirY,dirZ)N(nX,nY,nZ)OxC(r,g,b)}
 */
 #include <iostream>
-#include <map>
 
 #include <fstream>
 #include "geometry.h"
@@ -15,17 +14,16 @@
 #define LOG_LOGGING		1<<0
 #define LOG_NORMAL		1<<1
 #define LOG_OBJECT		1<<2
-#define LOG_DIFFUSE		1<<3
-#define LOG_SPECULAR	1<<4
-#define LOG_PATH		1<<5
-#define LOG_PATHDIR		1<<6
+#define LOG_MATERIAL	1<<3
+#define LOG_PATH		1<<4
+#define LOG_PATHDIR		1<<5
 
 //namespace LogBE{
 
 extern std::ofstream fileBE;
 typedef unsigned char OptionsBE;
 extern OptionsBE logOptions;
-extern std::map<const pbrt::Shape*,int> shapeMap;
+extern std::vector<const pbrt::Shape*> shapesBE;
 
 void logInit(std::string filename, pbrt::Options opt);
 
@@ -42,10 +40,11 @@ inline void log(pbrt::RGBSpectrum s){
 }
 template <>
 inline void log(const pbrt::Shape* s){
-	if(shapeMap.find(s) == shapeMap.end()){
-		shapeMap[s]=shapeMap.size();
-	}
-	fileBE << shapeMap[s];
+	unsigned i=0;
+	for(;i<shapesBE.size();i++)
+		if(shapesBE.at(i)==s)
+			break;
+	if(i!=shapesBE.size()) fileBE << i+1;
 }
 template<typename T,typename... Args>
 inline void log(OptionsBE opt, T first, Args... args){

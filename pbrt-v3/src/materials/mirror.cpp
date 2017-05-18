@@ -63,4 +63,9 @@ MirrorMaterial *CreateMirrorMaterial(const TextureParams &mp) {
     return new MirrorMaterial(Kr, bumpMap);
 }
 
+std::ostream &MirrorMaterial::operator<<(std::ostream &os){
+   os << "Kr:" << this->Kr;
+   return os;
+}
+
 }  // namespace pbrt

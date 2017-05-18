@@ -82,4 +82,9 @@ PlasticMaterial *CreatePlasticMaterial(const TextureParams &mp) {
     return new PlasticMaterial(Kd, Ks, roughness, bumpMap, remapRoughness);
 }
 
+std::ostream &PlasticMaterial::operator<<(std::ostream &os){
+   os << "Kd:" << this->Kd << "Ks:" << this->Ks;
+   return os;
+}
+
 }  // namespace pbrt

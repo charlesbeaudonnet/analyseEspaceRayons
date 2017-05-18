@@ -56,7 +56,7 @@ class MirrorMaterial : public Material {
     void ComputeScatteringFunctions(SurfaceInteraction *si, MemoryArena &arena,
                                     TransportMode mode,
                                     bool allowMultipleLobes) const;
-
+    std::ostream &operator<<(std::ostream &os);
   private:
     // MirrorMaterial Private Data
     std::shared_ptr<Texture<Spectrum>> Kr;
@@ -64,7 +64,6 @@ class MirrorMaterial : public Material {
 };
 
 MirrorMaterial *CreateMirrorMaterial(const TextureParams &mp);
-
 }  // namespace pbrt
 
 #endif  // PBRT_MATERIALS_MIRROR_H

@@ -40,6 +40,8 @@
 #include "medium.h"
 #include "stats.h"
 
+#include "logBE.h"
+
 // API Additional Headers
 #include "accelerators/bvh.h"
 #include "accelerators/kdtreeaccel.h"
@@ -724,6 +726,7 @@ Film *MakeFilm(const std::string &name, const ParamSet &paramSet,
     else
         Warning("Film \"%s\" unknown.", name.c_str());
     paramSet.ReportUnused();
+    log(LOG_LOGGING,"[",film->fullResolution.x,",",film->fullResolution.y,"]\n");
     return film;
 }
 
@@ -1182,6 +1185,8 @@ void pbrtShape(const std::string &name, const ParamSet &params) {
             }
             prims.push_back(
                 std::make_shared<GeometricPrimitive>(s, mtl, area, mi));
+            shapesBE.push_back(&*s);
+            log(LOG_MATERIAL,"[O",shapesBE.size(),"\n");
         }
     } else {
         // Initialize _prims_ and _areaLights_ for animated shape
@@ -1201,9 +1206,12 @@ void pbrtShape(const std::string &name, const ParamSet &params) {
         std::shared_ptr<Material> mtl = graphicsState.CreateMaterial(params);
         params.ReportUnused();
         MediumInterface mi = graphicsState.CreateMediumInterface();
-        for (auto s : shapes)
+        for (auto s : shapes){
             prims.push_back(
                 std::make_shared<GeometricPrimitive>(s, mtl, nullptr, mi));
+            shapesBE.push_back(&*s);
+            log(LOG_MATERIAL,"[O",shapesBE.size(),"\n");
+        }
 
         // Create single _TransformedPrimitive_ for _prims_
 

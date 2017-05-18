@@ -76,7 +76,7 @@ class SubsurfaceMaterial : public Material {
     void ComputeScatteringFunctions(SurfaceInteraction *si, MemoryArena &arena,
                                     TransportMode mode,
                                     bool allowMultipleLobes) const;
-
+    std::ostream &operator<<(std::ostream &os);
   private:
     // SubsurfaceMaterial Private Data
     const Float scale;

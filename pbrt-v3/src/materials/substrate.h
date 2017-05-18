@@ -63,7 +63,7 @@ class SubstrateMaterial : public Material {
     void ComputeScatteringFunctions(SurfaceInteraction *si, MemoryArena &arena,
                                     TransportMode mode,
                                     bool allowMultipleLobes) const;
-
+    std::ostream &operator<<(std::ostream &os);
   private:
     // SubstrateMaterial Private Data
     std::shared_ptr<Texture<Spectrum>> Kd, Ks;

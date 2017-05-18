@@ -73,7 +73,7 @@ class UberMaterial : public Material {
     void ComputeScatteringFunctions(SurfaceInteraction *si, MemoryArena &arena,
                                     TransportMode mode,
                                     bool allowMultipleLobes) const;
-
+    std::ostream &operator<<(std::ostream &os);
   private:
     // UberMaterial Private Data
     std::shared_ptr<Texture<Spectrum>> Kd, Ks, Kr, Kt, opacity;
