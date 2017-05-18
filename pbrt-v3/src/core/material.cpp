@@ -47,7 +47,6 @@ void Material::Bump(const std::shared_ptr<Texture<Float>> &d,
                     SurfaceInteraction *si) {
     // Compute offset positions and evaluate displacement texture
     SurfaceInteraction siEval = *si;
-
     // Shift _siEval_ _du_ in the $u$ direction
     Float du = .5f * (std::abs(si->dudx) + std::abs(si->dudy));
     // The most common reason for du to be zero is for ray that start from

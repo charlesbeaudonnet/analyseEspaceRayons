@@ -70,4 +70,9 @@ MatteMaterial *CreateMatteMaterial(const TextureParams &mp) {
     return new MatteMaterial(Kd, sigma, bumpMap);
 }
 
+std::ostream &MatteMaterial::operator<<(std::ostream &os){
+   os << "Matte(Kd:" << this->Kd <<")";
+   return os;
+}
+
 }  // namespace pbrt

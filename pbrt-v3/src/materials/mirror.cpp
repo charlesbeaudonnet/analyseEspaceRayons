@@ -64,7 +64,7 @@ MirrorMaterial *CreateMirrorMaterial(const TextureParams &mp) {
 }
 
 std::ostream &MirrorMaterial::operator<<(std::ostream &os){
-   os << "Kr:" << this->Kr;
+   os << "Mirror(Kr:" << this->Kr<<")";
    return os;
 }
 

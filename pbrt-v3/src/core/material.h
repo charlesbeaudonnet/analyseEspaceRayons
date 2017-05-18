@@ -56,7 +56,7 @@ class Material {
                                             TransportMode mode,
                                             bool allowMultipleLobes) const = 0;
     virtual ~Material();
-    std::ostream &operator<<(std::ostream &os);
+    virtual std::ostream &operator<<(std::ostream &os) = 0;
     static void Bump(const std::shared_ptr<Texture<Float>> &d,
                      SurfaceInteraction *si);
 };

@@ -227,4 +227,9 @@ FourierMaterial *CreateFourierMaterial(const TextureParams &mp) {
     return new FourierMaterial(mp.FindFilename("bsdffile"), bumpMap);
 }
 
+std::ostream &FourierMaterial::operator<<(std::ostream &os){
+   os << "Fourier";
+   return os;
+}
+
 }  // namespace pbrt

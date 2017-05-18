@@ -18,7 +18,7 @@
 #define LOG_PATH		1<<4
 #define LOG_PATHDIR		1<<5
 
-//namespace LogBE{
+namespace logBE{
 
 extern std::ofstream fileBE;
 typedef unsigned char OptionsBE;
@@ -46,6 +46,10 @@ inline void log(const pbrt::Shape* s){
 			break;
 	if(i!=shapesBE.size()) fileBE << i+1;
 }
+//template <>
+//inline void log(pbrt::Material m){
+//	fileBE << m;
+//}
 template<typename T,typename... Args>
 inline void log(OptionsBE opt, T first, Args... args){
 	if(opt & logOptions){
@@ -54,5 +58,6 @@ inline void log(OptionsBE opt, T first, Args... args){
 }
 
 void logClose();
-//}
+
+}// namespace
 #endif

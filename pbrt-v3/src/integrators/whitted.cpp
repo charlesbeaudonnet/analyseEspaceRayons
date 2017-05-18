@@ -50,9 +50,9 @@ Spectrum WhittedIntegrator::Li(const RayDifferential &ray, const Scene &scene,
 	SurfaceInteraction isect;
 	if (!scene.Intersect(ray, &isect)) {
 		for (const auto &light : scene.lights) L += light->Le(ray);
-		log(LOG_OBJECT, "sky");
-		log(LOG_PATH | LOG_PATHDIR, "C", L.ToRGBSpectrum());
-		log(LOG_LOGGING,"\n");
+		logBE::log(LOG_OBJECT, "sky");
+		logBE::log(LOG_PATH | LOG_PATHDIR, "C", L.ToRGBSpectrum());
+		logBE::log(LOG_LOGGING,"\n");
 		return L;
 	}
 	// Initialize common variables for Whitted integrator
@@ -64,9 +64,9 @@ Spectrum WhittedIntegrator::Li(const RayDifferential &ray, const Scene &scene,
 	if (!isect.bsdf)
 		return Li(isect.SpawnRay(ray.d), scene, sampler, arena, depth);
 
-	log(LOG_PATH | LOG_PATHDIR,"p",ray.o);
-	log(LOG_PATHDIR,"d",ray.d);
-	log(LOG_NORMAL,"N",isect.n);
+	logBE::log(LOG_PATH | LOG_PATHDIR,"p",ray.o);
+	logBE::log(LOG_PATHDIR,"d",ray.d);
+	logBE::log(LOG_NORMAL,"N",isect.n);
 	
 	// Compute emitted light if ray hit an area light source
 	L += isect.Le(wo);
@@ -89,11 +89,11 @@ Spectrum WhittedIntegrator::Li(const RayDifferential &ray, const Scene &scene,
 		L += SpecularReflect(ray, isect, scene, sampler, arena, depth);
 		L += SpecularTransmit(ray, isect, scene, sampler, arena, depth);
 	}
-	if(logOptions==(LOG_NORMAL|LOG_LOGGING))
-		log(LOG_NORMAL,depth==0?"":"\n");
+	if(logBE::logOptions==(LOG_NORMAL|LOG_LOGGING))
+		logBE::log(LOG_NORMAL,depth==0?"":"\n");
 	else{
-		log(LOG_PATH | LOG_PATHDIR, "C", L.ToRGBSpectrum());
-		log(LOG_LOGGING,"\n");
+		logBE::log(LOG_PATH | LOG_PATHDIR, "C", L.ToRGBSpectrum());
+		logBE::log(LOG_LOGGING,"\n");
 	}
 	return L;
 }
@@ -116,7 +116,7 @@ WhittedIntegrator *CreateWhittedIntegrator(
 				Error("Degenerate \"pixelbounds\" specified.");
 		}
 	}
-	log(LOG_LOGGING,"[whitted]\n");
+	logBE::log(LOG_LOGGING,"[whitted]\n");
 	return new WhittedIntegrator(maxDepth, camera, sampler, pixelBounds);
 }
 

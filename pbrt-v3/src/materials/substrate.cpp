@@ -81,7 +81,7 @@ SubstrateMaterial *CreateSubstrateMaterial(const TextureParams &mp) {
 }
 
 std::ostream &SubstrateMaterial::operator<<(std::ostream &os){
-   os << "Kd:" << this->Kd << "Ks:" << this->Ks;
+   os << "Substrate(Kd:" << this->Kd << "Ks:" << this->Ks << ")";
    return os;
 }
 

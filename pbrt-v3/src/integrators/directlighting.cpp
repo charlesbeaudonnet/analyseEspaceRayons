@@ -69,18 +69,18 @@ Spectrum DirectLightingIntegrator::Li(const RayDifferential &ray,
 	SurfaceInteraction isect;
 	if (!scene.Intersect(ray, &isect)) {
 		for (const auto &light : scene.lights) L += light->Le(ray);
-		log(LOG_OBJECT, "sky");
-		log(LOG_PATH | LOG_PATHDIR, "C", L.ToRGBSpectrum());
-		log(LOG_LOGGING,"\n");
+		logBE::log(LOG_OBJECT, "sky");
+		logBE::log(LOG_PATH | LOG_PATHDIR, "C", L.ToRGBSpectrum());
+		logBE::log(LOG_LOGGING,"\n");
 		return L;
 	}
 	// Compute scattering functions for surface interaction
 	isect.ComputeScatteringFunctions(ray, arena);
 	if (!isect.bsdf)
 		return Li(isect.SpawnRay(ray.d), scene, sampler, arena, depth);
-	log(LOG_PATH | LOG_PATHDIR,"p",ray.o);
-	log(LOG_PATHDIR,"d",ray.d);
-	log(LOG_NORMAL,"N",isect.n);
+	logBE::log(LOG_PATH | LOG_PATHDIR,"p",ray.o);
+	logBE::log(LOG_PATHDIR,"d",ray.d);
+	logBE::log(LOG_NORMAL,"N",isect.n);
 	Vector3f wo = isect.wo;
 	// Compute emitted light if ray hit an area light source
 	L += isect.Le(wo);
@@ -98,11 +98,11 @@ Spectrum DirectLightingIntegrator::Li(const RayDifferential &ray,
 		L += SpecularReflect(ray, isect, scene, sampler, arena, depth);
 		L += SpecularTransmit(ray, isect, scene, sampler, arena, depth);
 	}
-	if(logOptions==(LOG_NORMAL|LOG_LOGGING))
-		log(LOG_NORMAL,depth==0?"":"\n");
+	if(logBE::logOptions==(LOG_NORMAL|LOG_LOGGING))
+		logBE::log(LOG_NORMAL,depth==0?"":"\n");
 	else{
-		log(LOG_PATH | LOG_PATHDIR, "C", L.ToRGBSpectrum());
-		log(LOG_LOGGING,"\n");
+		logBE::log(LOG_PATH | LOG_PATHDIR, "C", L.ToRGBSpectrum());
+		logBE::log(LOG_LOGGING,"\n");
 	}
 	return L;
 }
@@ -138,7 +138,7 @@ DirectLightingIntegrator *CreateDirectLightingIntegrator(
 				Error("Degenerate \"pixelbounds\" specified.");
 		}
 	}
-	log(LOG_LOGGING,"[directlighting]\n");
+	logBE::log(LOG_LOGGING,"[directlighting]\n");
 	return new DirectLightingIntegrator(strategy, maxDepth, camera, sampler,
 										pixelBounds);
 }

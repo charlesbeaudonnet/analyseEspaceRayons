@@ -265,7 +265,7 @@ void SamplerIntegrator::Render(const Scene &scene) {
 					camera->film->GetFilmTile(tileBounds);
 			// Loop over pixels in tile to render them
 			for (Point2i pixel : tileBounds) {
-				log(LOG_LOGGING,"{",pixel); /////////////////////////////////////////////////BE
+				logBE::log(LOG_LOGGING,"{",pixel); /////////////////////////////////////////////////BE
 				{
 					ProfilePhase pp(Prof::StartPixel);
 					tileSampler->StartPixel(pixel);
@@ -291,8 +291,8 @@ void SamplerIntegrator::Render(const Scene &scene) {
 							1 / std::sqrt((Float)tileSampler->samplesPerPixel));
 					++nCameraRays;
 
-					log(LOG_PATH | LOG_PATHDIR,"p",ray.o);
-					log(LOG_PATHDIR,"d",ray.d);
+					logBE::log(LOG_PATH | LOG_PATHDIR,"p",ray.o);
+					logBE::log(LOG_PATHDIR,"d",ray.d);
 					// Evaluate radiance along camera ray
 					Spectrum L(0.f);
 					if (rayWeight > 0) L = Li(ray, scene, *tileSampler, arena);
@@ -329,7 +329,7 @@ void SamplerIntegrator::Render(const Scene &scene) {
 					// value
 					arena.Reset();
 				} while (tileSampler->StartNextSample());
-				log(LOG_LOGGING, "}\n");
+				logBE::log(LOG_LOGGING, "}\n");
 			}
 			LOG(INFO) << "Finished image tile " << tileBounds;
 

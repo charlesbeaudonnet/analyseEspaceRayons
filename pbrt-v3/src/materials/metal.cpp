@@ -133,4 +133,9 @@ MetalMaterial *CreateMetalMaterial(const TextureParams &mp) {
                              remapRoughness);
 }
 
+std::ostream &MetalMaterial::operator<<(std::ostream &os){
+   os << "Metal(eta:" << this->eta << "k:" << this->k <<")";
+   return os;
+}
+
 }  // namespace pbrt

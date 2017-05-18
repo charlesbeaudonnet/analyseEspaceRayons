@@ -110,7 +110,7 @@ GlassMaterial *CreateGlassMaterial(const TextureParams &mp) {
 }
 
 std::ostream &GlassMaterial::operator<<(std::ostream &os){
-   os << "Kr:" << this->Kr << ";Kt:" << this->Kt;
+   os << "Glass(Kr:" << this->Kr << ";Kt:" << this->Kt << ")";
    return os;
 }
 

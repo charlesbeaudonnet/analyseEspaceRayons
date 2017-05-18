@@ -530,7 +530,7 @@ Spectrum HairBSDF::SigmaAFromReflectance(const Spectrum &c, Float beta_n) {
 }
 
 std::ostream &HairMaterial::operator<<(std::ostream &os){
-   os << "Kr:" << this->sigma_a << ";Kt:" << this->color;
+   os << "Hair(Kr:" << this->sigma_a << ";Kt:" << this->color << ")";
    return os;
 }
 

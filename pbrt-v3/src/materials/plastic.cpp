@@ -83,7 +83,7 @@ PlasticMaterial *CreatePlasticMaterial(const TextureParams &mp) {
 }
 
 std::ostream &PlasticMaterial::operator<<(std::ostream &os){
-   os << "Kd:" << this->Kd << "Ks:" << this->Ks;
+   os << "Plastic(Kd:" << this->Kd << "Ks:" << this->Ks << ")";
    return os;
 }
 

@@ -187,11 +187,11 @@ int main(int argc, char *argv[]) {
 		for (const std::string &f : filenames){
 			string ff=f.substr(f.find_last_of('/')+1);
 			if(options.log)
-				logInit(ff.substr(0, ff.find("."))+".txt",options);
+				logBE::logInit(ff.substr(0, ff.find("."))+".txt",options);
 			if (!ParseFile(f))
 				Error("Couldn't open scene file \"%s\"", f.c_str());
 			if(options.log)
-				logClose();
+				logBE::logClose();
 		}
 	}
 	pbrtCleanup();

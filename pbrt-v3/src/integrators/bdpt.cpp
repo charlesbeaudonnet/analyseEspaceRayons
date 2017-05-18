@@ -360,7 +360,7 @@ void BDPTIntegrator::Render(const Scene &scene) {
 					camera->film->GetFilmTile(tileBounds);
 
 			for (Point2i pPixel : tileBounds) {
-				log(LOG_LOGGING, "{", pPixel);
+				logBE::log(LOG_LOGGING, "{", pPixel);
 				tileSampler->StartPixel(pPixel);
 				if (!InsideExclusive(pPixel, pixelBounds))
 					continue;
@@ -440,7 +440,7 @@ void BDPTIntegrator::Render(const Scene &scene) {
 					filmTile->AddSample(pFilm, L);
 					arena.Reset();
 				} while (tileSampler->StartNextSample());
-				log(LOG_LOGGING,"}\n");
+				logBE::log(LOG_LOGGING,"}\n");
 			}
 			film->MergeFilmTile(std::move(filmTile));
 			reporter.Update();
@@ -551,14 +551,14 @@ Spectrum ConnectBDPT(
 	if (misWeightPtr) *misWeightPtr = misWeight;
 	for(int k = 0; k < t; k++){
 		o = cameraVertices[k].p();
-		log(LOG_PATH,o);
+		logBE::log(LOG_PATH,o);
 	}
 	for(int k = s-1; k >= 0; k--){
 		o = lightVertices[k].p();
-		log(LOG_PATH,o);
+		logBE::log(LOG_PATH,o);
 	}
-	log(LOG_PATH | LOG_PATHDIR, "C", L.ToRGBSpectrum());
-	log(LOG_LOGGING, "\n");
+	logBE::log(LOG_PATH | LOG_PATHDIR, "C", L.ToRGBSpectrum());
+	logBE::log(LOG_LOGGING, "\n");
 	return L;
 }
 
@@ -592,7 +592,7 @@ BDPTIntegrator *CreateBDPTIntegrator(const ParamSet &params,
 
 	std::string lightStrategy = params.FindOneString("lightsamplestrategy",
 			"power");
-	log(LOG_LOGGING,"[bdpt]\n");
+	logBE::log(LOG_LOGGING,"[bdpt]\n");
 	return new BDPTIntegrator(sampler, camera, maxDepth, visualizeStrategies,
 			visualizeWeights, pixelBounds, lightStrategy);
 }

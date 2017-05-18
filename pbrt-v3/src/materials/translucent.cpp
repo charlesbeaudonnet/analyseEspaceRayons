@@ -98,7 +98,7 @@ TranslucentMaterial *CreateTranslucentMaterial(const TextureParams &mp) {
 }
 
 std::ostream &TranslucentMaterial::operator<<(std::ostream &os){
-   os << "Kd:" << this->Kd << "Ks:" << this->Ks;
+   os << "Translucent(Kd:" << this->Kd << "Ks:" << this->Ks << ")";
    return os;
 }
 

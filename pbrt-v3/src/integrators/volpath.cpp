@@ -111,7 +111,7 @@ Spectrum VolPathIntegrator::Li(const RayDifferential &r, const Scene &scene,
 
             // Terminate path if ray escaped or _maxDepth_ was reached
             if (!foundIntersection || bounces >= maxDepth){
-                if(!foundIntersection)log(LOG_OBJECT,"sky");
+                if(!foundIntersection)logBE::log(LOG_OBJECT,"sky");
                 break;
             }
 
@@ -176,10 +176,10 @@ Spectrum VolPathIntegrator::Li(const RayDifferential &r, const Scene &scene,
                 ray = pi.SpawnRay(wi);
             }
         }
-        log(LOG_PATH | LOG_PATHDIR,"p",ray.o);
-        log(LOG_PATHDIR,"d",ray.d);
-        log(LOG_NORMAL,"N",isect.n);
-        log(LOG_OBJECT,"O",isect.shape);
+        logBE::log(LOG_PATH | LOG_PATHDIR,"p",ray.o);
+        logBE::log(LOG_PATHDIR,"d",ray.d);
+        logBE::log(LOG_NORMAL,"N",isect.n);
+        logBE::log(LOG_OBJECT,"O",isect.shape);
         // Possibly terminate the path with Russian roulette
         // Factor out radiance scaling due to refraction in rrBeta.
         Spectrum rrBeta = beta * etaScale;
@@ -191,11 +191,11 @@ Spectrum VolPathIntegrator::Li(const RayDifferential &r, const Scene &scene,
         }
     }
     ReportValue(pathLength, bounces);
-    if(logOptions==(LOG_NORMAL|LOG_LOGGING))
-        log(LOG_NORMAL,bounces==0?"":"\n");
+    if(logBE::logOptions==(LOG_NORMAL|LOG_LOGGING))
+        logBE::log(LOG_NORMAL,bounces==0?"":"\n");
     else{
-        log(LOG_PATH | LOG_PATHDIR, "C", L.ToRGBSpectrum());
-        log(LOG_LOGGING,"\n");
+        logBE::log(LOG_PATH | LOG_PATHDIR, "C", L.ToRGBSpectrum());
+        logBE::log(LOG_LOGGING,"\n");
     }
     return L;
 }
@@ -221,6 +221,7 @@ VolPathIntegrator *CreateVolPathIntegrator(
     Float rrThreshold = params.FindOneFloat("rrthreshold", 1.);
     std::string lightStrategy =
         params.FindOneString("lightsamplestrategy", "spatial");
+    logBE::log(LOG_LOGGING,"[volpath]\n");
     return new VolPathIntegrator(maxDepth, camera, sampler, pixelBounds,
                                  rrThreshold, lightStrategy);
 }

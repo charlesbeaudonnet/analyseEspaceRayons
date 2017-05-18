@@ -56,7 +56,7 @@ class FourierMaterial : public Material {
     void ComputeScatteringFunctions(SurfaceInteraction *si, MemoryArena &arena,
                                     TransportMode mode,
                                     bool allowMultipleLobes) const;
-
+    std::ostream &operator<<(std::ostream &os);
   private:
     // FourierMaterial Private Data
     FourierBSDFTable *bsdfTable;
