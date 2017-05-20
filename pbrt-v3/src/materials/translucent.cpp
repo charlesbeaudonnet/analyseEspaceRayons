@@ -98,7 +98,8 @@ TranslucentMaterial *CreateTranslucentMaterial(const TextureParams &mp) {
 }
 
 std::ostream &TranslucentMaterial::operator<<(std::ostream &os)const{
-   os << "Translucent(Kd:" << this->Kd << "Ks:" << this->Ks << ")";
+    SurfaceInteraction dummy;
+   os << "Translucent(Kd:" << Kd->Evaluate(dummy).Clamp() << "Ks:" << Ks->Evaluate(dummy).Clamp() << ")";
    return os;
 }
 

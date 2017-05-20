@@ -127,7 +127,8 @@ UberMaterial *CreateUberMaterial(const TextureParams &mp) {
 }
 
 std::ostream &UberMaterial::operator<<(std::ostream &os)const{
-   os << "Uber(Kd:" << this->Kd << "Ks:" << this->Ks << "Kr:" << this->Kr << "Kt:" << this->Kt << "opacity:" << this->opacity <<")";
+    SurfaceInteraction dummy;
+   os << "Uber(Kd:" << Kd->Evaluate(dummy).Clamp() << "Ks:" << Ks->Evaluate(dummy).Clamp() << "Kr:" << Kr->Evaluate(dummy).Clamp() << "Kt:" << Kt->Evaluate(dummy).Clamp() << "opacity:" << opacity->Evaluate(dummy).Clamp() <<")";
    return os;
 }
 

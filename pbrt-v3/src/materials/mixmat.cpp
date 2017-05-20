@@ -72,8 +72,8 @@ MixMaterial *CreateMixMaterial(const TextureParams &mp,
 }
 
 std::ostream &MixMaterial::operator<<(std::ostream &os)const{
-   os << "Mix(" << this->m1 << "," << this->m2 << ")";
-   return os;
+  (*m2).operator<<(((*m1).operator<<(os<< "Mix("))<<",")<<")";
+  return os;
 }
 
 }  // namespace pbrt

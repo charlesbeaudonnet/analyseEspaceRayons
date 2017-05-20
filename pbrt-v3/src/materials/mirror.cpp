@@ -64,8 +64,8 @@ MirrorMaterial *CreateMirrorMaterial(const TextureParams &mp) {
 }
 
 std::ostream &MirrorMaterial::operator<<(std::ostream &os)const {
-    SurfaceInteraction *dummy;
-    os << "Mirror(Kr:" << Kr->Evaluate(*dummy).Clamp() <<")";
+    SurfaceInteraction dummy;
+    os << "Mirror(Kr:" << Kr->Evaluate(dummy).Clamp() <<")";
     return os;
 }
 

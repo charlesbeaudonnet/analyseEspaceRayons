@@ -134,7 +134,8 @@ MetalMaterial *CreateMetalMaterial(const TextureParams &mp) {
 }
 
 std::ostream &MetalMaterial::operator<<(std::ostream &os)const{
-   os << "Metal(eta:" << this->eta << "k:" << this->k <<")";
+  SurfaceInteraction dummy;
+   os << "Metal(eta:" << eta->Evaluate(dummy).Clamp() << "k:" << k->Evaluate(dummy).Clamp() <<")";
    return os;
 }
 

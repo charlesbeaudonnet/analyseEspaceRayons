@@ -71,7 +71,8 @@ MatteMaterial *CreateMatteMaterial(const TextureParams &mp) {
 }
 
 std::ostream &MatteMaterial::operator<<(std::ostream &os)const{
-   os << "Matte(Kd:" << this->Kd <<")";
+    SurfaceInteraction dummy;
+   os << "Matte(Kd:" << Kd->Evaluate(dummy).Clamp() <<")";
    return os;
 }
 

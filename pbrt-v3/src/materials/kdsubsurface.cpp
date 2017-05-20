@@ -122,7 +122,8 @@ KdSubsurfaceMaterial *CreateKdSubsurfaceMaterial(const TextureParams &mp) {
 }
 
 std::ostream &KdSubsurfaceMaterial::operator<<(std::ostream &os)const{
-   os << "KdSubsurface(Kd:" << this->Kd << "Kr:" << this->Kr << "Kt:" << this->Kt << "mfp:" << this->mfp << ")";
+   SurfaceInteraction dummy;
+   os << "KdSubsurface(Kd:" << Kd->Evaluate(dummy).Clamp() << "Kr:" << Kr->Evaluate(dummy).Clamp() << "Kt:" << Kt->Evaluate(dummy).Clamp() << "mfp:" << mfp->Evaluate(dummy).Clamp() << ")";
    return os;
 }
 

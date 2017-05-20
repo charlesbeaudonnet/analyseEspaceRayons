@@ -81,7 +81,8 @@ SubstrateMaterial *CreateSubstrateMaterial(const TextureParams &mp) {
 }
 
 std::ostream &SubstrateMaterial::operator<<(std::ostream &os)const{
-   os << "Substrate(Kd:" << this->Kd << "Ks:" << this->Ks << ")";
+   SurfaceInteraction dummy;
+   os << "Substrate(Kd:" << Kd->Evaluate(dummy).Clamp() << "Ks:" << Ks->Evaluate(dummy).Clamp() << ")";
    return os;
 }
 

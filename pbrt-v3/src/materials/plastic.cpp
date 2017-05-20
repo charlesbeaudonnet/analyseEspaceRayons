@@ -83,7 +83,8 @@ PlasticMaterial *CreatePlasticMaterial(const TextureParams &mp) {
 }
 
 std::ostream &PlasticMaterial::operator<<(std::ostream &os)const{
-   os << "Plastic(Kd:" << this->Kd << "Ks:" << this->Ks << ")";
+    SurfaceInteraction dummy;
+   os << "Plastic(Kd:" << Kd->Evaluate(dummy).Clamp() << "Ks:" << Ks->Evaluate(dummy).Clamp() << ")";
    return os;
 }
 
