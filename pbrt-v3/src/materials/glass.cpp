@@ -109,7 +109,7 @@ GlassMaterial *CreateGlassMaterial(const TextureParams &mp) {
                              remapRoughness);
 }
 
-std::ostream &GlassMaterial::operator<<(std::ostream &os){
+std::ostream &GlassMaterial::operator<<(std::ostream &os)const {
    os << "Glass(Kr:" << this->Kr << ";Kt:" << this->Kt << ")";
    return os;
 }

@@ -97,7 +97,7 @@ TranslucentMaterial *CreateTranslucentMaterial(const TextureParams &mp) {
                                    bumpMap, remapRoughness);
 }
 
-std::ostream &TranslucentMaterial::operator<<(std::ostream &os){
+std::ostream &TranslucentMaterial::operator<<(std::ostream &os)const{
    os << "Translucent(Kd:" << this->Kd << "Ks:" << this->Ks << ")";
    return os;
 }

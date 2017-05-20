@@ -225,28 +225,21 @@ public:
 		DCHECK(!ret.HasNaNs());
 		return ret;
 	}
+	float getC(int i){
+		return c[i];
+	}
 	friend std::ostream &operator<<(std::ostream &os,
 			const CoefficientSpectrum &s) {
 		return os << s.ToString();
 	}
 	std::string ToString() const {
-		std::string str = "[ ";
-		for (int i = 0; i < nSpectrumSamples; ++i) {
-			str += StringPrintf("%f", c[i]);
-			if (i + 1 < nSpectrumSamples) str += ", ";
-		}
-		str += " ]";
-		return str;
-	}
-	std::string toStr() const {
 		std::string str = "[";
 		for (int i = 0; i < nSpectrumSamples; ++i) {
-			str += StringPrintf("%f", c[i]);
+			str += StringPrintf("%3.1f", c[i]);
 			if (i + 1 < nSpectrumSamples) str += ",";
 		}
 		str += "]";
 		return str;
-
 	}
 	CoefficientSpectrum Clamp(Float low = 0, Float high = Infinity) const {
 		CoefficientSpectrum ret;

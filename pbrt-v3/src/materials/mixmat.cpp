@@ -71,7 +71,7 @@ MixMaterial *CreateMixMaterial(const TextureParams &mp,
     return new MixMaterial(m1, m2, scale);
 }
 
-std::ostream &MixMaterial::operator<<(std::ostream &os){
+std::ostream &MixMaterial::operator<<(std::ostream &os)const{
    os << "Mix(" << this->m1 << "," << this->m2 << ")";
    return os;
 }

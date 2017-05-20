@@ -80,7 +80,7 @@ SubstrateMaterial *CreateSubstrateMaterial(const TextureParams &mp) {
                                  remapRoughness);
 }
 
-std::ostream &SubstrateMaterial::operator<<(std::ostream &os){
+std::ostream &SubstrateMaterial::operator<<(std::ostream &os)const{
    os << "Substrate(Kd:" << this->Kd << "Ks:" << this->Ks << ")";
    return os;
 }

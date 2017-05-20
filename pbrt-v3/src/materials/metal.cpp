@@ -133,7 +133,7 @@ MetalMaterial *CreateMetalMaterial(const TextureParams &mp) {
                              remapRoughness);
 }
 
-std::ostream &MetalMaterial::operator<<(std::ostream &os){
+std::ostream &MetalMaterial::operator<<(std::ostream &os)const{
    os << "Metal(eta:" << this->eta << "k:" << this->k <<")";
    return os;
 }

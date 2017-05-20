@@ -26,4 +26,6 @@ void logBE::logInit(std::string filename, pbrt::Options opt){
 
 void logBE::logClose(){
 	logBE::fileBE.close();
+	logBE::shapesBE.clear();
+	logBE::logOptions=0;
 }

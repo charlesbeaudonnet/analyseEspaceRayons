@@ -134,7 +134,7 @@ SubsurfaceMaterial *CreateSubsurfaceMaterial(const TextureParams &mp) {
                                   roughu, roughv, bumpMap, remapRoughness);
 }
 
-std::ostream &SubsurfaceMaterial::operator<<(std::ostream &os){
+std::ostream &SubsurfaceMaterial::operator<<(std::ostream &os)const{
    os << "Subsurface(Kr:" << this->Kr << "Kt:" << this->Kt << "sigma_a:" << this->sigma_a << "sigma_s:" << this->sigma_s << ")";
    return os;
 }

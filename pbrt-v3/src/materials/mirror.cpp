@@ -63,9 +63,10 @@ MirrorMaterial *CreateMirrorMaterial(const TextureParams &mp) {
     return new MirrorMaterial(Kr, bumpMap);
 }
 
-std::ostream &MirrorMaterial::operator<<(std::ostream &os){
-   os << "Mirror(Kr:" << this->Kr<<")";
-   return os;
+std::ostream &MirrorMaterial::operator<<(std::ostream &os)const {
+    SurfaceInteraction *dummy;
+    os << "Mirror(Kr:" << Kr->Evaluate(*dummy).Clamp() <<")";
+    return os;
 }
 
 }  // namespace pbrt

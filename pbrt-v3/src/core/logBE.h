@@ -25,6 +25,13 @@ typedef unsigned char OptionsBE;
 extern OptionsBE logOptions;
 extern std::vector<const pbrt::Shape*> shapesBE;
 
+/**
+	Cette méthode prend en paramètre une chaine de caractères et les
+	options de PBRT et initialise la variable logOptions, ouvre un nouveau
+	fichier avec le nom passé en paramètre, met les options choisies
+	à la première ligne du fichier et puis initialise le vecteur shapeBE
+	qui contiendra tous les objets de la scène.
+*/
 void logInit(std::string filename, pbrt::Options opt);
 
 template<typename T>
@@ -37,6 +44,10 @@ inline void log(pbrt::RGBSpectrum s){
 	static float rgb[3];
 	s.ToRGB(rgb);
 	fileBE << "[" << rgb[0] << "," << rgb[1] << "," << rgb[2] << "]";
+}
+template <>
+inline void log(std::shared_ptr<pbrt::Material> s){
+	(*s).operator<<(fileBE);
 }
 template <>
 inline void log(const pbrt::Shape* s){
@@ -57,6 +68,10 @@ inline void log(OptionsBE opt, T first, Args... args){
 	}
 }
 
+/**
+	Fermer le fichier log, vider la liste des objets de la scène
+	et mettre les options log à 0.
+*/
 void logClose();
 
 }// namespace

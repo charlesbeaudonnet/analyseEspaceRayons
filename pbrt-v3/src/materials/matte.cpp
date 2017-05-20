@@ -70,7 +70,7 @@ MatteMaterial *CreateMatteMaterial(const TextureParams &mp) {
     return new MatteMaterial(Kd, sigma, bumpMap);
 }
 
-std::ostream &MatteMaterial::operator<<(std::ostream &os){
+std::ostream &MatteMaterial::operator<<(std::ostream &os)const{
    os << "Matte(Kd:" << this->Kd <<")";
    return os;
 }

@@ -55,7 +55,7 @@ class MixMaterial : public Material {
     void ComputeScatteringFunctions(SurfaceInteraction *si, MemoryArena &arena,
                                     TransportMode mode,
                                     bool allowMultipleLobes) const;
-    std::ostream &operator<<(std::ostream &os);
+    std::ostream &operator<<(std::ostream &os) const;
   private:
     // MixMaterial Private Data
     std::shared_ptr<Material> m1, m2;

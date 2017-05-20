@@ -227,7 +227,7 @@ FourierMaterial *CreateFourierMaterial(const TextureParams &mp) {
     return new FourierMaterial(mp.FindFilename("bsdffile"), bumpMap);
 }
 
-std::ostream &FourierMaterial::operator<<(std::ostream &os){
+std::ostream &FourierMaterial::operator<<(std::ostream &os)const{
    os << "Fourier";
    return os;
 }

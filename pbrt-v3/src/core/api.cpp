@@ -1186,7 +1186,7 @@ void pbrtShape(const std::string &name, const ParamSet &params) {
 			prims.push_back(
 				std::make_shared<GeometricPrimitive>(s, mtl, area, mi));
 			logBE::shapesBE.push_back(&*s);
-			logBE::log(LOG_MATERIAL,"[O",logBE::shapesBE.size(),/**mtl,*/"]\n");
+			logBE::log(LOG_MATERIAL,"[O",logBE::shapesBE.size(),mtl,"]\n");
 		}
 	} else {
 		// Initialize _prims_ and _areaLights_ for animated shape

@@ -121,7 +121,7 @@ KdSubsurfaceMaterial *CreateKdSubsurfaceMaterial(const TextureParams &mp) {
                                     roughv, bumpMap, remapRoughness);
 }
 
-std::ostream &KdSubsurfaceMaterial::operator<<(std::ostream &os){
+std::ostream &KdSubsurfaceMaterial::operator<<(std::ostream &os)const{
    os << "KdSubsurface(Kd:" << this->Kd << "Kr:" << this->Kr << "Kt:" << this->Kt << "mfp:" << this->mfp << ")";
    return os;
 }
