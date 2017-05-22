@@ -57,10 +57,6 @@ inline void log(const pbrt::Shape* s){
 			break;
 	if(i!=shapesBE.size()) fileBE << i+1;
 }
-//template <>
-//inline void log(pbrt::Material m){
-//	fileBE << m;
-//}
 template<typename T,typename... Args>
 inline void log(OptionsBE opt, T first, Args... args){
 	if(opt & logOptions){

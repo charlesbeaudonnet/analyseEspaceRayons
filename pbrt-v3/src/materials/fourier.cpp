@@ -228,7 +228,7 @@ FourierMaterial *CreateFourierMaterial(const TextureParams &mp) {
 }
 
 std::ostream &FourierMaterial::operator<<(std::ostream &os)const{
-   os << "Fourier";
+   os << "Fourier()";
    return os;
 }
 

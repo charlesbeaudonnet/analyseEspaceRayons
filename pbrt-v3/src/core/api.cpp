@@ -1210,7 +1210,7 @@ void pbrtShape(const std::string &name, const ParamSet &params) {
 			prims.push_back(
 				std::make_shared<GeometricPrimitive>(s, mtl, nullptr, mi));
 			logBE::shapesBE.push_back(&*s);
-			//log(LOG_MATERIAL,"[O",shapesBE.size(),*mtl,"]\n");
+			logBE::log(LOG_MATERIAL,"[O",logBE::shapesBE.size(),mtl,"]\n");
 		}
 
 		// Create single _TransformedPrimitive_ for _prims_

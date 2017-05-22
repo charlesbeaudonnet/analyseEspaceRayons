@@ -531,8 +531,8 @@ Spectrum HairBSDF::SigmaAFromReflectance(const Spectrum &c, Float beta_n) {
 
 std::ostream &HairMaterial::operator<<(std::ostream &os)const {
     SurfaceInteraction dummy;
-   os << "Hair(Kr:" << sigma_a->Evaluate(dummy).Clamp() << ";Kt:" << color->Evaluate(dummy).Clamp() << ")";
-   return os;
+    os << "Hair()";
+    return os;
 }
 
 }  // namespace pbrt
