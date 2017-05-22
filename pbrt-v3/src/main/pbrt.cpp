@@ -78,11 +78,12 @@ Logging options (BE):
   								be stored during the rendering process.
   								The stored data can be configured using the
   								following options :-
-  							n: normal vector corresponding to each pixel.
-  							o: each object.
+  							n: Normal vector of each intersection.
+  							o: Object hit at each intersection.
   							m: material for each object at the beginning of the log file
-  							p: each path used during the rendering process.
-  							P: each path used during the rendering process.
+  							p: Intersection point of each path.
+  							P: Intersection point and direction of each path plus color of it at the end.
+                            a: Stand for all and is equivalent to nomP
 )");
 }
 
@@ -155,6 +156,12 @@ int main(int argc, char *argv[]) {
 					options.path=true;
 				if(strchr(argv[i],(int)'P'))
 					options.dir=true;
+				if(strchr(argv[i],(int) 'a')){
+					options.normal = true;
+					options.obj = true;
+					options.mat = true;
+					options.dir = true;
+				}
 			}
 		} else
 			filenames.push_back(argv[i]);

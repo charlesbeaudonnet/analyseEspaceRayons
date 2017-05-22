@@ -36,7 +36,7 @@ rayPathParser::rayPathParser(std::string fileName) {
 }
 
 rayPathParser::~rayPathParser() {
-    closedir(directory);
+	closedir(directory);
 }
 /*
  * réécrit le fichier rayPath.txt avec la syntaxe voulut
@@ -57,12 +57,12 @@ void rayPathParser::parseFile() {
 	 * de l'image dans le fichier txt)
 	 */
 	std::string line;
-	getline(reader,line);
-	octet += line.length()+1;
-	getline(reader,line);
-	octet += line.length()+1;
-	getline(reader,line);
-	octet += line.length()+1;
+	//On parcours le fichier jusqu'à la taille de la matrice
+	do{
+		getline(reader,line);
+		octet += line.length()+1;
+	}while((line[1]>='a' && line[1]<='z') || (line[1]>='A' && line[1]<='Z'));
+
 	sscanf(line.c_str(),"[%d,%d]\n",&row,&col);
 	Matrix mat(row,col);
 
@@ -89,11 +89,11 @@ void rayPathParser::parseFile() {
 				reader.get(current);
 				pixel += current;
 				offset++;
-            }while(current != ']' || reader.eof());
+			}while(current != ']' || reader.eof());
 
-            sscanf(pixel.c_str(),"[%d,%d]",&x,&y);
+			sscanf(pixel.c_str(),"[%d,%d]",&x,&y);
 
-            //On ecrit sa position dans la matrice
+			//On ecrit sa position dans la matrice
 			mat.set(x,y,octet);
 			octet += offset;
 			pixel = "";
