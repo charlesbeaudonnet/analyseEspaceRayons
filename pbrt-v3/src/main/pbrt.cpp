@@ -202,11 +202,11 @@ int main(int argc, char *argv[]) {
 		}
 	}
 	pbrtCleanup();
-	for (const std::string &f : filenames){
-		string ff=f.substr(f.find_last_of('/')+1);
-		rayPathParser * rpp = new rayPathParser(ff.substr(0, ff.find("."))+".txt");
-		rpp->parseFile();
-	}
-
+	if(options.log)
+		for (const std::string &f : filenames){
+			string ff=f.substr(f.find_last_of('/')+1);
+			rayPathParser * rpp = new rayPathParser(ff.substr(0, ff.find("."))+".txt");
+			rpp->parseFile();
+		}
 	return 0;
 }
