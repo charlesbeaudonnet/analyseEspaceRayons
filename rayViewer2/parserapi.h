@@ -1,12 +1,12 @@
 #ifndef PARSERAPI_H_
 #define PARSERAPI_H_
 
-#include <QObject>
+#include <QVector>
 #include "matrix.h"
 
 using namespace std;
 
-class parserAPI : QObject {
+class ParserAPI{
 
 
 public:
@@ -17,27 +17,28 @@ public:
     int precision = 5;
     int rawLevel = 2;//2 simplifiedRaw,  1 cleanRaw, 0 hardcoreRaw
     int selectedPath = 0;
+    QMap<int,QString> objectMap;
 
-    parserAPI(){}
-    parserAPI(QFile * file);
+    ParserAPI(){}
+    ParserAPI(QFile * file);
+    void parseObjectList(int offset);
     bool isCorrectlySet();
     unsigned long long int getPos(int x, int y);
     void setStreamAt(int x, int y);
-    QString getPath(int x, int y);
-    QString getDir(int x, int y);
-    QString getNorm(int x, int y);
     QVector<QString> getRaw(int x, int y);
-    QString parseRaw(QString line);
-    QString parseDir(QString line);
-    QString parseNorm(QString line);
-    QString parsePath(QString line);
+    QString parseRaw(const QString line);
+    QString parseDir(const QString line);
+    QString parseNorm(const QString line);
+    QString parsePath(const QString line);
     QString parseColor(QString line);
     QColor parseQColor(QString line);
-    QString extractData(QString str, int *pos, const char info);
     QString cutNumber(QString path);
-    QColor getTrueColor(QVector<QString> rawData);
+    QString getObject(int obj);
 
-    virtual ~parserAPI();
+private:
+    QString extractData(QString str, int *pos, const char info);
+
+    virtual ~ParserAPI();
 private:
 
 };

@@ -17,11 +17,12 @@ public:
 
     void mousePressEvent(QMouseEvent *ev);
     void leaveEvent(QEvent *);
-    void mouseReleaseEvent(QMouseEvent *);
+    void mouseReleaseEvent(QMouseEvent *ev);
     void mouseMoveEvent(QMouseEvent *event);
 
     void paintEvent(QPaintEvent *ev);
     void wheelEvent(QWheelEvent *ev);
+    void processPos();
 
     int imgX = 0, imgY = 0;
     //img = taille de l'image originale
@@ -42,6 +43,9 @@ public:
     //click droit enfonce ou non
     QPoint RCPos;
     //position de la souris lors du clic droit
+
+    float zoomRatio = 1.2;
+    //ratio du zoom molette
 
 signals:
     void mousePressed();

@@ -4,9 +4,13 @@
 #include <QColor>
 #include <QDateTime>
 #include <QtGlobal>
-
 #include <iostream>
-parserAPI::parserAPI(QFile *file){
+
+/**
+ * @brief ParserAPI Initialise le parser avec le fichier passé en paramètre
+ * @param file
+ */
+ParserAPI::ParserAPI(QFile *file){
     QString line;
     char * endLine;
     m_matrix = NULL;
@@ -18,7 +22,7 @@ parserAPI::parserAPI(QFile *file){
     ts = new QTextStream(file);
 
     //La première ligne contient les options de logs
-    QString OptionTester = "Ppno";
+    QString OptionTester = "Ppnom";
     line = ts->readLine();
     for(int i = 0; i < OptionTester.size(); i++){
         if(line.contains(OptionTester[i])){
@@ -35,6 +39,9 @@ parserAPI::parserAPI(QFile *file){
             case 4:
                 option += "O";
                 break;
+            case 5:
+                parseObjectList(line.length() + 1);
+                break;
             default:
                 qInfo() << " Options parsing gone wrong";
                 return;
@@ -42,12 +49,12 @@ parserAPI::parserAPI(QFile *file){
             }
         }
     }
-    line = ts->readLine();
-    if(!line[1].isLetter())
-        return;
 
-    //La troisième ligne contient la taille de la matrice
-    line = ts->readLine();
+    //On se positionnne sur la ligne qui contient la taille de la matrice
+    do{
+        line= ts->readLine();
+    }while(line[1].isLetter());
+
     int i = 1;
     int row = 0, col = 0;
     char * lineChar = line.toLocal8Bit().data();
@@ -71,33 +78,104 @@ parserAPI::parserAPI(QFile *file){
     //Creation de la matrice
     m_matrix = new Matrix(row,col);
 
-    //qint64 position = ts->pos();
-    ts->seek(file->size()-20);
+    /*
+     * On va à la fin du fichier car la dernière ligne contient
+     * la position du dernier pixel dans le fichier car la matrix est écrite apres le dernier pixel.
+     * De cette façon on évite de faire (lignes * colonnes * (nombre de rayon - 1))  ts->readLine()
+     * et on améliore donc énormément la fluidité du logiciel
+     */
+    ts->seek(file->size()-30);
     line = ts->readLine();
     qint64 tpTo = 0;
     QStringList strList = line.split(" ");
-    tpTo = strList[strList.size() - 2].toInt(NULL,10);
+    //On prend l'avant dernière valeur car le fichier peut contenir un espace à la fin
+    for( i = 0; strList[strList.size() - i - 1].size() == 0; i++){}
+    tpTo = strList[strList.size() - i - 1].toInt(NULL,10);
     ts->seek(tpTo);
 
     //On parcours le fichier jusqu'au marqueur "MATRIX"
     do{
         line = ts->readLine();
     }while(line[0] != 'M' && !ts->atEnd());
-
+    //Cette ligne sert à ne pas faire planter le parser au cas où le marqueur n'existe pas
     if( line[0] == 'M'){
         //On charge la matrice
         for(int i = 0; i < row; i++){
             line = ts->readLine();
+            if(line.size() == 0)
+                break;
             m_matrix->set(i,0,strtol(line.toLocal8Bit().data(),&endLine,10));
             for(int j = 1; j < col; j++){
                 m_matrix->set(i,j,strtol(endLine,&endLine,10));
             }
         }
     }
-
 }
 
-bool parserAPI::isCorrectlySet(){
+/**
+ * @brief parseObjectList Initialise la liste des objets de la scene et leur caractéristiques
+ *                                   si le fichier de log a été créé avec l'option m de pbrt
+ * @param offset
+ */
+void ParserAPI::parseObjectList(int offset){
+    QString line = "";
+    QString data ="";
+    QString previousData = "";
+    int key = 1;
+    int i;
+    //On fait une première lecture pour initialiser previousData
+    line = ts->readLine();
+    offset += line.length() + 1;
+    //On verifie qu'on a pas recuperé la ligne de la taille de la matrice
+    if(line[1].isDigit()){
+        //Si oui on remonte le pointeur de fichier
+        ts->seek(ts->pos() - line.length() - 1);
+        return;
+    }
+    //On recupère la valeur de l'objet
+    for(i = 2; line[i].isDigit(); i++){}
+    for(    ; line[i-1] != ')'; i++){
+        previousData += line[i];
+    }
+    //qInfo()<< "Premier traitement ok";
+    do{
+        data = "";
+        line = ts->readLine();
+        offset += line.length() + 1;
+        //On verifie qu'on a pas recuperé la ligne de la taille de la matrice
+        if(line[1].isDigit()){
+            ts->seek(offset - line.length() - 1);
+            objectMap.insert(key,previousData);
+            break;
+        }
+        //On recupère la valeur de l'objet
+        for(i = 2; line[i].isDigit(); i++){}
+        for(    ; line[i-1] != ')'; i++){
+            data += line[i];
+        }
+        //Si les deux données consécutive sont différentes alors on stocke la première
+        if(QString::compare(data,previousData) != 0){
+            objectMap.insert(key,previousData);
+            previousData = data;
+        }
+        key++;
+
+    }while(line[1] == 'O' && !ts->atEnd());
+}
+
+
+
+
+QString ParserAPI::getObject(int obj){
+    return objectMap.lowerBound(obj).value();
+}
+
+/**
+ * @brief isCorrectlySet Certifie le bon fonctionnement de l'API
+ * @return  true si l'initialisation est correcte
+ *          false sinon
+ */
+bool ParserAPI::isCorrectlySet(){
     bool isSet = (m_matrix != NULL);
     if(isSet){
         qsrand(QDateTime::currentMSecsSinceEpoch());
@@ -109,11 +187,20 @@ bool parserAPI::isCorrectlySet(){
     return isSet;
 }
 
-parserAPI::~parserAPI() {
+/**
+ * @brief ~ParserAPI Destructeur
+ */
+ParserAPI::~ParserAPI() {
     delete m_matrix;
 }
 
-QString parserAPI::cutNumber(QString path){
+/**
+ * @brief cutNumber Coupe tous les nombres de la string passée en entrée à this.precision chiffres après la virgule
+ *                  sans aucun arrondi
+ * @param path
+ * @return Le chemin avec les valeurs numériques tronquées à this.precision chiffres après la virgule
+ */
+QString ParserAPI::cutNumber(const QString path){
     QString result = "";
     QString tail = "";
     int offset;
@@ -122,7 +209,7 @@ QString parserAPI::cutNumber(QString path){
     for(int i = 0; i < path.size(); i++){
         result += path[i];
 
-        //Si on croise un point on recupère au plus 4 char
+        //Si on croise un point on recupère au plus precision char
         if(path[i] == '.'){
             i++;//Pour pas doubler le .
             for(offset = 0; offset < precision; offset++){
@@ -155,22 +242,13 @@ QString parserAPI::cutNumber(QString path){
     return result;
 }
 
-QString parserAPI::getPath(int x, int y){
-    ts->seek(m_matrix->get(x,y));
-    QString line = ts->readLine();
-    QString pathLine = "";
-    for(int i = 0; i < line.size(); i++){
-        if(line[i] == 'p'){
-            do{
-                pathLine += line[++i];
-            }while(line[i] != ']');
-            pathLine += ';';
-        }
-    }
-    return cutNumber(pathLine);
-}
-
-QVector<QString> parserAPI::getRaw(int x, int y){
+/**
+ * @brief getRaw Récupère les données des chemins ayant servi à la création du pixel(x,y) passé en paramètre
+ * @param x Coordonnée de ligne du pixel
+ * @param y Coordonnée de colonne du pixel
+ * @return un QVector<QString> où chaque élément est un chemin
+ */
+QVector<QString> ParserAPI::getRaw(int x, int y){
     ts->seek(m_matrix->get(x,y));
     QVector<QString> lignes;
 
@@ -182,17 +260,31 @@ QVector<QString> parserAPI::getRaw(int x, int y){
     return lignes;
 }
 
-unsigned long long int parserAPI::getPos(int x, int y){
+/**
+ * @brief getPos Récupère la position du premier chemin ayant servi à calculer le pixel(x,y) passé en paramètre
+ * @param x Coordonnée de ligne du pixel
+ * @param y Coordonnée de colonne du pixel
+ * @return  la position du début de ligne des log du pixel(x,y) dans le fichier
+ */
+unsigned long long int ParserAPI::getPos(int x, int y){
     return  m_matrix->get(x,y);
 }
 
-void parserAPI::setStreamAt(int x, int y){
+/**
+ * @brief setStreamAt Positionne la tête de lecture sur le premier chemin du pixel(x,y)
+ * @param x Coordonnée de ligne du pixel
+ * @param y Coordonnée de colonne du pixel
+ */
+void ParserAPI::setStreamAt(int x, int y){
     ts->seek(m_matrix->get(x,y));
 }
 
-QString parserAPI::getDir(int x, int y){
-    ts->seek(m_matrix->get(x,y));
-    QString line = ts->readLine();
+/**
+ * @brief parseDir Transforme un chemin en une suite de direction, si celui-ci ne contient pas de direction alors la chaine vide est renvoyée
+ * @param line Les données d'un chemin
+ * @return Une QString composée des directions séparées par un point virgule
+ */
+QString ParserAPI::parseDir(const QString line){
     QString dirLine = "";
     for(int i = 0; i < line.size(); i++){
         if(line[i] == 'd'){
@@ -205,36 +297,12 @@ QString parserAPI::getDir(int x, int y){
     return cutNumber(dirLine);
 }
 
-QString parserAPI::getNorm(int x, int y){
-
-    ts->seek(m_matrix->get(x,y));
-    QString line = ts->readLine();
-    QString normLine = "";
-    for(int i = 0; i < line.size(); i++){
-        if(line[i] == 'n'){
-            do{
-                normLine += line[++i];
-            }while(line[i] != ']');
-            normLine +=";";
-        }
-    }
-    return cutNumber(normLine);
-}
-
-QString parserAPI::parseDir(QString line){
-    QString dirLine = "";
-    for(int i = 0; i < line.size(); i++){
-        if(line[i] == 'd'){
-            do{
-                dirLine += line[++i];
-            }while(line[i] != ')');
-            dirLine += ";";
-        }
-    }
-    return cutNumber(dirLine);
-}
-
-QString parserAPI::parseNorm(QString line){
+/**
+ * @brief parseDir Transforme un chemin en une suite de normales, si celui-ci ne contient pas de normales alors la chaine vide est renvoyée
+ * @param line Les données d'un chemin
+ * @return Une QString composée des normales séparées par un point virgule
+ */
+QString ParserAPI::parseNorm(const QString line){
     QString normLine = "";
     for(int i = 0; i < line.size(); i++){
         if(line[i] == 'N'){
@@ -247,7 +315,13 @@ QString parserAPI::parseNorm(QString line){
     return cutNumber(normLine);
 }
 
-QString parserAPI::parsePath(QString line){
+
+/**
+ * @brief parseDir Transforme un chemin en une suite de sommets, si celui-ci ne contient pas de sommets alors la chaine vide est renvoyée
+ * @param line Les données d'un chemin
+ * @return Une QString composée des sommets séparées par un point virgule
+ */
+QString ParserAPI::parsePath(const QString line){
     QString pathLine = "";
     for(int i = 0; i < line.size(); i++){
         if(line[i] == 'p'){
@@ -260,17 +334,42 @@ QString parserAPI::parsePath(QString line){
     return cutNumber(pathLine);
 }
 
+/**
+ * @brief clamp
+ * @param toClamp Valeur à clamper
+ * @param inf Borne inférieure
+ * @param sup Borne supérieure
+ * @return toClamp clampée entre inf et sup
+ */
 int clamp(int toClamp, int inf, int sup){
     return toClamp < inf ? inf : toClamp > sup ? sup : toClamp;
 }
 
-QString getHexCode(int dec){
+/**
+ * @brief getHexCode Transforme un entier décimal en une chaine de caractères corespondante à sa valeur hexadécimale
+ * @param dec Un int en valeur décimal
+ * @return Une QString contenant la valeur de l'entrée en hexadécimale
+ */
+QString getHexCode(const int dec){
     char hex[20];
     itoa(dec,hex,16);
     return QString(hex);
 }
 
-QString parserAPI::extractData(QString str, int *pos, const char info){
+
+/**
+ * @brief extractData Extraire la prochaine donnée à partir de la position pos dans str ayant pour marqueur info
+ * @example str = p[200,200,200]d(-0.594070494,-0.468256056,-0.654076755)p[7.04707,47.9115,-12.443]d(-0.489871621,0.240169644,-0.838060021)N(0.140941396,0.958230078,-0.248859003)O1skyC[0.0559621,0.0493958,0.0357635]
+ *          pos = 12
+ *          info = p
+ *          Output = [7.04707,47.9115,-12.443]
+ *
+ * @param str Une QString
+ * @param pos La position du début du traitement de str
+ * @param info Le marqueur de la donnée à extraire
+ * @return  Une QString contenant la première donnée de marqeur info depuis la position pos dans str
+ */
+QString ParserAPI::extractData(QString str, int *pos, const char info){
     QString data = "";
     char delim = ')';
     char delim2 = '$';
@@ -283,9 +382,9 @@ QString parserAPI::extractData(QString str, int *pos, const char info){
         delim = 's';
         delim2 = option[0].toLatin1();
     }
-    for(    ; *pos < str.size(); (*pos)++ ){
+    for(    ; 0<= *pos && *pos < str.size(); (*pos)++ ){
         if(str[*pos] == info){
-            while((*pos) < str.size() && str[(*pos) + checker] != delim && str[(*pos) + checker] != delim2){
+            while((*pos) < str.size() - checker && str[(*pos) + checker] != delim && str[(*pos) + checker] != delim2){
                 data += str[++(*pos)];
             }
             return data;
@@ -294,7 +393,12 @@ QString parserAPI::extractData(QString str, int *pos, const char info){
     return data;
 }
 
-QString parserAPI::parseRaw(QString line){
+/**
+ * @brief parseRaw Transforme la donnée brute issue du fichier de log en une donnée plus ou moins raffinée selon this.rawLevel
+ * @param line Les données d'un chemin
+ * @return Une QString plus ou moins raffinée
+ */
+QString ParserAPI::parseRaw(QString line){
     //Mode hardcore activé on retourne la donnée brute
     if(rawLevel == 0)
         return line;
@@ -345,7 +449,12 @@ QString parserAPI::parseRaw(QString line){
     return cutNumber(result);
 }
 
-QString parserAPI::parseColor(QString line){
+/**
+ * @brief parseColor Récupère la couleur du chemin passé en parametre s'il y en a et calcul se valeur en hexadécimale
+ * @param line Les données d'un chemin
+ * @return Une QString contenant la valeur RGB et hexadecimale de la couleur du chemin
+ */
+QString ParserAPI::parseColor(QString line){
     QString colorLine = "";
     QString COLOR = "RGB";
     QString hexValue = "Hex: #";
@@ -374,7 +483,12 @@ QString parserAPI::parseColor(QString line){
     return colorLine + "   " + hexValue;
 }
 
-QColor parserAPI::parseQColor(QString line){
+/**
+ * @brief parseQColor Transforme un chemin en sa couleur corespondante
+ * @param line Les données d'un chemin
+ * @return Une QColor representant la culeur du chemin
+ */
+QColor ParserAPI::parseQColor(QString line){
 
     QString colorLine = "";
     int RGBValue[3];
@@ -398,37 +512,4 @@ QColor parserAPI::parseQColor(QString line){
         RGBValue[i] = qBound(0, RGBValue[i], 255);
     }
     return QColor(RGBValue[0], RGBValue[1], RGBValue[2]);
-}
-
-QColor parserAPI::getTrueColor(QVector<QString> rawData){
-    double RGBValue[3];
-    QString line = "";
-    QString colorLine = "";
-    int color;
-    double nbCol = static_cast<double>(rawData.size());
-
-    for(int  k = 0; k < nbCol; k++){
-
-        line = rawData[k];
-        color = 0;
-        qInfo() << "Traitement chemin numéro " << k+1;
-        for(int i = 0; i < line.size(); i++){
-            if(line[i] == 'C'){
-                i += 2;
-                do{
-                    if( line[i] == ','){
-                        qInfo() << "Traitement couleur numéro : " << color << " = " << colorLine.toDouble();
-                        RGBValue[color++] += colorLine.toDouble();
-                        colorLine = "";
-                        ++i;
-                    }else{
-                        colorLine += line[i++];
-                    }
-                }while(line[i + 1] != ']');
-                qInfo() << "Traitement du bleu" << " = " << colorLine.toDouble();
-                RGBValue[color++] += colorLine.toDouble();
-            }
-        }
-    }
-    return QColor(static_cast<int>((RGBValue[0] / nbCol) * 255) , static_cast<int>((RGBValue[1] / nbCol) * 255), static_cast<int>((RGBValue[2] / nbCol) * 255));
 }
